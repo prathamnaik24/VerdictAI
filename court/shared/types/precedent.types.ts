@@ -1,12 +1,33 @@
 // Shared precedent types
+import type { ApplicableLaw } from './legal.types';
+import type { DisputeType } from '@/shared/constants/disputeTypes';
+
+export interface PrecedentOutcome {
+  direction: 'favorable' | 'unfavorable' | 'mixed';
+  summary: string;
+}
+
+/**
+ * Rich precedent structure
+ * Supports:
+ * - Legal retrieval and similarity matching
+ * - Factor analysis for scoring
+ * - Evidence signal extraction
+ * - Dashboard rendering
+ */
 export interface Precedent {
   id: string;
-  caseNumber: string;
+  caseType: DisputeType;
   title: string;
-  court: string;
+  forum: string;
   year: number;
-  summary: string;
-  verdict: string;
+  factsSummary: string;
+  evidenceSignals: string[];
+  positiveFactors: string[];
+  negativeFactors: string[];
+  outcome: PrecedentOutcome;
+  applicableLaws: ApplicableLaw[];
+  tags: string[];
   relevanceScore?: number;
   embedding?: number[];
 }

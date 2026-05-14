@@ -1,5 +1,5 @@
 // Explain service - generates explanations
-import { callOpenAI } from '@/backend/ai/openai';
+import { callOpenAI } from '@/ai/openai';
 import { explanationPrompt } from '@/backend/ai/prompts/explanation.prompt';
 
 export const explainAssessment = async (

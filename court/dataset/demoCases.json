@@ -1,1 +1,229 @@
-[]
+[
+  {
+    "id": "demo-001",
+    "caseType": "security-deposit-dispute",
+    "title": "Security Deposit Withheld After Apartment Vacated",
+    "description": "The tenant vacated the apartment after completing the lock-in period, but the landlord refused to return the security deposit citing repainting costs without sharing invoices or inspection records. The apartment was returned in normal wear-and-tear condition with no major damage.",
+    "timeline": "Vacated apartment March 2024. Requested deposit refund. Landlord claimed renovation costs April 2024. No refund provided as of today.",
+    "amountInvolved": 85000,
+    "location": "Bangalore, Karnataka",
+    "parties": {
+      "claimant": "Rajesh Kumar (tenant)",
+      "respondent": "Priya Saxena (landlord)"
+    },
+    "evidence": [
+      "Rental agreement signed by both parties",
+      "WhatsApp chat demanding deposit return",
+      "Landlord's response claiming renovation costs",
+      "Photographs of apartment condition at vacating",
+      "Bank transfer receipt for deposit payment",
+      "Email correspondence acknowledging normal wear-and-tear"
+    ],
+    "desiredOutcome": "Return of full security deposit amount (₹85,000) or court-ordered refund"
+  },
+  {
+    "id": "demo-002",
+    "caseType": "unpaid-personal-loan",
+    "title": "Unsecured Personal Loan Not Repaid After 18 Months",
+    "description": "Friend loaned ₹2,50,000 with verbal agreement for repayment in 12 equal monthly installments. Only 3 payments received. Borrower stopped responding to repayment requests after 6 months. Follow-up attempts made via WhatsApp and calls ignored.",
+    "timeline": "Loan given March 2023. Monthly installments due. Last payment received August 2023. No response since.",
+    "amountInvolved": 250000,
+    "location": "Mumbai, Maharashtra",
+    "parties": {
+      "claimant": "Amit Patel (lender)",
+      "respondent": "Vikram Singh (borrower)"
+    },
+    "evidence": [
+      "WhatsApp chat with loan agreement details",
+      "Bank statements showing transfer of ₹2,50,000",
+      "UPI payment receipts of 3 installments received",
+      "Email confirming repayment terms",
+      "Screenshots of unanswered payment requests",
+      "No promissory note (weakness in case)"
+    ],
+    "desiredOutcome": "Court-ordered repayment of outstanding amount (₹2,12,500) with interest"
+  },
+  {
+    "id": "demo-003",
+    "caseType": "utility-billing-error",
+    "title": "Inflated Electricity Bill From Faulty Meter Reading",
+    "description": "Electricity bill doubled without any increase in usage. Previous average was ₹3,500 per month; received bill of ₹7,200 citing meter malfunction. Utility company acknowledged faulty meter in written response but delayed replacement for 60 days, billing customer at inflated rates.",
+    "timeline": "Abnormal bill received June 2024. Complaint filed June 15. Meter replaced August 10. Still awaiting credit adjustment.",
+    "amountInvolved": 8500,
+    "location": "Hyderabad, Telangana",
+    "parties": {
+      "claimant": "Neha Sharma (consumer)",
+      "respondent": "Telangana State Electricity Board (utility)"
+    },
+    "evidence": [
+      "Previous 12 months of billing history",
+      "Utility company's written acknowledgment of faulty meter",
+      "Meter replacement invoice with date stamp",
+      "New meter readings showing normal consumption",
+      "Consumer complaint registration number",
+      "Delay in meter replacement (60 days documented)"
+    ],
+    "desiredOutcome": "Refund of overcharged amount (₹8,500) with interest and adjustment for meter malfunction period"
+  },
+  {
+    "id": "demo-004",
+    "caseType": "breach-of-service-contract",
+    "title": "Website Development Not Completed as Contracted",
+    "description": "Hired web development company to build e-commerce site with agreed scope. After 4 months and 70% payment (₹1,50,000), developer ceased work citing scope changes. Final deliverables missing (payment gateway, inventory system). Developer now unresponsive.",
+    "timeline": "Contract signed March 2024. Progress updates until May 2024. Project abandoned June 2024. Final 30% payment withheld.",
+    "amountInvolved": 215000,
+    "location": "Pune, Maharashtra",
+    "parties": {
+      "claimant": "Deepika Enterprises (client)",
+      "respondent": "TechVision Solutions (developer)"
+    },
+    "evidence": [
+      "Signed software development contract with scope",
+      "Invoice for 70% payment received",
+      "Bank transfer proof of payment",
+      "Email chain with developer discussing timeline",
+      "Incomplete deliverables repository access",
+      "Email stating project abandonment without clear reason"
+    ],
+    "desiredOutcome": "Refund of 70% advance payment (₹1,50,000) or completion of project at no additional cost"
+  },
+  {
+    "id": "demo-005",
+    "caseType": "consumer-fraud",
+    "title": "Online Purchase of Counterfeit Electronics",
+    "description": "Purchased branded smartphone from e-commerce marketplace. Item appeared authentic with original packaging. After 1 week, phone malfunctioned and brand verification revealed it to be counterfeit. Seller profile now inactive. Refund request denied citing 'as sold' policy.",
+    "timeline": "Purchase December 2023. Malfunction detected December 2024 (1 year later). Discovered counterfeit. Refund denied January 2024.",
+    "amountInvolved": 32000,
+    "location": "Delhi, Delhi",
+    "parties": {
+      "claimant": "Arun Gupta (consumer)",
+      "respondent": "ElectroHub Store (seller)"
+    },
+    "evidence": [
+      "Original purchase receipt and order confirmation",
+      "Product photographs showing packaging",
+      "Brand authentication report confirming counterfeit",
+      "Malfunction documentation with service center",
+      "Email correspondence with seller (denial of refund)",
+      "Screenshots of now-inactive seller profile",
+      "Screenshot of e-commerce platform policy"
+    ],
+    "desiredOutcome": "Full refund of ₹32,000 or replacement with genuine product, plus compensation for fraud"
+  },
+  {
+    "id": "demo-006",
+    "caseType": "wrongful-termination",
+    "title": "Fired Without Notice or Severance After 8 Years Service",
+    "description": "Terminated employment after 8 years with company without notice, without final payment, and without severance. HR justified termination as 'performance issues' but provided no documentation or performance review warnings. Final 1.5 months salary (₹1,20,000) unpaid. No termination letter provided.",
+    "timeline": "Employed since March 2016. Terminated abruptly May 2024. No prior warnings documented. Salary for April-May 2024 unpaid.",
+    "amountInvolved": 120000,
+    "location": "Gurgaon, Haryana",
+    "parties": {
+      "claimant": "Sanjay Reddy (employee)",
+      "respondent": "GlobalTech India Ltd (employer)"
+    },
+    "evidence": [
+      "Employment contract showing 8-year tenure",
+      "Latest performance review (positive rating)",
+      "Email termination notice (sudden, no reasons)",
+      "Salary slips for 7.5 months of employment",
+      "No termination letter with official reason",
+      "WhatsApp chat with HR manager about 'performance issues'",
+      "Colleagues' statement about no prior warnings (optional)"
+    ],
+    "desiredOutcome": "Unpaid salary (₹1,20,000) + statutory severance (8 years × monthly salary) + compensation for wrongful termination"
+  },
+  {
+    "id": "demo-007",
+    "caseType": "faulty-secondary-market-sale",
+    "title": "Used Car Sold With Undisclosed Collision Damage",
+    "description": "Purchased used car from private seller. Vehicle documentation stated 'mint condition' and 'accident-free'. One week after purchase, brake failure incident revealed collision damage to frame (previously welded). Damage reported to car insurance; inspection shows historical accident damage.",
+    "timeline": "Car purchased March 2024. Brake failure May 2024. Insurance inspection revealed hidden collision damage.",
+    "amountInvolved": 450000,
+    "location": "Chennai, Tamil Nadu",
+    "parties": {
+      "claimant": "Ravi Krishnan (buyer)",
+      "respondent": "Ramesh Kumar (seller)"
+    },
+    "evidence": [
+      "Sale agreement stating 'accident-free condition'",
+      "Insurance inspection report showing collision damage",
+      "Repair invoice for brake system failure",
+      "Original seller's advertisement (condition claim)",
+      "WhatsApp chat with seller about condition (denial)",
+      "Police accident report (if applicable)",
+      "Pre-purchase inspection report (if available)"
+    ],
+    "desiredOutcome": "Full refund of purchase price (₹4,50,000) or repair cost reimbursement (₹1,80,000) + compensation"
+  },
+  {
+    "id": "demo-008",
+    "caseType": "small-scale-property-damage",
+    "title": "Water Damage to Flat From Neighbor's Faulty Plumbing",
+    "description": "Water damage to apartment interior (walls, flooring, electrical fixtures) caused by neighbor's burst pipe. Neighbor's homeowner insurance has refused claim. Repair estimate: ₹2,50,000. Neighbor denies liability citing 'natural wear-and-tear'.",
+    "timeline": "Pipe burst April 2024. Water damage to flat reported immediately. Repair estimate obtained. Neighbor's insurance claim denied.",
+    "amountInvolved": 250000,
+    "location": "Bangalore, Karnataka",
+    "parties": {
+      "claimant": "Pooja Nair (flat owner)",
+      "respondent": "Suresh Kulkarni (neighbor)"
+    },
+    "evidence": [
+      "Structural damage photographs (water marks, swelling)",
+      "Plumber's report confirming burst pipe origin",
+      "Repair contractor's detailed estimate",
+      "Building society inspection report",
+      "Insurance claim rejection letter from neighbor's insurer",
+      "Witness statement from building maintenance staff",
+      "Maintenance records showing pipe age and condition"
+    ],
+    "desiredOutcome": "Neighbor compensation for repair costs (₹2,50,000) via civil suit"
+  },
+  {
+    "id": "demo-009",
+    "caseType": "general-negligence",
+    "title": "Injury From Unattended Construction Site Hazard",
+    "description": "Pedestrian injured on public road due to uncovered manhole left unattended by construction company. Medical bills: ₹85,000. Lost income during 2-month recovery: ₹40,000. Construction company's site manager admitted negligence verbally but company now denies responsibility.",
+    "timeline": "Accident May 2024. Medical treatment May-June 2024. Recovery completed July 2024. No compensation offered.",
+    "amountInvolved": 125000,
+    "location": "Pune, Maharashtra",
+    "parties": {
+      "claimant": "Meera Iyer (injured pedestrian)",
+      "respondent": "BuildRight Construction Pvt Ltd"
+    },
+    "evidence": [
+      "FIR filed with police for negligence",
+      "Medical reports and hospital bills (₹85,000)",
+      "Photographs of uncovered manhole at accident site",
+      "Witness statements from pedestrians",
+      "Site manager's WhatsApp acknowledgment of negligence",
+      "Salary slips showing 2-month income loss",
+      "Construction company's insurance policy details"
+    ],
+    "desiredOutcome": "Compensation for medical bills (₹85,000), lost income (₹40,000), and pain & suffering (₹25,000) = ₹1,50,000"
+  },
+  {
+    "id": "demo-010",
+    "caseType": "workplace-harassment",
+    "title": "Workplace Harassment and Hostile Work Environment",
+    "description": "Employee experienced repeated harassment from supervisor including derogatory comments about gender, exclusion from meetings, and verbal abuse in front of team. Formal complaint filed with HR 3 times in 6 months. HR took no action. Work environment became unbearable; employee forced to resign.",
+    "timeline": "Harassment began January 2024. Complaints filed Feb, Mar, May 2024. No action taken. Resigned June 2024.",
+    "amountInvolved": 540000,
+    "location": "Mumbai, Maharashtra",
+    "parties": {
+      "claimant": "Anaya Singh (employee)",
+      "respondent": "FinServe Corp Ltd (employer) & Rajiv Sharma (supervisor)"
+    },
+    "evidence": [
+      "Formal written complaints to HR (3 instances)",
+      "Email chain with HR showing inaction",
+      "Witness statements from team members",
+      "Audio recordings of abusive comments (if legal)",
+      "WhatsApp chats showing harassment pattern",
+      "Resignation letter citing hostile environment",
+      "Salary slips and employment contract",
+      "Medical certificate for stress-related illness"
+    ],
+    "desiredOutcome": "Compensation for harassment (₹3,00,000), lost salary for remaining contract period (₹2,40,000), and reinstatement or liquidated damages"
+  }
+]

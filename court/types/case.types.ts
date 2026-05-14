@@ -1,5 +1,7 @@
 // Case type definitions
-export type DisputeType = 'cheque-bounce' | 'consumer-complaint' | 'employment-dispute';
+import type { DisputeType } from '@/shared/constants/disputeTypes';
+
+export type { DisputeType };
 
 export interface CaseDetails {
   id: string;

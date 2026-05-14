@@ -1,23 +1,44 @@
-// Generate embeddings for precedents
-// Usage: tsx scripts/generateEmbeddings.ts
+import fs from "fs/promises";
+import path from "path";
+import dotenv from "dotenv";
 
-import { generateEmbedding } from '../ai/openai';
-import precedents from '../dataset/precedents.json';
-import fs from 'fs';
-import path from 'path';
+import { generateEmbedding } from "@/backend/retrieval/embed";
 
-const generatePrecedentEmbeddings = async () => {
-  console.log('Starting embedding generation...');
+// Load .env.local
+dotenv.config({ path: path.join(process.cwd(), ".env.local") });
 
-  // TODO: Implement embedding generation for precedents
-  // For now, return empty array
+async function main() {
+  const precedentsPath = path.join(process.cwd(), "dataset", "precedents.json");
 
-  const embeddings: any[] = [];
+  const raw = await fs.readFile(precedentsPath, "utf-8");
 
-  const outputPath = path.join(process.cwd(), 'dataset', 'precedentEmbeddings.json');
-  fs.writeFileSync(outputPath, JSON.stringify(embeddings, null, 2));
+  const precedents = JSON.parse(raw);
 
-  console.log('Embeddings generated and saved');
-};
+  const embedded = [];
 
-generatePrecedentEmbeddings().catch(console.error);
+  for (const precedent of precedents) {
+    console.log(`Embedding: ${precedent.title}`);
+
+    const embedding = await generateEmbedding(precedent.factsSummary);
+
+    embedded.push({
+      id: precedent.id,
+      embedding,
+    });
+  }
+
+  const outputPath = path.join(
+    process.cwd(),
+    "dataset",
+    "precedentEmbeddings.json"
+  );
+
+  await fs.writeFile(
+    outputPath,
+    JSON.stringify(embedded, null, 2)
+  );
+
+  console.log("Embeddings generated successfully");
+}
+
+main();

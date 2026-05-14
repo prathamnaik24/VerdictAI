@@ -1,1 +1,798 @@
-[]
+[
+  {
+    "id": "prec_001",
+    "caseType": "security-deposit-dispute",
+    "title": "Patel v. Singh - Residential Deposit Withholding",
+    "forum": "District Consumer Court, Mumbai",
+    "year": 2024,
+    "factsSummary": "A tenant sought refund of ₹50,000 security deposit after vacating a residential apartment. The landlord claimed deductions for painting and repairs but provided no receipts, inspection reports, or photographic evidence.",
+    "evidenceSignals": [
+      "original lease agreement",
+      "bank transfer proof",
+      "move-in inspection report",
+      "written correspondence refusing refund",
+      "photographs of property condition"
+    ],
+    "positiveFactors": [
+      "comprehensive documentation of original condition",
+      "prompt written demand for refund",
+      "landlord's vague justification",
+      "no itemized deduction list",
+      "no repair invoices presented"
+    ],
+    "negativeFactors": [
+      "minor wall scuffs visible in property",
+      "delayed demand (3 months after vacating)"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Court ordered full deposit refund plus 8% interest. Landlord failed to substantiate claims and violated tenant protection guidelines."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Contract Act, 1872",
+        "section": "Sections 73–75",
+        "label": "Breach of Contract & Damages"
+      },
+      {
+        "lawName": "State Rent/Tenancy Acts",
+        "section": "Various sections",
+        "label": "Tenant Protection Clauses"
+      }
+    ],
+    "tags": [
+      "deposit refund",
+      "landlord-tenant",
+      "residential",
+      "written agreement",
+      "documentation"
+    ]
+  },
+  {
+    "id": "prec_002",
+    "caseType": "security-deposit-dispute",
+    "title": "Gupta v. Kumar - Legitimate Repair Deductions",
+    "forum": "District Consumer Court, Delhi",
+    "year": 2023,
+    "factsSummary": "A tenant disputed deposit deductions for structural damage to walls and floor tiles. The landlord submitted repair invoices, photographs before/after, and detailed inspection reports documenting damage beyond normal wear.",
+    "evidenceSignals": [
+      "itemized deduction statement",
+      "contractor repair invoices",
+      "before/after photographs",
+      "professional inspection report",
+      "lease agreement with damage clause"
+    ],
+    "positiveFactors": [
+      "documented damage with photos",
+      "professional repair estimate",
+      "clear lease provisions on damage liability"
+    ],
+    "negativeFactors": [
+      "tenant disputed legitimacy of repairs",
+      "no independent assessment by neutral party",
+      "repair cost claims seemed high"
+    ],
+    "outcome": {
+      "direction": "mixed",
+      "summary": "Court allowed 60% of claimed deductions for major damage, ordered refund of remainder plus 5% interest. Emphasized need for independent verification."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Contract Act, 1872",
+        "section": "Sections 73–75",
+        "label": "Breach of Contract & Damages"
+      }
+    ],
+    "tags": [
+      "deposit deduction",
+      "property damage",
+      "repair costs",
+      "landlord-tenant",
+      "legitimate claims"
+    ]
+  },
+  {
+    "id": "prec_003",
+    "caseType": "unpaid-personal-loan",
+    "title": "Sharma v. Desai - Written Loan Agreement",
+    "forum": "District Court, Bangalore",
+    "year": 2024,
+    "factsSummary": "Lender issued ₹2,00,000 personal loan to borrower with written agreement specifying 12-month repayment term at 10% annual interest. Borrower defaulted after 6 months without communication.",
+    "evidenceSignals": [
+      "signed loan agreement",
+      "bank transfer receipts",
+      "promissory note",
+      "WhatsApp reminders about due dates",
+      "formal demand notice sent via registered mail"
+    ],
+    "positiveFactors": [
+      "clear written documentation",
+      "bank transfer proof",
+      "series of reminders",
+      "formal demand notice",
+      "borrower acknowledged loan in writing"
+    ],
+    "negativeFactors": [
+      "no witness to verbal discussions",
+      "some delay in sending formal demand"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Court ordered full repayment with 12% interest per annum and ₹15,000 as litigation cost recovery. Lender's documentary evidence was conclusive."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Contract Act, 1872",
+        "section": "Sections 142–149",
+        "label": "Debt Recovery & Creditor Rights"
+      }
+    ],
+    "tags": [
+      "personal loan",
+      "debt recovery",
+      "written agreement",
+      "default",
+      "interest recovery"
+    ]
+  },
+  {
+    "id": "prec_004",
+    "caseType": "unpaid-personal-loan",
+    "title": "Rao v. Nair - Informal Loan Dispute",
+    "forum": "District Court, Hyderabad",
+    "year": 2023,
+    "factsSummary": "Friend lent ₹80,000 without written agreement, only verbal promise and WhatsApp message saying 'will repay in 6 months'. Borrower stopped responding after loan date.",
+    "evidenceSignals": [
+      "WhatsApp messages",
+      "bank transfer record",
+      "multiple attempts to contact",
+      "no written loan agreement",
+      "no promissory note"
+    ],
+    "positiveFactors": [
+      "bank transfer proof",
+      "consistent communication attempts",
+      "borrower's earlier acknowledgment in messages"
+    ],
+    "negativeFactors": [
+      "no written agreement",
+      "no promissory note",
+      "informal relationship",
+      "no witnesses to verbal promise",
+      "unclear repayment terms in messages"
+    ],
+    "outcome": {
+      "direction": "unfavorable",
+      "summary": "Court dismissed claim due to insufficient documentary evidence. Judge noted absence of written agreement makes verbal loans difficult to enforce. Suggested arbitration or settlement."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Contract Act, 1872",
+        "section": "Sections 142–149",
+        "label": "Debt Recovery & Creditor Rights"
+      }
+    ],
+    "tags": [
+      "informal loan",
+      "friend lending",
+      "no documentation",
+      "verbal promise",
+      "difficult enforcement"
+    ]
+  },
+  {
+    "id": "prec_005",
+    "caseType": "utility-billing-error",
+    "title": "Roy v. BSES - Meter Overcharging",
+    "forum": "District Consumer Court, Delhi",
+    "year": 2024,
+    "factsSummary": "Electricity consumer disputed unusually high bills. Independent meter inspection revealed faulty meter recording 40% excess consumption. Utility had not serviced meter in 7 years despite regulations requiring annual checkup.",
+    "evidenceSignals": [
+      "billing history records",
+      "independent meter test certificate",
+      "meter maintenance log request",
+      "customer complaint emails",
+      "regulatory inspection guidelines"
+    ],
+    "positiveFactors": [
+      "technical evidence of faulty meter",
+      "utility's failure to maintain meter",
+      "historical billing comparison showing sudden spike",
+      "regulatory non-compliance by utility"
+    ],
+    "negativeFactors": [
+      "customer accepted bills for 7 years without complaint",
+      "no immediate action upon first unusual bill"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Utility ordered to refund 40% of disputed charges over 3 years plus 12% interest. Court emphasized utility responsibility for meter accuracy and maintenance."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Consumer Protection Act, 2019",
+        "section": "Sections 2(47) & 18",
+        "label": "Deficiency in Service"
+      }
+    ],
+    "tags": [
+      "billing error",
+      "faulty meter",
+      "utility service",
+      "overcharging",
+      "meter maintenance"
+    ]
+  },
+  {
+    "id": "prec_006",
+    "caseType": "utility-billing-error",
+    "title": "Khan v. Water Board - Valid Billing",
+    "forum": "District Consumer Court, Bangalore",
+    "year": 2023,
+    "factsSummary": "Consumer disputed high water charges. Board inspection found multiple leaks in customer's plumbing causing excess consumption, not meter error. Customer's recent renovation had introduced new fixtures.",
+    "evidenceSignals": [
+      "meter reading records",
+      "plumbing inspection report",
+      "photographic evidence of leaks",
+      "historical billing pattern",
+      "renovation invoices"
+    ],
+    "positiveFactors": [
+      "physical evidence of leaks found",
+      "meter verified working correctly",
+      "consumption proportional to identified water loss"
+    ],
+    "negativeFactors": [
+      "customer delay in requesting inspection",
+      "customer's responsibility for internal plumbing"
+    ],
+    "outcome": {
+      "direction": "unfavorable",
+      "summary": "Court dismissed complaint. Billing was accurate. Customer responsible for property maintenance. Suggested customer fix plumbing to reduce future bills."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Contract Act, 1872",
+        "section": "Sections 72–75",
+        "label": "Contract Performance & Remedies"
+      }
+    ],
+    "tags": [
+      "water billing",
+      "customer responsibility",
+      "property maintenance",
+      "consumption accuracy",
+      "plumbing leak"
+    ]
+  },
+  {
+    "id": "prec_007",
+    "caseType": "breach-of-service-contract",
+    "title": "Verma v. Relocation Services - Failed Delivery",
+    "forum": "District Consumer Court, Mumbai",
+    "year": 2024,
+    "factsSummary": "Relocation service agreed to move household goods on specific date with delivery within 5 days. Company failed to collect goods on promised date, delivered 14 days late, with damage to furniture.",
+    "evidenceSignals": [
+      "service agreement with timeline",
+      "email confirmation of collection date",
+      "photographs of damaged items",
+      "damage assessment report",
+      "payment receipt",
+      "WhatsApp communication about delays"
+    ],
+    "positiveFactors": [
+      "clear written timeline",
+      "documented communication about commitment",
+      "photographic evidence of damage",
+      "professional assessment of loss value",
+      "company acknowledged delay"
+    ],
+    "negativeFactors": [
+      "minor delay acceptable under industry norms",
+      "customer did not inspect on immediate delivery"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Court ordered 40% refund of service fee plus ₹35,000 compensation for damage. Unreasonable delay and property damage breach service standards."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Consumer Protection Act, 2019",
+        "section": "Sections 2(47) & 18",
+        "label": "Deficiency in Service"
+      }
+    ],
+    "tags": [
+      "service contract",
+      "delivery failure",
+      "property damage",
+      "timeline breach",
+      "compensation"
+    ]
+  },
+  {
+    "id": "prec_008",
+    "caseType": "breach-of-service-contract",
+    "title": "Malhotra v. Construction Contractor - Partial Performance",
+    "forum": "District Court, Pune",
+    "year": 2023,
+    "factsSummary": "Customer hired contractor for home renovation. Work completed but quality fell short of agreed specifications: paint quality poor, finishes mismatched, electrical work incomplete.",
+    "evidenceSignals": [
+      "written contract with specifications",
+      "progress photographs",
+      "third-party quality assessment",
+      "payment receipts",
+      "email exchanges about defects",
+      "repair cost quotations"
+    ],
+    "positiveFactors": [
+      "documented specifications in contract",
+      "professional quality assessment",
+      "clear photographic comparison"
+    ],
+    "negativeFactors": [
+      "customer made modifications during work",
+      "delayed in pointing out defects",
+      "partial useability of completed work"
+    ],
+    "outcome": {
+      "direction": "mixed",
+      "summary": "Court ordered contractor to rectify major defects at own cost or refund 25% of contract value. Found material breach but acknowledged partial performance."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Contract Act, 1872",
+        "section": "Sections 55–75",
+        "label": "Breach of Service Obligations & Damages"
+      }
+    ],
+    "tags": [
+      "construction defect",
+      "service quality",
+      "partial performance",
+      "contract specifications",
+      "repair obligation"
+    ]
+  },
+  {
+    "id": "prec_009",
+    "caseType": "consumer-fraud",
+    "title": "Singh v. Electronics Retailer - Counterfeit Product",
+    "forum": "District Consumer Court, Hyderabad",
+    "year": 2024,
+    "factsSummary": "Customer purchased smartphone for ₹40,000, advertised as latest model with authentic warranty. Product was counterfeit with non-functional features. Retailer provided no after-sales support.",
+    "evidenceSignals": [
+      "store receipt",
+      "product comparison report",
+      "manufacturer's authenticity verification (failed)",
+      "warranty card analysis (fake)",
+      "retailer's false advertising",
+      "customer complaint emails with no response"
+    ],
+    "positiveFactors": [
+      "clear evidence of counterfeit",
+      "manufacturer's official verification",
+      "documented purchase",
+      "retailer's non-cooperation",
+      "false advertising claims"
+    ],
+    "negativeFactors": [
+      "customer could have verified before purchase",
+      "some delay in reporting"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Full refund granted. Retailer ordered to pay ₹40,000 + ₹20,000 penalty + ₹10,000 legal cost. Case registered against retailer with police for fraud."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Consumer Protection Act, 2019",
+        "section": "Sections 2(47) & 18",
+        "label": "Unfair Trade Practices & False Claims"
+      }
+    ],
+    "tags": [
+      "counterfeit product",
+      "fraud",
+      "false warranty",
+      "consumer deception",
+      "retailer liability"
+    ]
+  },
+  {
+    "id": "prec_010",
+    "caseType": "consumer-fraud",
+    "title": "Joshi v. Investment Consultant - Misleading Returns",
+    "forum": "District Consumer Court, Chennai",
+    "year": 2023,
+    "factsSummary": "Investment consultant promised 20% annual returns with 'no risk' on ₹10,00,000 investment in dubious schemes. Investor lost 60% of capital. Consultant's claims were not substantiated.",
+    "evidenceSignals": [
+      "promotional materials with inflated claims",
+      "recorded phone conversation of false promises",
+      "investment agreement with vague terms",
+      "market loss documentation",
+      "SEBI warnings against scheme"
+    ],
+    "positiveFactors": [
+      "recorded conversation of promises",
+      "documented scheme warnings",
+      "clear false claim of 'no risk'",
+      "investor's loss"
+    ],
+    "negativeFactors": [
+      "investor is sophisticated person",
+      "some risk disclosure buried in fine print",
+      "investor did not verify SEBI status"
+    ],
+    "outcome": {
+      "direction": "mixed",
+      "summary": "Consultant ordered to refund 50% of losses (₹3,00,000) plus 10% interest. Court found partial misrepresentation but noted investor's due diligence responsibility."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Consumer Protection Act, 2019",
+        "section": "Sections 2(47) & 18",
+        "label": "Unfair Trade Practices & False Claims"
+      }
+    ],
+    "tags": [
+      "investment fraud",
+      "false promises",
+      "misleading claims",
+      "financial loss",
+      "consultant liability"
+    ]
+  },
+  {
+    "id": "prec_011",
+    "caseType": "wrongful-termination",
+    "title": "Reddy v. Tech Company - Retaliation Firing",
+    "forum": "Labour Court, Bangalore",
+    "year": 2024,
+    "factsSummary": "Employee filed sexual harassment complaint against senior manager. Two days later, was terminated for 'performance issues' without notice or severance. No performance issue documentation existed prior to firing.",
+    "evidenceSignals": [
+      "harassment complaint filing record",
+      "termination letter dated 2 days post-complaint",
+      "employment records showing good ratings",
+      "absence of prior performance warnings",
+      "witness testimony about retaliation",
+      "email admissions of manager"
+    ],
+    "positiveFactors": [
+      "clear timing linking complaint to firing",
+      "no prior performance issues documented",
+      "employee's positive record",
+      "witness testimony",
+      "immediate retaliation pattern"
+    ],
+    "negativeFactors": [
+      "company cited cost-cutting",
+      "company provided some severance"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Reinstatement ordered with full back pay plus 6 months salary as compensation. Court found retaliation for harassment complaint. Company directed to investigate original harassment."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Labour Code, 2023",
+        "section": "Sections 43–48",
+        "label": "Unfair Dismissal & Retrenchment"
+      },
+      {
+        "lawName": "Sexual Harassment of Women at Workplace Act, 2013",
+        "section": "Sections 3–5",
+        "label": "Protection Against Sexual Harassment"
+      }
+    ],
+    "tags": [
+      "wrongful termination",
+      "retaliation",
+      "harassment complaint",
+      "labour rights",
+      "discrimination"
+    ]
+  },
+  {
+    "id": "prec_012",
+    "caseType": "wrongful-termination",
+    "title": "Sharma v. Manufacturing Plant - Valid Redundancy",
+    "forum": "Labour Court, Pune",
+    "year": 2023,
+    "factsSummary": "Manufacturing plant closed division due to automation. 50 employees laid off following legal procedure: notice period, consultation with union, severance payment, placement assistance provided.",
+    "evidenceSignals": [
+      "restructuring documentation",
+      "union meeting minutes",
+      "proper notice given to employees",
+      "severance calculation documents",
+      "placement assistance records",
+      "regulatory approvals"
+    ],
+    "positiveFactors": [
+      "proper process followed",
+      "business justification documented",
+      "union consulted",
+      "statutory severance paid",
+      "no discrimination evident"
+    ],
+    "negativeFactors": [
+      "employee wanted different role",
+      "short timeframe for alternative employment"
+    ],
+    "outcome": {
+      "direction": "unfavorable",
+      "summary": "Dismissal upheld as valid redundancy. Company followed legal procedures. Court found no evidence of wrongful termination or discrimination."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Labour Code, 2023",
+        "section": "Sections 43–48",
+        "label": "Unfair Dismissal & Retrenchment"
+      }
+    ],
+    "tags": [
+      "redundancy",
+      "business closure",
+      "layoff procedure",
+      "severance",
+      "valid termination"
+    ]
+  },
+  {
+    "id": "prec_013",
+    "caseType": "faulty-secondary-market-sale",
+    "title": "Das v. Private Seller - Undisclosed Car Damage",
+    "forum": "District Consumer Court, Kolkata",
+    "year": 2024,
+    "factsSummary": "Buyer purchased used car from private seller for ₹6,00,000. Vehicle had hidden frame damage and repainted chassis. Car failed structural safety test one month after purchase.",
+    "evidenceSignals": [
+      "purchase agreement",
+      "original mechanic inspection (not followed)",
+      "safety test report showing damage",
+      "original accident report (hidden from buyer)",
+      "photo comparison showing repainting"
+    ],
+    "positiveFactors": [
+      "safety test evidence",
+      "clear history of damage",
+      "seller's intentional concealment"
+    ],
+    "negativeFactors": [
+      "buyer did not get independent inspection",
+      "'as-is' clause in agreement"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Buyer entitled to 70% refund (₹4,20,000). Court found fraudulent concealment overrides 'as-is' clause. Seller must disclose material defects."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Consumer Protection Act, 2019",
+        "section": "Section 2(47)",
+        "label": "Defective Goods & Misrepresentation"
+      }
+    ],
+    "tags": [
+      "used car sale",
+      "hidden damage",
+      "fraud",
+      "safety defect",
+      "secondary market"
+    ]
+  },
+  {
+    "id": "prec_014",
+    "caseType": "general-negligence",
+    "title": "Patel v. Contractor - Unsafe Site Injury",
+    "forum": "District Court, Surat",
+    "year": 2024,
+    "factsSummary": "Construction site worker injured by falling scaffolding. Site had no safety barriers, inadequate signage, and untrained workers. Contractor provided no safety equipment.",
+    "evidenceSignals": [
+      "medical reports",
+      "accident scene photographs",
+      "safety inspection report",
+      "worker's testimony",
+      "contractor's safety records (absent)",
+      "eyewitness accounts"
+    ],
+    "positiveFactors": [
+      "clear evidence of unsafe conditions",
+      "negligence in safety procedure",
+      "documented injury severity",
+      "expert safety assessment"
+    ],
+    "negativeFactors": [
+      "worker did not report earlier concerns",
+      "worker not fully trained initially"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Contractor ordered to pay ₹5,00,000 compensation for injury, medical expenses, and lost wages. Held liable for gross negligence in site safety."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Tort Law",
+        "section": "Negligence principles",
+        "label": "Duty of Care & Breach"
+      }
+    ],
+    "tags": [
+      "workplace safety",
+      "construction negligence",
+      "injury liability",
+      "unsafe site",
+      "contractor responsibility"
+    ]
+  },
+  {
+    "id": "prec_015",
+    "caseType": "workplace-harassment",
+    "title": "Kumar v. Bank - Casteist Harassment",
+    "forum": "District Consumer Court, Lucknow",
+    "year": 2024,
+    "factsSummary": "Bank employee faced repeated casteist slurs, exclusion from meetings, and unfair performance ratings by manager. HR responded minimally. Employee transferred after complaint.",
+    "evidenceSignals": [
+      "HR complaint records",
+      "colleague witness statements",
+      "email exchanges with derogatory language",
+      "performance review inconsistencies",
+      "transfer order timing"
+    ],
+    "positiveFactors": [
+      "documented complaints",
+      "witness corroboration",
+      "HR inaction evident"
+    ],
+    "negativeFactors": [
+      "some disputed content",
+      "employee did not document immediately"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Employer ordered to pay ₹2,50,000 compensation, reinstate employee, and conduct mandatory harassment training. Manager directed to apologize."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Indian Labour Code, 2023",
+        "section": "Sections 2–5",
+        "label": "Workplace Safety & Dignity"
+      }
+    ],
+    "tags": [
+      "workplace harassment",
+      "discrimination",
+      "HR failure",
+      "hostile environment",
+      "protected grounds"
+    ]
+  },
+  {
+    "id": "prec_016",
+    "caseType": "cyber-crime",
+    "title": "Gupta v. Hacker - Identity Theft & Fraud",
+    "forum": "Cyber Crime Court, Delhi",
+    "year": 2024,
+    "factsSummary": "Victim's email hacked, used to create fake social media accounts and make unauthorized purchases. Attacker made ₹2,50,000 worth of fraudulent transactions.",
+    "evidenceSignals": [
+      "email access logs",
+      "unauthorized transaction records",
+      "IP address trace",
+      "social media account evidence",
+      "bank statements",
+      "hacker identification through cybercrime bureau"
+    ],
+    "positiveFactors": [
+      "clear fraud documentation",
+      "hacker identified",
+      "digital forensic evidence"
+    ],
+    "negativeFactors": [
+      "victim delay in reporting (5 days)",
+      "weak initial password"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Criminal case filed. Victim received ₹2,25,000 refund from bank. Police case against identified hacker ongoing."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Information Technology Act, 2000",
+        "section": "Sections 66–72",
+        "label": "Cybercrimes & Data Breaches"
+      }
+    ],
+    "tags": [
+      "cyber crime",
+      "identity theft",
+      "fraud",
+      "hacking",
+      "unauthorized transaction"
+    ]
+  },
+  {
+    "id": "prec_017",
+    "caseType": "vehicle-dispute",
+    "title": "Rao v. Car Manufacturer - Engine Defect",
+    "forum": "District Consumer Court, Bangalore",
+    "year": 2023,
+    "factsSummary": "Customer purchased new car, engine malfunctioned at 5,000 km. Manufacturer refused warranty claim citing 'misuse'. Third-party assessment showed manufacturing defect.",
+    "evidenceSignals": [
+      "warranty documentation",
+      "service history records",
+      "manufacturer's internal bulletins about same defect",
+      "third-party assessment",
+      "purchase receipt",
+      "customer maintenance proof"
+    ],
+    "positiveFactors": [
+      "technical assessment of defect",
+      "early failure pattern",
+      "proper vehicle maintenance",
+      "manufacturer's known issues"
+    ],
+    "negativeFactors": [
+      "customer drove in rough terrain",
+      "warranty period technically not violated"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Manufacturer ordered to replace engine under warranty. Customer awarded ₹50,000 compensation for inconvenience. Manufacturer's refusal was unreasonable."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Consumer Protection Act, 2019",
+        "section": "Sections 2(47) & 18",
+        "label": "Defective Vehicle & Manufacturer Liability"
+      }
+    ],
+    "tags": [
+      "vehicle defect",
+      "warranty claim",
+      "manufacturing defect",
+      "engine failure",
+      "consumer protection"
+    ]
+  },
+  {
+    "id": "prec_018",
+    "caseType": "simple-criminal-law",
+    "title": "State v. Chatterjee - Defamation Case",
+    "forum": "District Court, Kolkata",
+    "year": 2024,
+    "factsSummary": "Accused published false statements on social media accusing victim of embezzlement with no evidence. Statements went viral, damaging victim's professional reputation.",
+    "evidenceSignals": [
+      "social media screenshots",
+      "publication metadata",
+      "witness testimony about false claims",
+      "victim's clean record",
+      "no evidence of embezzlement"
+    ],
+    "positiveFactors": [
+      "clear false statements",
+      "documented harm",
+      "no supporting evidence"
+    ],
+    "negativeFactors": [
+      "accused claimed 'public interest'",
+      "victim's delayed response"
+    ],
+    "outcome": {
+      "direction": "favorable",
+      "summary": "Convicted of defamation. Ordered to pay ₹2,00,000 damages, 3 months imprisonment (suspended), and public apology. Social media content removed."
+    },
+    "applicableLaws": [
+      {
+        "lawName": "Bharatiya Nyaya Sanhita, 2023",
+        "section": "Various sections",
+        "label": "Criminal Offenses & Penalties"
+      }
+    ],
+    "tags": [
+      "defamation",
+      "false statements",
+      "social media crime",
+      "reputation damage",
+      "criminal conviction"
+    ]
+  }
+]

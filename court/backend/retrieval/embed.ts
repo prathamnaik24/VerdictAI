@@ -1,11 +1,24 @@
-// Embedding generation
-import { generateEmbedding } from '../ai/openai';
+import OpenAI from "openai";
 
-export const generateCaseEmbedding = async (caseText: string): Promise<number[]> => {
-  return generateEmbedding(caseText);
-};
+let client: OpenAI | null = null;
 
-export const preloadEmbeddings = async (): Promise<void> => {
-  // TODO: Load precedent embeddings at startup
-  console.log('[Retrieval] Preloading embeddings...');
-};
+function getClient() {
+  if (!client) {
+    client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+
+  return client;
+}
+
+export async function generateEmbedding(text: string) {
+  const openai = getClient();
+
+  const response = await openai.embeddings.create({
+    model: "text-embedding-3-small",
+    input: text,
+  });
+
+  return response.data[0].embedding;
+}

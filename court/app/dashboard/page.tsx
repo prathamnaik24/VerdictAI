@@ -13,11 +13,20 @@ import { ROUTES } from '@/lib/routes';
 
 export default function DashboardPage() {
   const mockAssessment = {
-    score: 65,
-    confidence: 0.72,
-    riskFactors: ['Lack of documentation', 'Delay in legal action'],
-    favorableFactors: ['Clear communication records', 'Witness availability'],
+    likelihoodScore: 65,
+    confidenceLevel: 0.72,
+    assessmentSummary: 'Case scored at 65/100 (Moderate likelihood). Based on provided evidence and case facts.',
+    possibleApplicableLaws: [],
+    evidenceSummary: {
+      strength: 'moderate' as const,
+      availableEvidence: [],
+      missingEvidence: [],
+      recommendedEvidence: [],
+    },
+    practicalRisks: [],
     precedents: [],
+    favorableFactors: ['Clear communication records', 'Witness availability'],
+    unfavorableFactors: ['Lack of documentation', 'Delay in legal action'],
   };
 
   return (
@@ -25,17 +34,17 @@ export default function DashboardPage() {
       <PageTitle title="Assessment Dashboard" subtitle="Your case evaluation" />
 
       <div className="grid grid-cols-2 gap-6 mb-8">
-        <OutcomeCard score={mockAssessment.score} />
-        <ConfidenceMeter confidence={mockAssessment.confidence} />
+        <OutcomeCard score={mockAssessment.likelihoodScore} />
+        <ConfidenceMeter confidence={mockAssessment.confidenceLevel} />
       </div>
 
       <div className="grid grid-cols-2 gap-6 mb-8">
-        <RiskFactors factors={mockAssessment.riskFactors} />
+        <RiskFactors factors={mockAssessment.unfavorableFactors} />
         <FavorableFactors factors={mockAssessment.favorableFactors} />
       </div>
 
       <div className="mb-8">
-        <ReadinessScore score={mockAssessment.score} />
+        <ReadinessScore score={mockAssessment.likelihoodScore} />
       </div>
 
       <div className="mb-8">

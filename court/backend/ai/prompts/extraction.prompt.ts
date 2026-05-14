@@ -1,15 +1,68 @@
-// Extraction prompt for case details
-export const extractionPrompt = `
-You are a legal assistant specialized in extracting key information from case descriptions.
+const SUPPORTED_DISPUTES = [
+  "security-deposit-dispute",
+  "unpaid-personal-loan",
+  "utility-billing-error",
+  "breach-of-service-contract",
+  "consumer-fraud",
+  "wrongful-termination",
+  "faulty-secondary-market-sale",
+  "small-scale-property-damage",
+  "general-negligence",
+  "workplace-harassment",
+  "cyber-crime",
+  "vehicle-dispute",
+  "simple-criminal-law",
+];
 
-Extract the following information:
-- Main claims
-- Key facts
-- Evidence mentioned
-- Parties involved
-- Disputed amount (if applicable)
+export function buildExtractionPrompt(rawFacts: string) {
+  return `
+You are an AI legal intake classifier for an educational legal-tech platform.
 
-Provide structured output with clear labels for each section.
+Your task:
+- classify the dispute
+- summarize facts
+- identify evidence signals
+- identify missing information
+- output STRICT JSON ONLY
 
-TODO: Add case type-specific extraction logic
+Rules:
+- Do not provide legal advice
+- Do not mention morality, politics, religion, caste, or corruption
+- Legal considerations must be suggestive only
+- Keep summaries concise
+- Be conservative when uncertain
+
+Supported dispute types:
+${SUPPORTED_DISPUTES.join(", ")}
+
+Return ONLY valid JSON.
+
+Required JSON schema:
+
+{
+  "disputeType": "string",
+  "classificationConfidence": number,
+  "factsSummary": "string",
+  "parties": [
+    {
+      "role": "string",
+      "name": "string"
+    }
+  ],
+  "evidenceSignals": ["string"],
+  "timelineClarity": "clear | partial | unclear",
+  "allegedHarm": "string",
+  "requestedRemedy": "string",
+  "riskFlags": ["string"],
+  "legalConsiderations": ["string"],
+  "missingInformation": ["string"]
+}
+
+User facts:
+"""
+${rawFacts}
+"""
 `;
+}
+
+export { SUPPORTED_DISPUTES };

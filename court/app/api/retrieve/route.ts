@@ -1,22 +1,37 @@
-import { NextResponse } from 'next/server';
-import { retrieveCases } from '@/backend/services/retrieve.service';
+import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+import { retrievePrecedents } from "@/backend/services/retrieve.service";
+
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
-    const { caseDescription, caseType } = body;
+    const body = await req.json();
 
-    const precedents = await retrieveCases(caseDescription, caseType);
+    const { summary } = body;
+
+    if (!summary) {
+      return NextResponse.json(
+        { error: "Summary is required" },
+        { status: 400 }
+      );
+    }
+
+    const precedents = await retrievePrecedents(summary);
 
     return NextResponse.json({
       success: true,
       precedents,
     });
   } catch (error) {
-    console.error('[API] Retrieve error:', error);
+    console.error(error);
+
     return NextResponse.json(
-      { success: false, error: 'Retrieve failed' },
-      { status: 500 }
+      {
+        success: false,
+        error: "Failed to retrieve precedents",
+      },
+      {
+        status: 500,
+      }
     );
   }
 }
