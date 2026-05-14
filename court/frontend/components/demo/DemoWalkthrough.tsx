@@ -10,7 +10,7 @@ interface DemoWalkthroughProps {
   onSelectCase: (type: DemoCaseType) => void;
 }
 
-const CASES: DemoCaseType[] = ['cheque-bounce', 'consumer-complaint', 'employment-dispute'];
+const CASES: DemoCaseType[] = ['security-deposit', 'unpaid-loan', 'breach-contract'];
 
 export function DemoWalkthrough({ onSelectCase }: DemoWalkthroughProps) {
   return (

@@ -11,7 +11,7 @@ interface FloatingActionButtonProps {
 }
 
 export function FloatingActionButton({
-  label = 'Back to Top',
+  label = 'Scroll to top',
   icon = '\u2191',
   onClick,
   threshold = 400,

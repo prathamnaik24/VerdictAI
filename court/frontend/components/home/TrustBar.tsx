@@ -5,27 +5,27 @@ import { Container } from '../common/Container';
 import { Shield, Brain, Zap, FileText } from 'lucide-react';
 
 const items = [
-  {
-    icon: Brain,
-    title: 'Semantic Precedent Retrieval',
-    description: 'Find similar cases using AI-powered semantic search',
-  },
-  {
-    icon: Shield,
-    title: 'Explainable Legal Analysis',
-    description: 'Understand the reasoning behind every assessment',
-  },
-  {
-    icon: Zap,
-    title: 'Courtroom Simulation',
-    description: 'Practice arguments with AI judge and opposing counsel',
-  },
-  {
-    icon: FileText,
-    title: 'Litigation Readiness Reports',
-    description: 'Comprehensive case strength and risk analysis',
-  },
-];
+   {
+     icon: Brain,
+     title: 'Semantic Precedent Search',
+     description: 'Find relevant cases using AI-powered semantic matching across Indian court judgments.',
+   },
+   {
+     icon: Shield,
+     title: 'Explainable Legal Analysis',
+     description: 'Understand the reasoning behind every score, factor, and prediction.',
+   },
+   {
+     icon: Zap,
+     title: 'Courtroom Simulation',
+     description: 'Practice arguments with an AI judge and opposing counsel before your hearing.',
+   },
+   {
+     icon: FileText,
+     title: 'Litigation Readiness Report',
+     description: 'A comprehensive analysis of case strength, risks, and recommended next steps.',
+   },
+ ];
 
 export function TrustBar() {
   const containerVariants = {

@@ -20,9 +20,9 @@ export function ReportPrediction({ report }: ReportPredictionProps) {
     <ReportSection title="Legal Direction Assessment">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-navy/[0.04] rounded-lg p-4">
-          <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
-            Predicted Direction
-          </p>
+<p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+             Likely Direction
+           </p>
           <p className="text-xl font-bold text-navy">
             {assessment.predictedDirection}
           </p>

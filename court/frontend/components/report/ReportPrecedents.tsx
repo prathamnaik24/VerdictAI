@@ -12,18 +12,18 @@ export function ReportPrecedents({ report }: ReportPrecedentsProps) {
   const { precedents } = report;
 
   return (
-    <ReportSection
-      title="Similar Precedents"
-      subtitle={
-        precedents.length > 0
-          ? `${precedents.length} precedent(s) identified`
-          : undefined
-      }
-    >
-      {precedents.length === 0 ? (
-        <p className="text-gray-500 italic text-sm">
-          No similar precedents found.
-        </p>
+<ReportSection
+       title="Similar Precedents"
+       subtitle={
+         precedents.length > 0
+           ? `${precedents.length} precedent(s) identified from Indian case law`
+           : undefined
+       }
+     >
+       {precedents.length === 0 ? (
+         <p className="text-gray-500 italic text-sm">
+           No closely matching precedents were found. This may indicate a novel area of law.
+         </p>
       ) : (
         <div className="space-y-4">
           {precedents.map((p, i) => (

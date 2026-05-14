@@ -5,27 +5,27 @@ import { Container } from '@/frontend/components/common/Container';
 import { GoldDivider } from '@/frontend/components/common/GoldDivider';
 
 const indicators = [
-  {
-    icon: '🛡️',
-    title: 'Structured Legal Analysis',
-    description: 'Every assessment follows a structured methodology based on established legal principles.',
-  },
-  {
-    icon: '🔍',
-    title: 'AI-Assisted Precedent Retrieval',
-    description: 'Semantic matching finds relevant case law from Indian courts — not random keyword search.',
-  },
-  {
-    icon: '🔒',
-    title: 'Privacy-Focused Processing',
-    description: 'Case data is processed securely. No storage of sensitive legal information.',
-  },
-  {
-    icon: '📋',
-    title: 'Courtroom Preparation',
-    description: 'Simulation module helps you prepare arguments and anticipate opposing counsel strategies.',
-  },
-];
+   {
+     icon: '🛡️',
+     title: 'Structured Legal Analysis',
+     description: 'Every assessment follows a defined methodology grounded in established legal principles.',
+   },
+   {
+     icon: '🔍',
+     title: 'AI-Powered Precedent Search',
+     description: 'Semantic matching identifies relevant case law from Indian courts — not basic keyword searches.',
+   },
+   {
+     icon: '🔒',
+     title: 'Privacy by Design',
+     description: 'Case data is processed securely with no long-term storage of sensitive legal information.',
+   },
+   {
+     icon: '📋',
+     title: 'Courtroom Preparation',
+     description: 'Simulate proceedings and anticipate opposing counsel strategies before stepping into court.',
+   },
+ ];
 
 export function TrustIndicators() {
   return (

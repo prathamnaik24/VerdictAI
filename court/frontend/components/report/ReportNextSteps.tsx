@@ -9,11 +9,11 @@ interface ReportNextStepsProps {
 
 export function ReportNextSteps({ report }: ReportNextStepsProps) {
   return (
-    <ReportSection title="Suggested Next Steps">
-      {report.nextSteps.length === 0 ? (
-        <p className="text-gray-500 italic text-sm">
-          No specific recommendations available.
-        </p>
+<ReportSection title="Recommended Next Steps">
+       {report.nextSteps.length === 0 ? (
+         <p className="text-gray-500 italic text-sm">
+           No specific recommendations available at this time.
+         </p>
       ) : (
         <ol className="space-y-3">
           {report.nextSteps.map((step, i) => (

@@ -15,12 +15,12 @@ export function ReportHeader({ report }: ReportHeaderProps) {
     <div className="border-b border-gray-200 pb-8 mb-2">
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-navy font-serif tracking-tight">
-            Legal Assessment Report
-          </h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Report ID: {report.reportId}
-          </p>
+<h1 className="text-3xl font-bold text-navy font-serif tracking-tight">
+             Legal Assessment Report
+           </h1>
+           <p className="text-sm text-gray-500 mt-1">
+             Reference: {report.reportId}
+           </p>
         </div>
         <div className="text-right shrink-0">
           <p className="text-xs text-gray-500 uppercase tracking-wider">

@@ -12,20 +12,28 @@ import { ROUTES } from '@/lib/routes';
 export default function IntakePage() {
   return (
     <PageContainer>
-      <PageTitle title="Case Intake" subtitle="Tell us about your legal case" />
+      <PageTitle 
+        title="Case Intake" 
+        subtitle="Tell us about your legal case to get an AI-powered assessment" 
+      />
 
-      <div className="max-w-2xl mx-auto space-y-8">
+      <div className="max-w-2xl mx-auto space-y-10">
         <IntakeForm />
+        <div className="h-px bg-gray-200" />
         <CaseDetailsForm />
+        <div className="h-px bg-gray-200" />
         <EvidenceChecklist />
+        <div className="h-px bg-gray-200" />
         <PrivacyNotice />
 
-        <NavigationButtons
-          buttons={[
-            { label: 'Back to Home', href: ROUTES.HOME, variant: 'secondary' },
-            { label: 'Continue to Dashboard', href: ROUTES.DASHBOARD, variant: 'primary' },
-          ]}
-        />
+        <div className="pt-4">
+          <NavigationButtons
+            buttons={[
+              { label: 'Back to Home', href: ROUTES.HOME, variant: 'secondary' },
+              { label: 'View Dashboard', href: ROUTES.DASHBOARD, variant: 'primary' },
+            ]}
+          />
+        </div>
       </div>
     </PageContainer>
   );

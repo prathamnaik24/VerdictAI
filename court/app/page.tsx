@@ -24,9 +24,9 @@ export default function Home() {
 
   const handleDemoSelect = (caseType: DemoCaseType) => {
     const routeMap: Record<DemoCaseType, string> = {
-      'cheque-bounce': '/dashboard',
-      'consumer-complaint': '/dashboard',
-      'employment-dispute': '/dashboard',
+      'security-deposit': '/dashboard',
+      'unpaid-loan': '/dashboard',
+      'breach-contract': '/dashboard',
     };
     router.push(routeMap[caseType]);
   };

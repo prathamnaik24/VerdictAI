@@ -26,7 +26,7 @@ export function Footer() {
               <p className="text-offwhite/70 text-sm leading-relaxed">
                 AI-powered legal analysis platform helping advocates, corporate
                 counsel, and litigation teams evaluate case strength with
-                unprecedented accuracy.
+                data-driven precision.
               </p>
             </div>
 
@@ -101,8 +101,8 @@ export function Footer() {
           {/* Disclaimer */}
           <div className="text-xs text-offwhite/50 text-center md:text-right leading-relaxed">
             <p>
-              VerdictAI is not a substitute for professional legal advice. Always
-              consult qualified attorneys.
+              VerdictAI is not a substitute for professional legal advice.
+              Consult qualified attorneys for case-specific guidance.
             </p>
           </div>
         </div>

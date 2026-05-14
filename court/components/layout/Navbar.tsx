@@ -11,13 +11,13 @@ export const Navbar = () => {
           VerdictAI
         </Link>
         <div className="flex gap-6">
-          <Link href={ROUTES.HOME} className="text-gray-700 hover:text-gray-900">
+          <Link href={ROUTES.HOME} className="text-gray-600 hover:text-gray-900 text-sm">
             Home
           </Link>
-          <Link href={ROUTES.INTAKE} className="text-gray-700 hover:text-gray-900">
-            Intake
+          <Link href={ROUTES.INTAKE} className="text-gray-600 hover:text-gray-900 text-sm">
+            Start Assessment
           </Link>
-          <Link href={ROUTES.DASHBOARD} className="text-gray-700 hover:text-gray-900">
+          <Link href={ROUTES.DASHBOARD} className="text-gray-600 hover:text-gray-900 text-sm">
             Dashboard
           </Link>
         </div>

@@ -8,7 +8,7 @@ interface LoadingStateProps {
 }
 
 export function LoadingState({
-  message = 'Loading...',
+  message = 'Processing your request…',
   variant = 'page',
 }: LoadingStateProps) {
   if (variant === 'inline') {

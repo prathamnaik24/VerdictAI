@@ -8,7 +8,7 @@ export function TypingIndicator() {
         <span className="w-2 h-2 bg-gold rounded-full animate-pulse-dot" style={{ animationDelay: '0.15s' }} />
         <span className="w-2 h-2 bg-gold rounded-full animate-pulse-dot" style={{ animationDelay: '0.3s' }} />
       </div>
-      <span className="text-xs text-navy/50 font-medium">AI analyzing</span>
+      <span className="text-xs text-navy/50 font-medium">Analyzing…</span>
     </div>
   );
 }

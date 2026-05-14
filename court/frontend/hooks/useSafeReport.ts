@@ -4,10 +4,17 @@ import { useState, useCallback } from 'react';
 import { generateReport } from '@/frontend/services/report.service';
 import type { ReportData, ReportGenerationRequest } from '@/shared/types/report.types';
 import { getDemoReport, sanitizeReport } from '@/frontend/lib/demoHelpers';
+import { createApiError } from '@/frontend/lib/apiError';
+
+export type ReportErrorState = {
+  message: string;
+  isRetryable: boolean;
+  code?: string;
+} | null;
 
 export function useSafeReport() {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ReportErrorState>(null);
   const [report, setReport] = useState<ReportData | null>(null);
   const [isDemo, setIsDemo] = useState(false);
 
@@ -22,11 +29,19 @@ export function useSafeReport() {
         const data = await generateReport(input);
         setReport(data);
         return data;
-      } catch {
+      } catch (err) {
+        // Categorise the error
+        const apiError = createApiError(null, err, 'report');
+        setError({
+          message: apiError.userMessage,
+          isRetryable: apiError.isRetryable,
+          code: apiError.code,
+        });
+
+        // Fallback to demo report on any failure
         const demoReport = getDemoReport();
         setReport(demoReport);
         setIsDemo(true);
-        setError(null);
         return demoReport;
       } finally {
         setLoading(false);
@@ -51,6 +66,15 @@ export function useSafeReport() {
     return sanitized;
   }, []);
 
+  const retry = useCallback(
+    async (input: ReportGenerationRequest) => {
+      setError(null);
+      setIsDemo(false);
+      return fetchReportSafe(input);
+    },
+    [fetchReportSafe]
+  );
+
   const reset = useCallback(() => {
     setReport(null);
     setError(null);
@@ -64,6 +88,7 @@ export function useSafeReport() {
     report,
     isDemo,
     fetchReportSafe,
+    retry,
     loadDemoFallback,
     loadPartialReport,
     reset,

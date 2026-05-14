@@ -7,11 +7,9 @@ interface Props {
 export default function ApplicableLaws({ laws }: Props) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-        Possible Applicable Provisions
-      </p>
+      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Possible Applicable Provisions</p>
       {laws.length === 0 ? (
-        <p className="text-sm text-gray-400 italic">No provisions identified.</p>
+        <p className="text-sm text-gray-400 italic">No provisions identified. Additional case details may help surface relevant laws.</p>
       ) : (
         <div className="space-y-2">
           {laws.map((law, index) => (
@@ -24,8 +22,7 @@ export default function ApplicableLaws({ laws }: Props) {
                 <span className="text-gray-400 group-open:rotate-180 transition-transform text-xs">▼</span>
               </summary>
               <div className="px-4 py-3 text-sm text-gray-500 leading-relaxed border-t border-gray-100">
-                This provision may be relevant based on extracted facts and dispute classification.
-                Consult a qualified lawyer to confirm applicability.
+This provision may be relevant based on extracted facts and dispute classification. Confirm applicability with a qualified legal professional.
               </div>
             </details>
           ))}

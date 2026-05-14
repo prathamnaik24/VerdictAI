@@ -1,35 +1,35 @@
 [
   {
-    "caseType": "cheque-bounce",
-    "opposingCounsel": "Your Honour, the plaintiff's claim is fundamentally flawed. Our client issued the cheque as a security measure, not against any legally enforceable debt. The loan agreement presented by the plaintiff is unregistered and lacks proper stamp duty. Furthermore, our client disputes the signature on the cheque. The plaintiff has failed to establish the foundational elements required under Section 138 of the Negotiable Instruments Act. There was no legally enforceable debt, and the cheque was not issued in discharge of any liability. We submit that the complaint deserves to be dismissed with costs.",
-    "judgeQuestion": "Counsel for the plaintiff, the defence has raised two specific issues: first, the authenticity of the signature on the cheque, and second, the enforceability of the underlying loan agreement. How do you propose to address these concerns? Do you have independent evidence, beyond the plaintiff's testimony, that establishes both the signature and the existence of the loan transaction?",
+    "caseType": "security-deposit-dispute",
+    "opposingCounsel": "Your Honour, our client had every right to withhold the security deposit. The lease agreement clearly states that the deposit is refundable subject to the property being returned in the same condition as received. Our client's inspection revealed significant damages to the wooden flooring and bathroom fixtures. The tenant vacated without prior intimation and did not allow our client a joint inspection opportunity. The photographs submitted by the tenant were taken under favourable lighting and do not accurately represent the true condition. We have a counterclaim for repair costs amounting to ₹85,000, supported by contractor estimates. The tenant's claim for full deposit refund is baseless and must be rejected with costs.",
+    "judgeQuestion": "The tenant has presented a signed lease agreement, 24 months of rent receipts, and timestamped move-out photographs. The landlord, on the other hand, has not produced any inspection report prepared at the time of vacating, nor any photographs from that period. Counsel for the landlord, why was no contemporaneous inspection conducted? Do you have any documentation — emails, photographs, or a third-party inspection report — prepared at or near the time of the tenant's vacating that supports your claim of damages?",
     "feedback": {
-      "strongestPoint": "Properly documented cheque, bank memo, and legal notice chain establishes prima facie case",
-      "weakestPoint": "Bank statement proving loan disbursement not yet on record",
-      "improvementSuggestion": "Obtain certified bank statement for loan account before court hearing",
-      "argumentScore": 78
+      "strongestPoint": "Timestamped move-out photographs directly contradict and undermine the landlord's damage claims",
+      "weakestPoint": "Minor procedural gap in formally requesting a joint inspection before vacating",
+      "improvementSuggestion": "Send a formal written request for joint inspection before the final vacating date and preserve all email correspondence",
+      "argumentScore": 84
     }
   },
   {
-    "caseType": "consumer-complaint",
-    "opposingCounsel": "Your Honour, while we sympathise with the complainant's inconvenience, our client denies any manufacturing defect. The alleged issue could be due to improper usage or installation. The complainant has not provided any expert opinion or authorised service centre report confirming a manufacturing defect. Our service records indicate that the product was functioning normally during the first visit. We are willing to offer a goodwill repair but reject any claim for replacement or compensation.",
-    "judgeQuestion": "The complainant has submitted photographs of the alleged defect and multiple service visit records. However, I notice there is no independent expert inspection report. Can you explain why an expert opinion was not obtained before approaching this forum? Also, has the manufacturer provided any written response to the legal notice?",
+    "caseType": "unpaid-personal-loan",
+    "opposingCounsel": "Your Honour, this is a straightforward case of a gift gone wrong. The plaintiff and my client were close friends. The plaintiff voluntarily transferred ₹5,00,000 to my client as a gift to support his business venture. There was no loan agreement, no interest rate discussed, and no repayment schedule. The so-called promissory note was signed casually without any witnesses — it is not a registered document. The two payments of ₹25,000 each were not 'repayments' but my client's voluntary gesture of gratitude, which he had to stop due to his own financial difficulties. My client never intended to create a legal relationship. A gift, once made, is irrevocable under the Indian Contract Act. This claim must be dismissed.",
+    "judgeQuestion": "The plaintiff has produced a signed promissory note, bank transfer records, and WhatsApp messages where the defendant acknowledges the debt and promises repayment. The partial payments of ₹25,000 are also documented. Counsel for the defendant, if this was indeed a gift, why did your client sign a promissory note? And how do you explain the WhatsApp messages where your client explicitly thanks the plaintiff for the 'loan' and promises to repay? Please address these inconsistencies.",
     "feedback": {
-      "strongestPoint": "Complete paper trail from purchase to legal notice strengthens credibility",
-      "weakestPoint": "No independent expert inspection report to corroborate defect",
-      "improvementSuggestion": "Obtain expert opinion from authorised service centre before hearing",
-      "argumentScore": 85
+      "strongestPoint": "Partial repayments are strong objective evidence that the defendant recognised the transaction as a loan",
+      "weakestPoint": "No independent witness to the loan transaction leaves credibility vulnerable",
+      "improvementSuggestion": "Obtain bank records showing how defendant utilised the funds — if used for business, it supports the loan theory",
+      "argumentScore": 54
     }
   },
   {
-    "caseType": "employment-dispute",
-    "opposingCounsel": "Your Honour, the termination was lawful and in accordance with the employment contract. The claimant was still on probationary period as per company policy. The contract clearly states that during probation, employment can be terminated with one week notice. Our client followed this procedure. Moreover, the claimant's performance had been consistently below expectations, as documented in internal reviews. The Industrial Disputes Act does not apply as our establishment falls under the startup exemption.",
-    "judgeQuestion": "The claimant has submitted three years of positive appraisal letters. How do you reconcile these with your claim of consistently poor performance? Also, please clarify whether the probationary period clause was explicitly stated in the employment contract or only in the company handbook. And what is the total employee count at this establishment for determining ID Act applicability?",
+    "caseType": "breach-of-service-contract",
+    "opposingCounsel": "Your Honour, the plaintiff's claim is built on a foundation of sand. There was never a concluded contract between the parties. Our client had preliminary discussions with the plaintiff about a possible interior design project, but no final scope, timeline, or fee was ever agreed upon. The plaintiff unilaterally started work without authorisation and now seeks payment for work our client never approved. The so-called cost estimate was a rough ballpark figure, not a confirmed quotation. Our client paid ₹50,000 ex gratia for the preliminary concepts but never authorised the plaintiff to proceed further. In fact, our client had to engage another designer to redo the work, incurring additional costs of ₹2,00,000. We have a counterclaim for damages.",
+    "judgeQuestion": "The WhatsApp messages suggest the defendant approved the initial designs and asked the plaintiff to 'proceed'. The defendant also made a payment of ₹50,000. Counsel for the defendant, if there was no contract, why did your client approve the designs and make payment? And if the work was substandard, can you provide the specific quality standards or benchmarks that were not met? Without a written scope, how does the court determine what was promised?",
     "feedback": {
-      "strongestPoint": "Positive appraisal record contradicts employer's performance claims",
-      "weakestPoint": "Employer may argue probation or contract-at-will clause",
-      "improvementSuggestion": "Review employment contract terms and confirm ID Act applicability",
-      "argumentScore": 68
+      "strongestPoint": "WhatsApp messages showing design approval and partial payment establish some form of agreement existed",
+      "weakestPoint": "Complete absence of a written scope, timeline, and quality standards makes the agreement unenforceable",
+      "improvementSuggestion": "Focus any legal claim on quantum meruit (value of work done) rather than breach of contract, and attempt mediation first",
+      "argumentScore": 32
     }
   }
 ]

@@ -22,11 +22,14 @@ import { ReportFallback } from '@/frontend/components/report/ReportFallback';
 import { NavigationButtons } from '@/frontend/components/common/NavigationButtons';
 import { LoadingState } from '@/frontend/components/common/LoadingState';
 import { ErrorState } from '@/frontend/components/common/ErrorState';
-import { PageTransition } from '@/frontend/components/animations/PageTransition';
-import { StaggerContainer, staggerItem } from '@/frontend/components/animations/StaggerContainer';
+import { EmptyState } from '@/frontend/components/common/EmptyState';
+import { getEmptyStatePreset } from '@/frontend/lib/emptyStatePresets';
+import { MotionSection } from '@/frontend/components/common/MotionSection';
+import { MotionCard } from '@/frontend/components/common/MotionCard';
 import { FloatingActionButton } from '@/frontend/components/common/FloatingActionButton';
 import { ROUTES } from '@/frontend/lib/routes';
 import { formatShortDate, confidenceBadge } from '@/frontend/lib/reportFormatter';
+import { PageTransition } from '@/frontend/components/animations/PageTransition';
 import type { DemoCaseType } from '@/frontend/lib/demoHelpers';
 import type { ReportGenerationRequest } from '@/shared/types/report.types';
 
@@ -314,262 +317,258 @@ export default function ReportPage() {
     [report]
   );
 
-  const avgPrecedentSimilarity = useMemo(() => {
-    if (!report || report.precedents.length === 0) return 0;
-    const total = report.precedents.reduce(
-      (sum, p) => sum + parseRelevance(p.relevance),
-      0
-    );
-    return Math.round(total / report.precedents.length);
-  }, [report]);
+const avgPrecedentSimilarity = useMemo(() => {
+     if (!report || report.precedents.length === 0) return 0;
+     const total = report.precedents.reduce(
+       (sum, p) => sum + parseRelevance(p.relevance),
+       0
+     );
+     return Math.round(total / report.precedents.length);
+   }, [report]);
 
-  const confidenceMeta = useMemo(
-    () =>
-      report
-        ? confidenceBadge(report.assessment.confidence)
-        : { label: '', color: '' },
-    [report]
-  );
+   const confidenceMeta = useMemo(
+     () =>
+       report
+         ? confidenceBadge(report.assessment.confidence)
+         : { label: '', color: '' },
+     [report]
+   );
 
-  const missingSections = useMemo(
-    () => (report ? findMissingSections(report) : []),
-    [report]
-  );
+   const missingSections = useMemo(
+     () => (report ? findMissingSections(report) : []),
+     [report]
+   );
 
-  if (loading && !report) return <ReportSkeleton />;
+   if (loading && !report) return <ReportSkeleton />;
 
-  if (error) {
+   if (error) {
+     return (
+       <div className="min-h-screen bg-offwhite flex items-center justify-center">
+         <ErrorState
+           title="Unable to generate report"
+           message={error.message ?? 'The report could not be generated at this time.'}
+           primaryAction={{
+             label: 'Retry',
+             loading,
+             onClick: () => fetchReportSafe(DEMO_INPUT),
+           }}
+           secondaryAction={{
+             label: 'View Demo Report',
+             onClick: () => loadDemoFallback(),
+           }}
+         />
+       </div>
+     )
+   }
+
+   if (!report) {
+     const noRpt = getEmptyStatePreset('noReport')
+     return (
+       <div className="min-h-screen bg-offwhite flex items-center justify-center">
+         <EmptyState
+           icon={noRpt.icon}
+           title={noRpt.title}
+           description={noRpt.description}
+           action={{ label: 'Start a New Assessment', onClick: () => window.location.href = '/intake' }}
+           variant="page"
+         />
+       </div>
+     )
+   }
+
+  if (!report) {
+    const noRpt = getEmptyStatePreset('noReport')
     return (
-      <ErrorState
-        title="Report Generation Failed"
-        message={error}
-        onRetry={() => fetchReportSafe(DEMO_INPUT)}
-        onLoadDemo={() => loadDemoFallback()}
-      />
-    );
+      <div className="min-h-screen bg-offwhite flex items-center justify-center">
+        <EmptyState
+          icon={noRpt.icon}
+          title={noRpt.title}
+          description={noRpt.description}
+          action={{ label: 'Go to Intake', onClick: () => window.location.href = '/intake' }}
+          variant="page"
+        />
+      </div>
+    )
   }
 
-  if (!report) return <ReportSkeleton />;
+return (
+     <PageTransition>
+       <div className="min-h-screen bg-offwhite py-10 md:py-14">
+         <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+           <MotionSection>
+             {isDemo && (
+               <div className="bg-amber-50/70 border border-amber-200 rounded-lg px-4 py-3 text-center">
+                 <p className="text-sm text-amber-800">
+                   Showing demo report. Run a full case assessment to generate a custom report.
+                 </p>
+               </div>
+             )}
+           </MotionSection>
 
-  return (
-    <PageTransition>
-      <div className="min-h-screen bg-offwhite py-10 md:py-14">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
-          <StaggerContainer>
-            <motion.div variants={staggerItem}>
-              {isDemo && (
-                <div className="bg-amber-50/70 border border-amber-200 rounded-lg px-4 py-3 text-center">
-                  <p className="text-sm text-amber-800">
-                    Showing demo report. Run a full case assessment to generate a custom report.
-                  </p>
-                </div>
-              )}
-            </motion.div>
+           <MotionSection delay={0.05}>
+             <ReportCover report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportCover report={report} />
-            </motion.div>
+           <MotionSection delay={0.1}>
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+               <ReportMetricCard
+                 label="Readiness Score"
+                 value={`${report.assessment.readinessScore}%`}
+                 subtitle={report.assessment.practicalRisk}
+                 color={
+                   report.assessment.readinessScore >= 60
+                     ? 'text-emerald-600'
+                     : report.assessment.readinessScore >= 40
+                       ? 'text-amber-600'
+                       : 'text-red-500'
+                 }
+               />
+               <ReportMetricCard
+                 label="Confidence"
+                 value={report.assessment.confidence}
+                 subtitle="Assessment reliability"
+                 color="text-navy"
+               />
+               <ReportMetricCard
+                 label="Precedent Match"
+                 value={`${avgPrecedentSimilarity}%`}
+                 subtitle={`${report.precedents.length} precedents`}
+                 color={
+                   avgPrecedentSimilarity >= 60
+                     ? 'text-emerald-600'
+                     : 'text-amber-600'
+                 }
+               />
+               <ReportMetricCard
+                 label="Risk Level"
+                 value={report.assessment.practicalRisk}
+                 subtitle={
+                   report.assessment.practicalRisk === 'Easy'
+                     ? 'Low concern'
+                     : report.assessment.practicalRisk === 'Moderate'
+                       ? 'Manageable'
+                       : 'Requires attention'
+                 }
+                 color={
+                   report.assessment.practicalRisk === 'Easy' ||
+                   report.assessment.practicalRisk === 'Moderate'
+                     ? 'text-amber-600'
+                     : 'text-red-500'
+                 }
+               />
+             </div>
+           </MotionSection>
 
-            <motion.div
-              variants={staggerItem}
-              className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
-            >
-              <ReportMetricCard
-                label="Readiness Score"
-                value={`${report.assessment.readinessScore}%`}
-                subtitle={report.assessment.practicalRisk}
-                color={
-                  report.assessment.readinessScore >= 60
-                    ? 'text-emerald-600'
-                    : report.assessment.readinessScore >= 40
-                      ? 'text-amber-600'
-                      : 'text-red-500'
-                }
-              />
-              <ReportMetricCard
-                label="Confidence"
-                value={report.assessment.confidence}
-                subtitle="Assessment reliability"
-                color="text-navy"
-              />
-              <ReportMetricCard
-                label="Precedent Match"
-                value={`${avgPrecedentSimilarity}%`}
-                subtitle={`${report.precedents.length} precedents`}
-                color={
-                  avgPrecedentSimilarity >= 60
-                    ? 'text-emerald-600'
-                    : 'text-amber-600'
-                }
-              />
-              <ReportMetricCard
-                label="Risk Level"
-                value={report.assessment.practicalRisk}
-                subtitle={
-                  report.assessment.practicalRisk === 'Easy'
-                    ? 'Low concern'
-                    : report.assessment.practicalRisk === 'Moderate'
-                      ? 'Manageable'
-                      : 'Requires attention'
-                }
-                color={
-                  report.assessment.practicalRisk === 'Easy' ||
-                  report.assessment.practicalRisk === 'Moderate'
-                    ? 'text-amber-600'
-                    : 'text-red-500'
-                }
-              />
-            </motion.div>
+           <MotionSection delay={0.15}>
+             <ReportSummary report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportSummary report={report} />
-            </motion.div>
+           <MotionSection delay={0.2}>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <ReportSection title="Case Timeline" titleSize="md">
+                 <ReportTimeline events={timelineEvents} />
+               </ReportSection>
 
-            <motion.div
-              variants={staggerItem}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            >
-              <ReportSection title="Case Timeline" titleSize="md">
-                <ReportTimeline events={timelineEvents} />
-              </ReportSection>
+               <div className="space-y-3">
+                 <ReportSection title="Case Strength" titleSize="md">
+                   <div className="space-y-3">
+                     <div className="flex items-center justify-between">
+                       <span className="text-sm text-gray-600">Likelihood</span>
+                       <span className="text-sm font-semibold text-navy">
+                         {report.assessment.predictedDirection}
+                       </span>
+                     </div>
+                     <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                       <motion.div
+                         className="h-full bg-gold rounded-full"
+                         initial={{ width: 0 }}
+                         animate={{ width: `${report.assessment.readinessScore}%` }}
+                         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                       />
+                     </div>
+                     <div className="flex items-center justify-between text-xs text-gray-500">
+                       <span>0%</span>
+                       <span className="text-sm text-gray-600">Readiness: {report.assessment.readinessScore}%</span>
+                       <span>100%</span>
+                     </div>
+                   </div>
+                 </ReportSection>
+               </div>
+             </div>
+           </MotionSection>
 
-              <div className="space-y-3">
-                <ReportSection title="Case Strength" titleSize="md">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Legal Direction</span>
-                      <span className="text-sm font-semibold text-navy">
-                        {report.assessment.predictedDirection}
-                      </span>
-                    </div>
-                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gold rounded-full transition-all duration-700"
-                        style={{ width: `${report.assessment.readinessScore}%` }}
-                      />
-                    </div>
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span>0%</span>
-                      <span>Readiness: {report.assessment.readinessScore}%</span>
-                      <span>100%</span>
-                    </div>
-                  </div>
-                </ReportSection>
+           <MotionSection delay={0.25}>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               {report.applicableProvisions.length > 0 && (
+                 <ReportSection title="Applicable Legal Provisions">
+                   <ul className="space-y-2">
+                     {report.applicableProvisions.map((p, i) => (
+                       <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                         <span className="text-gold font-serif text-lg leading-none mt-0.5">
+                           &sect;
+                         </span>
+                         <span className="leading-relaxed">{p}</span>
+                       </li>
+                     ))}
+                   </ul>
+                 </ReportSection>
+               )}
+             </div>
+           </MotionSection>
 
-                <ReportSection title="Key Indicators" titleSize="md">
-                  <div className="flex flex-wrap gap-2">
-                    <ReportStatusBadge
-                      label={`${confidenceMeta.label} Confidence`}
-                      variant={
-                        report.assessment.confidence === 'Very High' ||
-                        report.assessment.confidence === 'High'
-                          ? 'confidence-high'
-                          : report.assessment.confidence === 'Moderate'
-                            ? 'confidence-moderate'
-                            : 'confidence-low'
-                      }
-                    />
-                    <ReportStatusBadge
-                      label={
-                        report.assessment.practicalRisk === 'Easy'
-                          ? 'Low Risk'
-                          : report.assessment.practicalRisk === 'Moderate'
-                            ? 'Moderate Risk'
-                            : 'High Risk'
-                      }
-                      variant={
-                        report.assessment.practicalRisk === 'Easy'
-                          ? 'ready'
-                          : report.assessment.practicalRisk === 'Moderate'
-                            ? 'risk-moderate'
-                            : 'risk-high'
-                      }
-                    />
-                    {report.missingEvidence.length > 0 && (
-                      <ReportStatusBadge
-                        label={`${report.missingEvidence.length} Evidence Gap${report.missingEvidence.length > 1 ? 's' : ''}`}
-                        variant="evidence-missing"
-                      />
-                    )}
-                    {report.assessment.readinessScore >= 80 && (
-                      <ReportStatusBadge label="Litigation Ready" variant="ready" />
-                    )}
-                  </div>
-                </ReportSection>
-              </div>
-            </motion.div>
+           <MotionSection delay={0.3}>
+             <ReportPrediction report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              {report.applicableProvisions.length > 0 && (
-                <ReportSection title="Applicable Provisions">
-                  <ul className="space-y-2">
-                    {report.applicableProvisions.map((p, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                        <span className="text-gold font-serif text-lg leading-none mt-0.5">
-                          &sect;
-                        </span>
-                        <span className="leading-relaxed">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </ReportSection>
-              )}
-            </motion.div>
+           <MotionSection delay={0.35}>
+             <ReportFactors title="Strengths" factors={report.favorableFactors} variant="favorable" />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportPrediction report={report} />
-            </motion.div>
+           <MotionSection delay={0.4}>
+             <ReportFactors title="Risks & Concerns" factors={report.unfavorableFactors} variant="unfavorable" />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportFactors title="Favorable Factors" factors={report.favorableFactors} variant="favorable" />
-            </motion.div>
+           <MotionSection delay={0.45}>
+             <ReportEvidenceChecklist
+               available={report.favorableFactors}
+               missing={report.missingEvidence}
+               recommended={report.nextSteps?.slice(0, 2)}
+             />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportFactors title="Unfavorable Factors" factors={report.unfavorableFactors} variant="unfavorable" />
-            </motion.div>
+           <MotionSection delay={0.5}>
+             <ReportPrecedents report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportEvidenceChecklist
-                available={report.favorableFactors}
-                missing={report.missingEvidence}
-                recommended={report.nextSteps?.slice(0, 2)}
-              />
-            </motion.div>
+           <MotionSection delay={0.55}>
+             <ReportSimulation report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportPrecedents report={report} />
-            </motion.div>
+           <MotionSection delay={0.6}>
+             <ReportNextSteps report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportSimulation report={report} />
-            </motion.div>
+           <MotionSection delay={0.65}>
+             <ReportFallback report={report} missingSections={missingSections} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportNextSteps report={report} />
-            </motion.div>
+           <MotionSection delay={0.7}>
+             <ReportDisclaimer report={report} />
+           </MotionSection>
 
-            <motion.div variants={staggerItem}>
-              <ReportFallback report={report} missingSections={missingSections} />
-            </motion.div>
-
-            <motion.div variants={staggerItem}>
-              <ReportDisclaimer report={report} />
-            </motion.div>
-
-            <motion.div variants={staggerItem}>
-              <div className="pt-2 pb-8">
-                <NavigationButtons
-                  buttons={[
-                    { label: 'Back to Simulator', href: ROUTES.SIMULATOR, variant: 'secondary' },
-                    { label: 'Back to Home', href: ROUTES.HOME, variant: 'primary' },
-                  ]}
-                />
-              </div>
-            </motion.div>
-          </StaggerContainer>
-        </div>
-        <FloatingActionButton />
-      </div>
-    </PageTransition>
-  );
+           <MotionSection delay={0.75}>
+             <div className="pt-2 pb-8">
+               <NavigationButtons
+                 buttons={[
+                   { label: 'Back to Simulator', href: ROUTES.SIMULATOR, variant: 'secondary' },
+                   { label: 'Back to Home', href: ROUTES.HOME, variant: 'primary' },
+                 ]}
+               />
+             </div>
+           </MotionSection>
+         </div>
+         <FloatingActionButton />
+       </div>
+     </PageTransition>
+   );
 }

@@ -1,212 +1,199 @@
 [
   {
-    "reportId": "demo-rpt-cheque-001",
+    "reportId": "demo-rpt-sd-001",
     "generatedAt": "2025-06-15T10:30:00.000Z",
     "matterOverview": {
-      "title": "Rajesh Kumar vs. Suresh Traders — Cheque Bounce Dispute",
-      "disputeType": "Cheque Bounce",
-      "jurisdiction": "Delhi Magistrate Court",
-      "incidentDate": "2025-03-12"
+      "title": "Arun Mehta vs. Sunrise Properties — Security Deposit Refund",
+      "disputeType": "Security Deposit Dispute",
+      "jurisdiction": "Mumbai, Maharashtra",
+      "incidentDate": "2025-08-15"
     },
-    "factsSummary": "The plaintiff issued a loan of INR 5,00,000 to the defendant in January 2025. The defendant issued a post-dated cheque for repayment, which was presented on 10 March 2025 and returned dishonoured with the memo 'Insufficient Funds'. A legal notice under Section 138 of the NI Act was sent on 25 March 2025. The defendant failed to make payment within the statutory 15-day period.",
+    "factsSummary": "Arun Mehta rented an apartment from Sunrise Properties under a 24-month lease agreement ending July 2025. He paid a security deposit of ₹1,20,000. Upon vacating after the lease expiry, he requested the deposit refund as per the lease terms. The landlord refused, citing vague 'damages to the property' without providing any inspection report, photographs, or repair bills. The tenant documented the move-out condition with timestamped photographs showing the property in good condition. A legal notice was sent on 15 August 2025 demanding the refund, which was ignored.",
     "applicableProvisions": [
-      "Section 138 of the Negotiable Instruments Act, 1881",
-      "Section 139 of the Negotiable Instruments Act, 1881 — Presumption in favour of holder"
+      "Section 43 of the Maharashtra Rent Control Act, 1999 — Recovery of possession and deposit refund",
+      "Section 73 of the Indian Contract Act, 1872 — Compensation for loss or damage caused by breach of contract"
     ],
     "precedents": [
       {
-        "title": "Kumar vs. Naveen Chand (2022)",
-        "relevance": "88%",
-        "summary": "Cheque bounce case where the Supreme Court held that once the signature and issuance are admitted, the presumption under Section 139 operates in favour of the holder.",
+        "title": "Mohd. Ahmed vs. Nizamuddin (2021)",
+        "relevance": "91%",
+        "summary": "Landlord withheld security deposit claiming damages without providing any inspection report. The tenant had photographic evidence of the property condition at move-out.",
         "outcomeDirection": "favorable"
       },
       {
-        "title": "Rangappa vs. Sri Mohan (2010)",
-        "relevance": "92%",
-        "summary": "Landmark judgment establishing that the presumption under Section 139 is a rebuttable presumption and the accused must show a probable defence.",
-        "outcomeDirection": "favorable"
-      }
-    ],
-    "assessment": {
-      "predictedDirection": "Favorable",
-      "confidence": "High",
-      "readinessScore": 72,
-      "practicalRisk": "Moderate"
-    },
-    "favorableFactors": [
-      "Cheque dishonour memo clearly documented",
-      "Legal notice served and acknowledged",
-      "Presumption under Section 139 applies",
-      "Clear loan agreement exists"
-    ],
-    "unfavorableFactors": [
-      "Signature dispute potential",
-      "Delay in cheque presentation"
-    ],
-    "missingEvidence": [
-      "Bank statement showing loan disbursement",
-      "Witness to loan transaction"
-    ],
-    "simulationFeedback": {
-      "overallPerformance": "Strong case with clear legal framework supporting the plaintiff",
-      "strongestPoint": "Properly documented cheque, bank memo, and legal notice chain establishes prima facie case",
-      "weakestPoint": "Bank statement proving loan disbursement not yet on record",
-      "judgeConcerns": [
-        "Ensure original cheque is preserved for court production",
-        "Confirm signature not disputed by defendant"
-      ],
-      "suggestedImprovements": [
-        "Obtain certified bank statement for loan account",
-        "Prepare timeline of events for court submission",
-        "Gather SMS/email communication related to loan"
-      ]
-    },
-    "nextSteps": [
-      "Obtain bank statement for loan disbursement proof",
-      "Prepare witness for loan transaction",
-      "File complaint within statutory timeline",
-      "Address evidence gaps: Bank statement showing loan disbursement, Witness to loan transaction"
-    ],
-    "privacyNote": "This report contains AI-generated analysis based on the information provided. All data should be reviewed by qualified legal professionals.",
-    "disclaimer": "This is an AI-assisted assessment and does not constitute legal advice. The analysis is for informational purposes only and should not be relied upon as a substitute for professional legal counsel."
-  },
-  {
-    "reportId": "demo-rpt-consumer-001",
-    "generatedAt": "2025-06-15T10:30:00.000Z",
-    "matterOverview": {
-      "title": "Priya Sharma vs. HomeGlad Appliances — Consumer Complaint",
-      "disputeType": "Consumer Fraud",
-      "jurisdiction": "District Consumer Disputes Redressal Forum, Mumbai",
-      "incidentDate": "2025-02-20"
-    },
-    "factsSummary": "The complainant purchased a washing machine from HomeGlad Appliances for INR 38,000 on 15 January 2025. The product developed a major defect within 15 days of purchase. Despite multiple complaints to the service centre, no resolution was provided for over 45 days. The complainant sent a legal notice on 20 February 2025 seeking replacement or refund, which was ignored.",
-    "applicableProvisions": [
-      "Section 2(1)(g) of the Consumer Protection Act, 2019 — Defect in goods",
-      "Section 49 of the Consumer Protection Act, 2019 — Right to replacement/refund"
-    ],
-    "precedents": [
-      {
-        "title": "M/S Sonic Electrochem vs. Ravi Sharma (2023)",
-        "relevance": "90%",
-        "summary": "Consumer complaint where the commission held that repeated defects within warranty period entitle the consumer to full replacement or refund.",
-        "outcomeDirection": "favorable"
-      },
-      {
-        "title": "LG Electronics vs. Shashi Bala (2021)",
-        "relevance": "82%",
-        "summary": "Case establishing that manufacturers cannot limit their liability for manufacturing defects through warranty terms.",
+        "title": "Kailash Sharma vs. Rameshwar Properties (2023)",
+        "relevance": "87%",
+        "summary": "Consumer complaint against builder for wrongful withholding of security deposit after lease expiry. Commission held that deposit must be refunded within 45 days of vacating.",
         "outcomeDirection": "favorable"
       }
     ],
     "assessment": {
       "predictedDirection": "Strongly Favorable",
       "confidence": "Very High",
-      "readinessScore": 85,
+      "readinessScore": 86,
       "practicalRisk": "Easy"
     },
     "favorableFactors": [
-      "Product still under warranty period",
-      "Multiple service complaints documented",
-      "Clear defect visible in photographs",
-      "Manufacturer failed to respond to legal notice"
+      "Clear contractual right to deposit refund under signed lease",
+      "Tenant fulfilled all lease obligations including full notice period",
+      "Move-out photographs directly contradict damage claim",
+      "Landlord failed to provide inspection report or repair invoices",
+      "Legal notice properly served and acknowledged"
     ],
     "unfavorableFactors": [
-      "Valuation of defect"
+      "Minor disagreement possible on exact refund amount"
     ],
     "missingEvidence": [
-      "Expert inspection report",
-      "Service centre visit recordings"
+      "Landlord's inspection report (landlord refused to provide)",
+      "Independent property inspection report"
     ],
     "simulationFeedback": {
-      "overallPerformance": "Excellent case with comprehensive documentation",
-      "strongestPoint": "Complete paper trail from purchase to legal notice strengthens credibility",
-      "weakestPoint": "No independent expert inspection report to corroborate defect",
-      "judgeConcerns": [
-        "Defect severity should be documented by independent expert"
-      ],
-      "suggestedImprovements": [
-        "Obtain expert opinion from authorised service centre",
-        "Document mental harassment with medical certificate if available"
-      ]
+      "overallPerformance": "Very strong case with clear documentation supporting every element",
+      "strongestPoint": "Timestamped move-out photographs provide direct refutation of damage claims",
+      "weakestPoint": "Minor gap in formally notifying landlord of move-out inspection",
+      "judgeConcerns": ["Confirm landlord received sufficient opportunity for joint inspection"],
+      "suggestedImprovements": ["Send reminder for joint inspection before filing", "Obtain written statement from building security about move-out condition"]
     },
     "nextSteps": [
-      "File consumer complaint before District Forum",
-      "Obtain independent inspection report",
-      "Claim compensation for mental harassment"
+      "File complaint before Small Causes Court, Mumbai",
+      "Submit affidavit with move-out photographs as evidence",
+      "Claim interest on delayed refund at 12% per annum",
+      "Request the court to direct landlord to produce inspection report"
     ],
     "privacyNote": "This report contains AI-generated analysis based on the information provided. All data should be reviewed by qualified legal professionals.",
     "disclaimer": "This is an AI-assisted assessment and does not constitute legal advice. The analysis is for informational purposes only and should not be relied upon as a substitute for professional legal counsel."
   },
   {
-    "reportId": "demo-rpt-employment-001",
+    "reportId": "demo-rpt-loan-001",
     "generatedAt": "2025-06-15T10:30:00.000Z",
     "matterOverview": {
-      "title": "Amit Verma vs. TechCore Solutions — Wrongful Termination",
-      "disputeType": "Wrongful Termination",
-      "jurisdiction": "Labour Court, Bengaluru",
-      "incidentDate": "2025-04-05"
+      "title": "Neha Kapoor vs. Vikram Singh — Unpaid Personal Loan Recovery",
+      "disputeType": "Unpaid Personal Loan",
+      "jurisdiction": "Pune, Maharashtra",
+      "incidentDate": "2025-06-20"
     },
-    "factsSummary": "The claimant was employed as a Senior Software Engineer at TechCore Solutions since January 2022. On 5 April 2025, the claimant was terminated without any prior notice or warning. The employer cited 'performance issues' but failed to provide any performance improvement plan (PIP) or documented evidence of poor performance. The claimant had a clean service record with consistently positive appraisals.",
+    "factsSummary": "Neha Kapoor lent ₹5,00,000 to her friend Vikram Singh on 20 January 2025 for his business expansion. A promissory note was signed by the defendant. The defendant made two monthly repayments of ₹25,000 each via bank transfer in February and March 2025, then stopped. When the plaintiff demanded repayment, the defendant claimed the amount was a 'gift' and not a loan. The promissory note exists but no independent witnesses were present during the transaction. WhatsApp messages show the defendant acknowledging the debt initially but later changing his stance.",
     "applicableProvisions": [
-      "Section 25-F of the Industrial Disputes Act, 1947 — Conditions precedent to retrenchment",
-      "Section 2(oo) of the Industrial Disputes Act, 1947 — Definition of retrenchment"
+      "Section 4 of the Negotiable Instruments Act, 1881 — Promissory note definition and enforceability",
+      "Section 25(3) of the Indian Contract Act, 1872 — Promise in writing and registered"
     ],
     "precedents": [
       {
-        "title": "D.K. Yadav vs. J.M.A. Industries (1993)",
-        "relevance": "85%",
-        "summary": "Landmark case establishing that termination without notice and opportunity of hearing violates principles of natural justice and Section 25-F of the Industrial Disputes Act.",
+        "title": "Sundaram Finance vs. R. S. Iyer (2020)",
+        "relevance": "78%",
+        "summary": "Dispute over personal loan where borrower claimed funds were an unconditional gift. Court held that contemporaneous documentation and subsequent conduct determines the nature of transaction.",
         "outcomeDirection": "favorable"
       },
       {
-        "title": "Rajasthan State Road Transport Corp. vs. Shyam Bihari (2022)",
-        "relevance": "78%",
-        "summary": "Recent judgment reiterating that termination without complying with Section 25-F is void ab initio, even if the employee was a probationer.",
-        "outcomeDirection": "favorable"
+        "title": "Meenakshi vs. Rajesh Kumar (2022)",
+        "relevance": "82%",
+        "summary": "Friend-to-friend loan dispute where lender had only bank transfer proof but no written agreement. Supreme Court held that bank transfer alone does not prove a loan.",
+        "outcomeDirection": "unfavorable"
       }
     ],
     "assessment": {
-      "predictedDirection": "Favorable",
+      "predictedDirection": "Neutral",
       "confidence": "Moderate",
-      "readinessScore": 60,
+      "readinessScore": 52,
       "practicalRisk": "Moderate"
     },
     "favorableFactors": [
-      "Positive performance appraisals on record",
-      "No prior warnings or PIP",
-      "Service of over 3 years",
-      "Termination letter lacks specific reasons"
+      "Signed promissory note establishes acknowledgment of debt",
+      "Bank transfer proves funds were disbursed",
+      "Partial repayments are inconsistent with 'gift' claim",
+      "WhatsApp messages show defendant acknowledging debt initially"
     ],
     "unfavorableFactors": [
-      "Employment contract ambiguity",
-      "Applicability of ID Act",
-      "Delay in filing"
+      "Gift vs loan dispute creates material factual dispute",
+      "No independent witnesses to the transaction",
+      "Unregistered promissory note may face evidentiary challenges"
     ],
     "missingEvidence": [
-      "Company HR policy document",
-      "Witness statements from colleagues",
-      "Evidence of no PIP being issued"
+      "Independent witness to loan transaction",
+      "Signed loan agreement beyond promissory note",
+      "Written repayment schedule"
     ],
     "simulationFeedback": {
-      "overallPerformance": "Solid case with strong statutory protections",
-      "strongestPoint": "Positive appraisal record contradicts employer's performance claims",
-      "weakestPoint": "Employer may argue probation or contract-at-will clause",
-      "judgeConcerns": [
-        "Employment contract terms need closer examination",
-        "Confirm ID Act applicability to this establishment"
-      ],
-      "suggestedImprovements": [
-        "Request company HR policy under RTI or discovery",
-        "Prepare detailed employment timeline",
-        "Collect testimonial from immediate supervisor"
-      ]
+      "overallPerformance": "Moderate case with some supporting documentation but significant credibility gaps",
+      "strongestPoint": "Partial repayments are strong evidence that defendant recognised the debt",
+      "weakestPoint": "No independent witness to the loan transaction weakens credibility",
+      "judgeConcerns": ["Why no witness was present during the loan transaction", "Inconsistency between WhatsApp messages — why did defendant change stance?"],
+      "suggestedImprovements": ["Seek discovery of defendant's bank statements to show use of funds", "Obtain affidavit from mutual friend about conversations overheard", "Compile complete WhatsApp chat history without gaps"]
     },
     "nextSteps": [
-      "Obtain company HR policy document",
-      "Gather witness statements from team members",
-      "Review employment contract for termination clauses",
-      "File claim before appropriate labour court",
-      "Address evidence gaps: Company HR policy document, Witness statements from colleagues, Evidence of no PIP being issued"
+      "Gather any additional written communication acknowledging the loan",
+      "Identify any other individuals defendant may have told about the loan",
+      "Consider recording a contemporaneous note of the loan conversation",
+      "File civil suit for recovery before Civil Judge (Junior Division), Pune"
+    ],
+    "privacyNote": "This report contains AI-generated analysis based on the information provided. All data should be reviewed by qualified legal professionals.",
+    "disclaimer": "This is an AI-assisted assessment and does not constitute legal advice. The analysis is for informational purposes only and should not be relied upon as a substitute for professional legal counsel."
+  },
+  {
+    "reportId": "demo-rpt-bc-001",
+    "generatedAt": "2025-06-15T10:30:00.000Z",
+    "matterOverview": {
+      "title": "Ravi Desai vs. Apex Constructions — Breach of Service Contract",
+      "disputeType": "Breach of Service Contract",
+      "jurisdiction": "Surat, Gujarat",
+      "incidentDate": "2025-04-10"
+    },
+    "factsSummary": "Ravi Desai, an interior designer, verbally agreed with Apex Constructions to provide design and project management services for a commercial office space. The scope of work was discussed informally over meetings and WhatsApp messages. No written contract was signed. The plaintiff provided initial designs, vendor coordination, and site supervision over 6 weeks. A cost estimate of ₹3,50,000 was shared via WhatsApp. The defendant made an initial payment of ₹50,000 but stopped payments midway, claiming the work was substandard and incomplete. The scope, timeline, and quality standards were never formally documented.",
+    "applicableProvisions": [
+      "Section 10 of the Indian Contract Act, 1872 — What agreements are contracts",
+      "Section 36 of the Indian Contract Act, 1872 — Effect of failure to perform at fixed time"
+    ],
+    "precedents": [
+      {
+        "title": "B. S. Patel vs. Gujarat Builders (2021)",
+        "relevance": "85%",
+        "summary": "Service provider claimed payment based on oral contract for construction supervision services. Court held that without written terms, the scope, timeline, and quality standards cannot be objectively determined.",
+        "outcomeDirection": "unfavorable"
+      },
+      {
+        "title": "S. S. International vs. M/s Royal Constructions (2023)",
+        "relevance": "80%",
+        "summary": "Dispute over professional consultancy services where terms were agreed via email and WhatsApp. Supreme Court held that while electronic communications can constitute a contract, vague terms cannot be enforced.",
+        "outcomeDirection": "unfavorable"
+      }
+    ],
+    "assessment": {
+      "predictedDirection": "Unfavorable",
+      "confidence": "Low",
+      "readinessScore": 26,
+      "practicalRisk": "Difficult"
+    },
+    "favorableFactors": [
+      "Initial payment of ₹50,000 indicates some work was accepted",
+      "WhatsApp messages show defendant approved initial designs",
+      "Photographs demonstrate work was performed"
+    ],
+    "unfavorableFactors": [
+      "No written contract exists",
+      "Scope of work not formally defined",
+      "Quality standards not documented",
+      "Defendant has counterclaim for substandard work"
+    ],
+    "missingEvidence": [
+      "Signed written contract",
+      "Detailed scope of work document",
+      "Quality standards or specifications",
+      "Delivery timeline",
+      "Change order or variation documentation"
+    ],
+    "simulationFeedback": {
+      "overallPerformance": "Challenging case with significant evidentiary gaps",
+      "strongestPoint": "WhatsApp messages show defendant approved designs and made partial payment",
+      "weakestPoint": "No written contract or defined scope — court cannot determine what was promised vs delivered",
+      "judgeConcerns": ["Why was no written agreement executed for a professional engagement of this value?", "How can the court determine what work was actually promised?"],
+      "suggestedImprovements": ["Attempt mediation to negotiate a settlement", "If proceeding, focus claim on quantum meruit rather than breach of contract", "Obtain character testimony about industry practice for similar engagements"]
+    },
+    "nextSteps": [
+      "Attempt settlement or mediation before litigation",
+      "If litigation is necessary, file under the principle of quantum meruit for work actually performed",
+      "Document all WhatsApp communications comprehensively",
+      "Obtain independent valuation of work completed",
+      "Strongly consider engaging a lawyer experienced in contract disputes before filing"
     ],
     "privacyNote": "This report contains AI-generated analysis based on the information provided. All data should be reviewed by qualified legal professionals.",
     "disclaimer": "This is an AI-assisted assessment and does not constitute legal advice. The analysis is for informational purposes only and should not be relied upon as a substitute for professional legal counsel."

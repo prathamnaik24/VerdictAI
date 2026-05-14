@@ -2,7 +2,7 @@
 
 export const ReadinessScore = ({ score }: { score: number }) => {
   const pct = Math.min(100, Math.max(0, score));
-  const label = pct >= 75 ? 'Ready' : pct >= 50 ? 'Partially Ready' : 'Not Ready';
+  const label = pct >= 75 ? 'Ready' : pct >= 50 ? 'Partially Ready' : 'Needs Preparation';
   const labelColor = pct >= 75 ? 'text-emerald-700' : pct >= 50 ? 'text-amber-700' : 'text-red-700';
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">

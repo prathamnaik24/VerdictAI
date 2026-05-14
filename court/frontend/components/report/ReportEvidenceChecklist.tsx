@@ -51,19 +51,19 @@ export function ReportEvidenceChecklist({
     })),
   ];
 
-  if (items.length === 0) {
-    return (
-      <ReportSection title="Evidence Checklist">
-        <p className="text-gray-500 italic text-sm">
-          No evidence items recorded.
-        </p>
-      </ReportSection>
-    );
-  }
+if (items.length === 0) {
+     return (
+       <ReportSection title="Evidence Assessment">
+         <p className="text-gray-500 italic text-sm">
+           No evidence items recorded. Upload documents to build a complete evidence picture.
+         </p>
+       </ReportSection>
+     );
+   }
 
-  return (
-    <ReportSection
-      title="Evidence Checklist"
+   return (
+     <ReportSection
+       title="Evidence Assessment"
       subtitle={`${available.length} available, ${missing.length} missing${recommended ? `, ${recommended.length} recommended` : ''}`}
     >
       <div className="space-y-1.5">

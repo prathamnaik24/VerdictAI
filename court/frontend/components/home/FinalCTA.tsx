@@ -60,8 +60,8 @@ export function FinalCTA() {
             viewport={{ once: true }}
             className="text-lg md:text-xl text-offwhite/80 max-w-xl mx-auto"
           >
-            Join hundreds of legal professionals who trust VerdictAI to evaluate
-            case strength and predict courtroom outcomes with unprecedented accuracy.
+Join legal professionals across India who trust VerdictAI to evaluate
+             case strength and anticipate courtroom outcomes with data-driven precision.
           </motion.p>
 
           {/* CTA Buttons */}

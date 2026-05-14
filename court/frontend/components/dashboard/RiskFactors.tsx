@@ -8,7 +8,7 @@ export const RiskFactors = ({ factors }: { factors: string[] }) => {
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Risk Factors</p>
       </div>
       {factors.length === 0 ? (
-        <p className="text-sm text-gray-400 italic">No risk factors identified.</p>
+        <p className="text-sm text-gray-400 italic">No significant risk factors identified.</p>
       ) : (
         <ul className="space-y-2.5">
           {factors.map((factor, i) => (

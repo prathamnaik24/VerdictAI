@@ -1,25 +1,46 @@
-import type { ReportData, ReportSimulationFeedback } from '@/shared/types/report.types';
+import type { ReportData } from '@/shared/types/report.types';
 import type { SimulationResponse } from '@/shared/types/simulation.types';
+import type { DemoCase } from '@/frontend/types/case.types';
+import demoCases from '@/dataset/demoCases.json';
 import demoReports from '@/dataset/demoReports.json';
 import demoSimulations from '@/dataset/demoSimulation.json';
 
-export type DemoCaseType = 'cheque-bounce' | 'consumer-complaint' | 'employment-dispute';
+export type DemoCaseType = 'security-deposit' | 'unpaid-loan' | 'breach-contract';
 
 export function getRandomDemoCaseType(): DemoCaseType {
-  const types: DemoCaseType[] = ['cheque-bounce', 'consumer-complaint', 'employment-dispute'];
+  const types: DemoCaseType[] = ['security-deposit', 'unpaid-loan', 'breach-contract'];
   return types[Math.floor(Math.random() * types.length)];
+}
+
+export function getDemoCases(): DemoCase[] {
+  return demoCases as DemoCase[];
+}
+
+export function getDemoCaseById(id: string): DemoCase | undefined {
+  return (demoCases as DemoCase[]).find((c) => c.id === id);
+}
+
+export function getDemoCaseFormData(demoCase: DemoCase) {
+  return {
+    disputeType: demoCase.disputeType,
+    title: demoCase.title,
+    description: demoCase.factsSummary,
+    location: demoCase.jurisdiction,
+    dateOfIncident: demoCase.incidentDate,
+    amount: demoCase.amount,
+  };
 }
 
 export function getDemoReport(caseType?: DemoCaseType): ReportData {
   const index = caseType
-    ? { 'cheque-bounce': 0, 'consumer-complaint': 1, 'employment-dispute': 2 }[caseType]
+    ? { 'security-deposit': 0, 'unpaid-loan': 1, 'breach-contract': 2 }[caseType]
     : Math.floor(Math.random() * (demoReports as unknown[]).length);
   return (demoReports as unknown as ReportData[])[index] as ReportData;
 }
 
 export function getDemoSimulation(caseType?: DemoCaseType): SimulationResponse {
   const index = caseType
-    ? { 'cheque-bounce': 0, 'consumer-complaint': 1, 'employment-dispute': 2 }[caseType]
+    ? { 'security-deposit': 0, 'unpaid-loan': 1, 'breach-contract': 2 }[caseType]
     : Math.floor(Math.random() * (demoSimulations as unknown[]).length);
   return (demoSimulations as unknown as SimulationResponse[])[index] as SimulationResponse;
 }
@@ -62,16 +83,22 @@ export function sanitizeReport(partial: Partial<ReportData>): ReportData {
 }
 
 export const DEMO_LABELS: Record<DemoCaseType, { title: string; subtitle: string }> = {
-  'cheque-bounce': {
-    title: 'Cheque Bounce Dispute',
-    subtitle: 'Section 138 NI Act — Rajesh Kumar vs. Suresh Traders',
+  'security-deposit': {
+    title: 'Security Deposit Dispute',
+    subtitle: 'Rent Control — Arun Mehta vs. Sunrise Properties',
   },
-  'consumer-complaint': {
-    title: 'Consumer Complaint',
-    subtitle: 'Defective Product — Priya Sharma vs. HomeGlad Appliances',
+  'unpaid-loan': {
+    title: 'Unpaid Personal Loan',
+    subtitle: 'Contract Law — Neha Kapoor vs. Vikram Singh',
   },
-  'employment-dispute': {
-    title: 'Wrongful Termination',
-    subtitle: 'Labour Law — Amit Verma vs. TechCore Solutions',
+  'breach-contract': {
+    title: 'Breach of Service Contract',
+    subtitle: 'Oral Agreement — Ravi Desai vs. Apex Constructions',
   },
 };
+
+export const STRENGTH_PROFILES = {
+  strong: { label: 'Strong Case', color: 'text-emerald-600', bg: 'bg-emerald-50', border: 'border-emerald-200', badge: 'bg-emerald-100 text-emerald-800' },
+  medium: { label: 'Medium Case', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200', badge: 'bg-amber-100 text-amber-800' },
+  weak: { label: 'Weak Case', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200', badge: 'bg-red-100 text-red-800' },
+} as const;

@@ -5,25 +5,25 @@ import { Container } from '@/frontend/components/common/Container';
 import { GoldDivider } from '@/frontend/components/common/GoldDivider';
 
 const problems = [
-  {
-    icon: '⚖️',
-    title: 'Legal Uncertainty',
-    description:
-      'Most people cannot assess their case strength before spending money on litigation. Is your case worth fighting?',
-  },
-  {
-    icon: '💰',
-    title: 'High Barriers to Access',
-    description:
-      'Legal consultation is expensive. Many disputes go unresolved simply because people cannot afford initial advice.',
-  },
-  {
-    icon: '📊',
-    title: 'No Readiness Visibility',
-    description:
-      'Without data, litigants enter court blind — unaware of risks, missing evidence, or applicable precedents.',
-  },
-];
+   {
+     icon: '⚖️',
+     title: 'Legal Uncertainty',
+     description:
+       'Most people cannot evaluate their case strength before investing in litigation. Understand where you stand before committing resources.',
+   },
+   {
+     icon: '💰',
+     title: 'High Barriers to Access',
+     description:
+       'Quality legal analysis is expensive. Many disputes go unresolved simply because people cannot afford initial professional advice.',
+   },
+   {
+     icon: '📊',
+     title: 'No Readiness Visibility',
+     description:
+       'Entering court without data-driven preparation means facing avoidable risks, missing evidence, and overlooked precedents.',
+   },
+ ];
 
 export function ProblemStatement() {
   return (

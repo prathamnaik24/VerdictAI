@@ -25,6 +25,10 @@ const PHASE_LABELS: Record<SimulationPhase, string> = {
 export function useSimulation() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [errorContext, setErrorContext] = useState<{
+    isRetryable: boolean;
+    code?: string;
+  } | null>(null);
   const [result, setResult] = useState<SimulationResponse | null>(null);
   const [phase, setPhase] = useState<SimulationPhase>("idle");
 
@@ -32,6 +36,7 @@ export function useSimulation() {
     try {
       setLoading(true);
       setError(null);
+      setErrorContext(null);
       setResult(null);
 
       setPhase("rebuttal");
@@ -48,19 +53,39 @@ export function useSimulation() {
       setResult(response);
       setPhase("complete");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Simulation failed");
+      if (err instanceof Error) {
+        setError(err.message || "Simulation failed");
+        setErrorContext({
+          isRetryable: (err as any).isRetryable ?? false,
+          code: (err as any).code,
+        });
+      } else {
+        setError("Simulation failed");
+        setErrorContext({ isRetryable: true });
+      }
+      console.warn("[useSimulation] Error:", err);
       setPhase("idle");
     } finally {
       setLoading(false);
     }
   }
 
+  async function retry(request: SimulationRequest) {
+    setError(null);
+    setErrorContext(null);
+    setResult(null);
+    setPhase("idle");
+    return runCourtroomSimulation(request);
+  }
+
   return {
     loading,
     error,
+    errorContext,
     result,
     phase,
     phaseLabel: PHASE_LABELS[phase],
     runCourtroomSimulation,
+    retry,
   };
 }

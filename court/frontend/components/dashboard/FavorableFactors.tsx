@@ -8,7 +8,7 @@ export const FavorableFactors = ({ factors }: { factors: string[] }) => {
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Favorable Factors</p>
       </div>
       {factors.length === 0 ? (
-        <p className="text-sm text-gray-400 italic">No favorable factors identified.</p>
+        <p className="text-sm text-gray-400 italic">No favorable factors identified in this assessment.</p>
       ) : (
         <ul className="space-y-2.5">
           {factors.map((factor, i) => (

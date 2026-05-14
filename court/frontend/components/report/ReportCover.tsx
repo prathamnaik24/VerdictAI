@@ -46,9 +46,9 @@ export function ReportCover({ report }: ReportCoverProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
           <div className="bg-offwhite rounded-lg p-4">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-              Readiness
-            </p>
+<p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+               Preparedness Level
+             </p>
             <p
               className={clsx(
                 'text-2xl font-bold font-serif',
@@ -71,9 +71,9 @@ export function ReportCover({ report }: ReportCoverProps) {
             <p className="text-xs text-gray-500 mt-0.5">Level</p>
           </div>
           <div className="bg-offwhite rounded-lg p-4">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-              Risk Level
-            </p>
+<p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+               Risk Assessment
+             </p>
             <p className="text-2xl font-bold font-serif text-navy">
               {report.assessment.practicalRisk}
             </p>

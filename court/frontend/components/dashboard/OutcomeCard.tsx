@@ -10,7 +10,7 @@ export const OutcomeCard = ({ label, score }: { label: string; score: number }) 
   const config = DIRECTION_CONFIG[label] ?? DIRECTION_CONFIG['Neutral'];
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Legal Direction</p>
+      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Direction Assessment</p>
       <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-sm font-medium mb-4 ${config.badge}`}>
         {label}
       </div>

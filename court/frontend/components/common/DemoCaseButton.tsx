@@ -9,7 +9,7 @@ interface DemoCaseButtonProps {
   label?: string;
 }
 
-const CASE_TYPES: DemoCaseType[] = ['cheque-bounce', 'consumer-complaint', 'employment-dispute'];
+const CASE_TYPES: DemoCaseType[] = ['security-deposit', 'unpaid-loan', 'breach-contract'];
 
 export function DemoCaseButton({ onSelect, label = 'Load Demo Case' }: DemoCaseButtonProps) {
   const [expanded, setExpanded] = useState(false);

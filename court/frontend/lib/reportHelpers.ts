@@ -1,11 +1,11 @@
 import type { ReportData } from '@/shared/types/report.types';
 
 export function getReadinessDescription(score: number): string {
-  if (score >= 80) return 'Case is well-prepared and ready for litigation proceedings.';
-  if (score >= 60) return 'Case has solid foundations; minor gaps remain before trial readiness.';
-  if (score >= 40) return 'Case requires moderate preparation work before filing confidently.';
-  if (score >= 20) return 'Case needs substantial preparation and evidence gathering.';
-  return 'Case is in early stages; significant preparation required before proceeding.';
+  if (score >= 80) return 'This case is well-positioned for litigation. Key elements are in place.';
+  if (score >= 60) return 'Solid foundations exist, but some preparation work remains before trial readiness.';
+  if (score >= 40) return 'Moderate preparation is needed. Several areas require attention before filing.';
+  if (score >= 20) return 'Significant preparation and evidence gathering is needed before proceeding.';
+  return 'This case is in early stages. Substantial preparation will be required before moving forward.';
 }
 
 export function getScoreColor(score: number): string {
@@ -25,10 +25,10 @@ export function getScoreBg(score: number): string {
 }
 
 export function getPrecedentSimilarityLabel(score: number): string {
-  if (score >= 0.8) return 'Strongly Similar';
-  if (score >= 0.6) return 'Moderately Similar';
-  if (score >= 0.4) return 'Somewhat Similar';
-  return 'Weakly Similar';
+  if (score >= 0.8) return 'Highly Relevant';
+  if (score >= 0.6) return 'Moderately Relevant';
+  if (score >= 0.4) return 'Somewhat Relevant';
+  return 'Weakly Relevant';
 }
 
 export function getEvidenceStatus(

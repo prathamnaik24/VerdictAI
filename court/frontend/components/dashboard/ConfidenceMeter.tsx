@@ -13,7 +13,7 @@ export const ConfidenceMeter = ({ level }: { level: string }) => {
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">AI Confidence</p>
       <p className="text-2xl font-bold text-gray-900 mb-1">{level}</p>
-      <p className="text-sm text-gray-400 mb-4">{Math.round(cfg.value * 100)}% confidence rating</p>
+      <p className="text-sm text-gray-400 mb-4">{Math.round(cfg.value * 100)}% confidence score</p>
       <div className="w-full bg-gray-100 rounded-full h-2">
         <div
           className={`${cfg.color} h-2 rounded-full transition-all duration-700`}

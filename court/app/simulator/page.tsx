@@ -12,14 +12,17 @@ import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { EmptyState } from "@/frontend/components/common/EmptyState";
+import { ErrorState } from "@/frontend/components/common/ErrorState";
+import { getEmptyStatePreset } from "@/frontend/lib/emptyStatePresets";
 import { DemoCaseButton } from "@/frontend/components/common/DemoCaseButton";
 import { LoadingState } from "@/frontend/components/common/LoadingState";
+import { MotionButton } from "@/frontend/components/common/MotionButton";
 import { PageTransition } from "@/frontend/components/animations/PageTransition";
 import { staggerItem } from "@/frontend/components/animations/StaggerContainer";
 import { getDemoSimulation } from "@/frontend/lib/demoHelpers";
 import type { DemoCaseType } from "@/frontend/lib/demoHelpers";
 
-const STEP_LABELS = ["Opening Statement", "Opposing Counsel", "Judge Question", "Evaluation"];
+const STEP_LABELS = ["Opening Statement", "Opposing Argument", "Judge's Question", "Evaluation"];
 
 export default function SimulatorPage() {
   const [statement, setStatement] = useState("");
@@ -85,23 +88,28 @@ export default function SimulatorPage() {
               disabled={loading}
             />
             <div className="mt-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={handleStart}
-                  disabled={loading || !statement.trim()}
-                  className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
-                >
-                  {loading ? "Running Simulation..." : "Start Simulation"}
-                </button>
-                <DemoCaseButton onSelect={handleDemoSelect} label="Demo Simulation" />
-              </div>
-              {statement.length > 0 && (
-                <span className="text-xs text-gray-400">{statement.length} characters</span>
-              )}
-            </div>
-            <p className="mt-2 text-xs text-gray-400">
-              Press {typeof window !== "undefined" && /Mac/.test(navigator.platform) ? "Cmd" : "Ctrl"}+Enter to submit
-            </p>
+<div className="flex items-center gap-3">
+                 <MotionButton
+                   variant="primary"
+                   onClick={handleStart}
+                   disabled={loading || !statement.trim()}
+                   className="px-6 py-2.5"
+                 >
+                   {loading ? 'Analyzing arguments…' : 'Start Simulation'}
+                 </MotionButton>
+                 <DemoCaseButton onSelect={handleDemoSelect} label="Try Demo" />
+               </div>
+               {statement.length > 0 && (
+                 <span className="text-xs text-gray-400">{statement.length} characters</span>
+               )}
+             </div>
+             <p className="mt-2 text-xs text-gray-400">
+               Press{' '}
+               {typeof window !== 'undefined' && /Mac/.test(navigator.platform)
+                 ? '⌘'
+                 : 'Ctrl'}
+               +Enter to submit
+             </p>
           </div>
 
           {loading && (
@@ -138,18 +146,31 @@ export default function SimulatorPage() {
 
           {demoLoading && (
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm animate-fade-in-up">
-              <LoadingState message="Loading demo simulation..." variant="inline" />
+              <LoadingState message="Loading demo…" variant="inline" />
             </div>
           )}
 
-          {error && !demoResult && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4 animate-fade-in-up">
-              <div className="flex items-center justify-between">
-                <p className="text-red-700 text-sm">{error}</p>
-                <DemoCaseButton onSelect={handleDemoSelect} label="Load Demo Instead" />
-              </div>
-            </div>
-          )}
+{error && !demoResult && (
+             <motion.div
+               initial={{ opacity: 0, y: -8 }}
+               animate={{ opacity: 1, y: 0 }}
+             >
+               <ErrorState
+                 title="Simulation could not complete"
+                 message={error}
+                 variant="warning"
+                 primaryAction={{
+                   label: 'Retry',
+                   loading,
+                   onClick: handleStart,
+                 }}
+                 secondaryAction={{
+                   label: 'Try Demo Instead',
+                   onClick: () => handleDemoSelect('security-deposit'),
+                 }}
+               />
+             </motion.div>
+           )}
 
           {displayResult && !loading && !demoLoading && (
             <motion.div
@@ -174,7 +195,7 @@ export default function SimulatorPage() {
                 <motion.div variants={staggerItem}>
                   <div className="bg-amber-50/70 border border-amber-200 rounded-lg px-4 py-3 text-center">
                     <p className="text-sm text-amber-800">
-                      Showing demo simulation. Submit an opening statement to run a live AI-powered simulation.
+                      Showing demo simulation. Submit an opening statement to run a live analysis.
                     </p>
                   </div>
                 </motion.div>
@@ -184,17 +205,31 @@ export default function SimulatorPage() {
 
           {!displayResult && !loading && !error && !demoLoading && (
             <EmptyState
-              title="Ready for Simulation"
-              description="Enter an opening statement above, or load a demo case to see a pre-built simulation."
+              icon={getEmptyStatePreset('noSimulations').icon}
+              title={getEmptyStatePreset('noSimulations').title}
+              description={getEmptyStatePreset('noSimulations').description}
+              variant="inline"
             />
           )}
 
-          <div className="flex justify-between pt-8">
+          <div className="flex justify-between pt-8 border-t border-gray-100 mt-8">
             <Link
               href={ROUTES.DASHBOARD}
-              className="px-4 py-2 text-sm text-gray-500 hover:text-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-navy/70 hover:text-navy hover:bg-navy/5 rounded-lg transition-colors"
             >
-              &larr; Back to Dashboard
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Dashboard
+            </Link>
+            <Link
+              href={ROUTES.REPORT}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-navy hover:bg-navy/90 rounded-lg transition-colors"
+            >
+              View Full Report
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </div>

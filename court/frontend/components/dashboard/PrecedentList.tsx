@@ -5,9 +5,9 @@ import { Precedent } from '@/frontend/types/dashboard.types';
 export const PrecedentList = ({ precedents }: { precedents: Precedent[] }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Relevant Precedents</p>
+      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Matched Precedents</p>
       {precedents.length === 0 ? (
-        <p className="text-sm text-gray-400 italic">No precedents retrieved for this case.</p>
+        <p className="text-sm text-gray-400 italic">No matching precedents found for this case profile.</p>
       ) : (
         <div className="divide-y divide-gray-100">
           {precedents.map((p, i) => (

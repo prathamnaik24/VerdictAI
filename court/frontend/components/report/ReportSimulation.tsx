@@ -11,20 +11,20 @@ export function ReportSimulation({ report }: ReportSimulationProps) {
   const sim = report.simulationFeedback;
 
   return (
-    <ReportSection title="Courtroom Simulation Feedback">
+    <ReportSection title="Courtroom Simulation Analysis">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
         <div className="bg-emerald-50/60 border border-emerald-200 rounded-lg p-4">
-          <p className="text-xs font-medium text-emerald-700 uppercase tracking-wider mb-1">
-            Strongest Point
-          </p>
+<p className="text-xs font-medium text-emerald-700 uppercase tracking-wider mb-1">
+             Key Strength
+           </p>
           <p className="text-sm text-gray-700 leading-relaxed">
             {sim.strongestPoint}
           </p>
         </div>
         <div className="bg-red-50/60 border border-red-200 rounded-lg p-4">
-          <p className="text-xs font-medium text-red-700 uppercase tracking-wider mb-1">
-            Weakest Point
-          </p>
+<p className="text-xs font-medium text-red-700 uppercase tracking-wider mb-1">
+             Key Risk
+           </p>
           <p className="text-sm text-gray-700 leading-relaxed">
             {sim.weakestPoint}
           </p>
@@ -33,9 +33,9 @@ export function ReportSimulation({ report }: ReportSimulationProps) {
 
       {sim.judgeConcerns.length > 0 && (
         <div className="mb-4">
-          <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
-            Judge Concerns
-          </p>
+<p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
+             Judge Observations
+           </p>
           <ul className="space-y-1.5">
             {sim.judgeConcerns.map((concern, i) => (
               <li
@@ -52,9 +52,9 @@ export function ReportSimulation({ report }: ReportSimulationProps) {
 
       {sim.suggestedImprovements.length > 0 && (
         <div>
-          <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
-            Suggested Improvements
-          </p>
+<p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
+             Refinement Suggestions
+           </p>
           <ul className="space-y-1.5">
             {sim.suggestedImprovements.map((suggestion, i) => (
               <li
@@ -71,9 +71,9 @@ export function ReportSimulation({ report }: ReportSimulationProps) {
 
       {sim.judgeConcerns.length === 0 &&
         sim.suggestedImprovements.length === 0 && (
-          <p className="text-gray-500 italic text-sm">
-            No additional simulation feedback provided.
-          </p>
+<p className="text-gray-500 italic text-sm">
+             Simulation feedback will appear after completing a courtroom simulation.
+           </p>
         )}
     </ReportSection>
   );
