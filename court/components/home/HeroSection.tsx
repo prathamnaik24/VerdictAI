@@ -1,12 +1,22 @@
 'use client';
 
+import { DotLottiePlayer } from '@dotlottie/react-player';
+
 export const HeroSection = () => {
   return (
     <section className="text-center py-20">
       <h1 className="text-5xl font-bold text-gray-900 mb-4">VerdictAI</h1>
-      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+      <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
         AI-powered courtroom simulation and legal case assessment for Indian disputes
       </p>
+      <div className="flex justify-center mb-8">
+        <DotLottiePlayer
+          src="/animations/Justicebalance_animation.lottie"
+          loop
+          autoplay
+          style={{ width: '300px', height: '300px' }}
+        />
+      </div>
     </section>
   );
 };
