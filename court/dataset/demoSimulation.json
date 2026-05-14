@@ -1,0 +1,35 @@
+[
+  {
+    "caseType": "cheque-bounce",
+    "opposingCounsel": "Your Honour, the plaintiff's claim is fundamentally flawed. Our client issued the cheque as a security measure, not against any legally enforceable debt. The loan agreement presented by the plaintiff is unregistered and lacks proper stamp duty. Furthermore, our client disputes the signature on the cheque. The plaintiff has failed to establish the foundational elements required under Section 138 of the Negotiable Instruments Act. There was no legally enforceable debt, and the cheque was not issued in discharge of any liability. We submit that the complaint deserves to be dismissed with costs.",
+    "judgeQuestion": "Counsel for the plaintiff, the defence has raised two specific issues: first, the authenticity of the signature on the cheque, and second, the enforceability of the underlying loan agreement. How do you propose to address these concerns? Do you have independent evidence, beyond the plaintiff's testimony, that establishes both the signature and the existence of the loan transaction?",
+    "feedback": {
+      "strongestPoint": "Properly documented cheque, bank memo, and legal notice chain establishes prima facie case",
+      "weakestPoint": "Bank statement proving loan disbursement not yet on record",
+      "improvementSuggestion": "Obtain certified bank statement for loan account before court hearing",
+      "argumentScore": 78
+    }
+  },
+  {
+    "caseType": "consumer-complaint",
+    "opposingCounsel": "Your Honour, while we sympathise with the complainant's inconvenience, our client denies any manufacturing defect. The alleged issue could be due to improper usage or installation. The complainant has not provided any expert opinion or authorised service centre report confirming a manufacturing defect. Our service records indicate that the product was functioning normally during the first visit. We are willing to offer a goodwill repair but reject any claim for replacement or compensation.",
+    "judgeQuestion": "The complainant has submitted photographs of the alleged defect and multiple service visit records. However, I notice there is no independent expert inspection report. Can you explain why an expert opinion was not obtained before approaching this forum? Also, has the manufacturer provided any written response to the legal notice?",
+    "feedback": {
+      "strongestPoint": "Complete paper trail from purchase to legal notice strengthens credibility",
+      "weakestPoint": "No independent expert inspection report to corroborate defect",
+      "improvementSuggestion": "Obtain expert opinion from authorised service centre before hearing",
+      "argumentScore": 85
+    }
+  },
+  {
+    "caseType": "employment-dispute",
+    "opposingCounsel": "Your Honour, the termination was lawful and in accordance with the employment contract. The claimant was still on probationary period as per company policy. The contract clearly states that during probation, employment can be terminated with one week notice. Our client followed this procedure. Moreover, the claimant's performance had been consistently below expectations, as documented in internal reviews. The Industrial Disputes Act does not apply as our establishment falls under the startup exemption.",
+    "judgeQuestion": "The claimant has submitted three years of positive appraisal letters. How do you reconcile these with your claim of consistently poor performance? Also, please clarify whether the probationary period clause was explicitly stated in the employment contract or only in the company handbook. And what is the total employee count at this establishment for determining ID Act applicability?",
+    "feedback": {
+      "strongestPoint": "Positive appraisal record contradicts employer's performance claims",
+      "weakestPoint": "Employer may argue probation or contract-at-will clause",
+      "improvementSuggestion": "Review employment contract terms and confirm ID Act applicability",
+      "argumentScore": 68
+    }
+  }
+]

@@ -10,15 +10,30 @@ import { SimulationFeedback } from "@/frontend/components/simulator/SimulationFe
 import { useSimulation } from "@/frontend/hooks/useSimulation";
 import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { EmptyState } from "@/frontend/components/common/EmptyState";
+import { DemoCaseButton } from "@/frontend/components/common/DemoCaseButton";
+import { LoadingState } from "@/frontend/components/common/LoadingState";
+import { PageTransition } from "@/frontend/components/animations/PageTransition";
+import { staggerItem } from "@/frontend/components/animations/StaggerContainer";
+import { getDemoSimulation } from "@/frontend/lib/demoHelpers";
+import type { DemoCaseType } from "@/frontend/lib/demoHelpers";
 
 const STEP_LABELS = ["Opening Statement", "Opposing Counsel", "Judge Question", "Evaluation"];
 
 export default function SimulatorPage() {
   const [statement, setStatement] = useState("");
   const { loading, error, result, phase, phaseLabel, runCourtroomSimulation } = useSimulation();
+  const [demoResult, setDemoResult] = useState<{
+    opposingCounsel: string;
+    judgeQuestion: string;
+    feedback: { strongestPoint: string; weakestPoint: string; improvementSuggestion: string; argumentScore: number };
+  } | null>(null);
+  const [demoLoading, setDemoLoading] = useState(false);
 
   const handleStart = useCallback(() => {
     if (!statement.trim() || loading) return;
+    setDemoResult(null);
     runCourtroomSimulation({
       caseType: "civil-dispute",
       caseTitle: "Contract Dispute",
@@ -26,6 +41,20 @@ export default function SimulatorPage() {
       openingStatement: statement,
     });
   }, [statement, loading, runCourtroomSimulation]);
+
+  const handleDemoSelect = useCallback((caseType: DemoCaseType) => {
+    setDemoLoading(true);
+    setDemoResult(null);
+    setTimeout(() => {
+      const sim = getDemoSimulation(caseType);
+      setDemoResult({
+        opposingCounsel: sim.opposingCounsel,
+        judgeQuestion: sim.judgeQuestion,
+        feedback: sim.feedback,
+      });
+      setDemoLoading(false);
+    }, 800);
+  }, []);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -37,8 +66,10 @@ export default function SimulatorPage() {
   );
 
   const currentStep = phase === "idle" ? -1 : phase === "rebuttal" ? 0 : phase === "judge" ? 1 : phase === "evaluation" ? 2 : 3;
+  const displayResult = result || demoResult;
 
   return (
+    <PageTransition>
     <PageContainer>
       <div className="max-w-4xl mx-auto">
         <PageTitle
@@ -47,7 +78,6 @@ export default function SimulatorPage() {
         />
 
         <div className="space-y-6">
-          {/* Opening Statement */}
           <div className="animate-fade-in-up">
             <OpeningStatement
               value={statement}
@@ -55,13 +85,16 @@ export default function SimulatorPage() {
               disabled={loading}
             />
             <div className="mt-4 flex items-center justify-between">
-              <button
-                onClick={handleStart}
-                disabled={loading || !statement.trim()}
-                className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
-              >
-                {loading ? "Running Simulation..." : "Start Simulation"}
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleStart}
+                  disabled={loading || !statement.trim()}
+                  className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
+                >
+                  {loading ? "Running Simulation..." : "Start Simulation"}
+                </button>
+                <DemoCaseButton onSelect={handleDemoSelect} label="Demo Simulation" />
+              </div>
               {statement.length > 0 && (
                 <span className="text-xs text-gray-400">{statement.length} characters</span>
               )}
@@ -71,7 +104,6 @@ export default function SimulatorPage() {
             </p>
           </div>
 
-          {/* Progress Steps */}
           {loading && (
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm animate-fade-in-up">
               <div className="flex items-center justify-between mb-4">
@@ -86,7 +118,7 @@ export default function SimulatorPage() {
                           : "bg-gray-100 text-gray-400"
                       }`}
                     >
-                      {i < currentStep ? "✓" : i + 1}
+                      {i < currentStep ? "\u2713" : i + 1}
                     </div>
                     <span
                       className={`text-xs hidden sm:inline ${
@@ -99,39 +131,64 @@ export default function SimulatorPage() {
                 ))}
               </div>
               <div className="flex items-center justify-center gap-2 pt-2">
-                <span className="flex gap-1">
-                  <span className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse-dot" style={{ animationDelay: "0s" }} />
-                  <span className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse-dot" style={{ animationDelay: "0.2s" }} />
-                  <span className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse-dot" style={{ animationDelay: "0.4s" }} />
-                </span>
-                <span className="text-sm text-gray-500">{phaseLabel}</span>
+                <LoadingState message={phaseLabel} variant="inline" />
               </div>
             </div>
           )}
 
-          {/* Error State */}
-          {error && (
+          {demoLoading && (
+            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm animate-fade-in-up">
+              <LoadingState message="Loading demo simulation..." variant="inline" />
+            </div>
+          )}
+
+          {error && !demoResult && (
             <div className="bg-red-50 border border-red-200 rounded-xl p-4 animate-fade-in-up">
-              <p className="text-red-700 text-sm">{error}</p>
-            </div>
-          )}
-
-          {/* Results */}
-          {result && !loading && (
-            <div className="space-y-6">
-              <div className="animate-fade-in-up" style={{ animationDelay: "0ms" }}>
-                <OpposingCounsel argument={result.opposingCounsel} />
-              </div>
-              <div className="animate-fade-in-up" style={{ animationDelay: "150ms" }}>
-                <JudgeQuestions question={result.judgeQuestion} />
-              </div>
-              <div className="animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-                <SimulationFeedback feedback={result.feedback} />
+              <div className="flex items-center justify-between">
+                <p className="text-red-700 text-sm">{error}</p>
+                <DemoCaseButton onSelect={handleDemoSelect} label="Load Demo Instead" />
               </div>
             </div>
           )}
 
-          {/* Navigation */}
+          {displayResult && !loading && !demoLoading && (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.12 } },
+              }}
+              className="space-y-6"
+            >
+              <motion.div variants={staggerItem}>
+                <OpposingCounsel argument={displayResult.opposingCounsel} />
+              </motion.div>
+              <motion.div variants={staggerItem}>
+                <JudgeQuestions question={displayResult.judgeQuestion} />
+              </motion.div>
+              <motion.div variants={staggerItem}>
+                <SimulationFeedback feedback={displayResult.feedback} />
+              </motion.div>
+              {demoResult && !result && (
+                <motion.div variants={staggerItem}>
+                  <div className="bg-amber-50/70 border border-amber-200 rounded-lg px-4 py-3 text-center">
+                    <p className="text-sm text-amber-800">
+                      Showing demo simulation. Submit an opening statement to run a live AI-powered simulation.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+
+          {!displayResult && !loading && !error && !demoLoading && (
+            <EmptyState
+              title="Ready for Simulation"
+              description="Enter an opening statement above, or load a demo case to see a pre-built simulation."
+            />
+          )}
+
           <div className="flex justify-between pt-8">
             <Link
               href={ROUTES.DASHBOARD}
@@ -143,5 +200,6 @@ export default function SimulatorPage() {
         </div>
       </div>
     </PageContainer>
+    </PageTransition>
   );
 }

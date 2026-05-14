@@ -1,19 +1,53 @@
 'use client';
 
-export const ReportPrediction = ({ score, likelihood }: { score: number; likelihood: string }) => {
+import type { ReportData } from '@/shared/types/report.types';
+import {
+  confidenceBadge,
+  riskBadge,
+} from '@/frontend/lib/reportFormatter';
+import { ReportSection } from './ReportSection';
+
+interface ReportPredictionProps {
+  report: ReportData;
+}
+
+export function ReportPrediction({ report }: ReportPredictionProps) {
+  const { assessment } = report;
+  const confidence = confidenceBadge(assessment.confidence);
+  const risk = riskBadge(assessment.practicalRisk);
+
   return (
-    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">Prediction</h2>
-      <div className="grid grid-cols-2 gap-6">
-        <div>
-          <p className="text-gray-600 mb-2">Success Likelihood</p>
-          <p className="text-3xl font-bold text-blue-600">{score}%</p>
+    <ReportSection title="Legal Direction Assessment">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-navy/[0.04] rounded-lg p-4">
+          <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+            Predicted Direction
+          </p>
+          <p className="text-xl font-bold text-navy">
+            {assessment.predictedDirection}
+          </p>
         </div>
-        <div>
-          <p className="text-gray-600 mb-2">Assessment</p>
-          <p className="text-lg font-semibold text-gray-900">{likelihood}</p>
+        <div className="bg-navy/[0.04] rounded-lg p-4">
+          <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+            Confidence
+          </p>
+          <span
+            className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${confidence.color}`}
+          >
+            {confidence.label}
+          </span>
+        </div>
+        <div className="bg-navy/[0.04] rounded-lg p-4">
+          <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+            Practical Risk
+          </p>
+          <span
+            className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${risk.color}`}
+          >
+            {risk.label}
+          </span>
         </div>
       </div>
-    </div>
+    </ReportSection>
   );
-};
+}

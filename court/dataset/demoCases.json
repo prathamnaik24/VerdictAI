@@ -1,229 +1,261 @@
 [
   {
-    "id": "demo-001",
-    "caseType": "security-deposit-dispute",
-    "title": "Security Deposit Withheld After Apartment Vacated",
-    "description": "The tenant vacated the apartment after completing the lock-in period, but the landlord refused to return the security deposit citing repainting costs without sharing invoices or inspection records. The apartment was returned in normal wear-and-tear condition with no major damage.",
-    "timeline": "Vacated apartment March 2024. Requested deposit refund. Landlord claimed renovation costs April 2024. No refund provided as of today.",
-    "amountInvolved": 85000,
-    "location": "Bangalore, Karnataka",
-    "parties": {
-      "claimant": "Rajesh Kumar (tenant)",
-      "respondent": "Priya Saxena (landlord)"
+    "id": "demo-cheque-bounce",
+    "type": "cheque-bounce",
+    "title": "Rajesh Kumar vs. Suresh Traders — Cheque Bounce Dispute",
+    "disputeType": "Cheque Bounce",
+    "jurisdiction": "Delhi Magistrate Court",
+    "incidentDate": "2025-03-12",
+    "factsSummary": "The plaintiff issued a loan of INR 5,00,000 to the defendant in January 2025. The defendant issued a post-dated cheque for repayment, which was presented on 10 March 2025 and returned dishonoured with the memo 'Insufficient Funds'. A legal notice under Section 138 of the NI Act was sent on 25 March 2025. The defendant failed to make payment within the statutory 15-day period.",
+    "applicableProvisions": ["Section 138 of the Negotiable Instruments Act, 1881", "Section 139 of the Negotiable Instruments Act, 1881 — Presumption in favour of holder"],
+    "assessment": {
+      "disputeType": "cheque-bounce",
+      "caseId": "demo-cheque-bounce-001",
+      "generatedAt": "2025-06-15T10:30:00.000Z",
+      "legalDirectionScore": 78,
+      "legalDirectionLabel": "Favorable",
+      "legalDirectionExplanation": "The evidence clearly establishes the issuance of the cheque, its presentation, dishonour, and proper service of legal notice. The presumption under Section 139 shifts the burden to the defendant.",
+      "practicalRiskScore": 30,
+      "practicalDifficulty": "Moderate",
+      "practicalRiskFactors": [
+        { "title": "Signature verification if disputed", "severity": "medium", "impact": "legal", "explanation": "Defendant may dispute signature on cheque" }
+      ],
+      "evidenceStrength": "Strong",
+      "availableEvidence": ["Original cheque with bank stamp", "Bank dishonour memo", "Legal notice copy with acknowledgment", "Loan agreement document"],
+      "missingEvidence": ["Bank statement showing loan disbursement", "Witness to loan transaction"],
+      "evidenceGapImpact": "Minor",
+      "readinessScore": 72,
+      "readinessLevel": "Mostly Ready",
+      "readinessBlockers": [],
+      "favorableFactors": ["Cheque dishonour memo clearly documented", "Legal notice served and acknowledged", "Presumption under Section 139 applies", "Clear loan agreement exists"],
+      "precedentBoost": 0.78,
+      "precedentConfidence": "High",
+      "riskFactors": [
+        { "title": "Signature dispute potential", "severity": "medium", "impact": "legal", "explanation": "Defendant may challenge signature authenticity" },
+        { "title": "Delay in cheque presentation", "severity": "low", "impact": "procedural", "explanation": "Cheque presented within validity period" }
+      ],
+      "precedentHeadwind": 0.15,
+      "confidenceLevel": "High",
+      "recommendedActions": ["Obtain bank statement for loan disbursement proof", "Prepare witness for loan transaction", "File complaint within statutory timeline"],
+      "scoringVersion": "2.0",
+      "thresholdsUsed": ["ni-act-138"]
     },
-    "evidence": [
-      "Rental agreement signed by both parties",
-      "WhatsApp chat demanding deposit return",
-      "Landlord's response claiming renovation costs",
-      "Photographs of apartment condition at vacating",
-      "Bank transfer receipt for deposit payment",
-      "Email correspondence acknowledging normal wear-and-tear"
+    "precedents": [
+      {
+        "id": "prec-ni-001",
+        "caseType": "cheque-bounce",
+        "title": "Kumar vs. Naveen Chand (2022)",
+        "forum": "Supreme Court of India",
+        "year": 2022,
+        "factsSummary": "Cheque bounce case where the Supreme Court held that once the signature and issuance are admitted, the presumption under Section 139 operates in favour of the holder.",
+        "evidenceSignals": ["Admitted signature", "Bank records"],
+        "positiveFactors": ["Signature admitted", "Proper notice served"],
+        "negativeFactors": [],
+        "outcome": { "direction": "favorable", "summary": "Conviction upheld; presumption under Section 139 applied" },
+        "applicableLaws": [
+          { "lawName": "Negotiable Instruments Act", "section": "Section 139", "label": "Presumption of legally enforceable debt", "whenApplicable": "When issuance of cheque is admitted", "plainEnglishExplanation": "The court presumes the cheque was issued for a legally valid debt unless the defendant proves otherwise." }
+        ],
+        "tags": ["cheque-bounce", "section-139", "presumption"],
+        "relevanceScore": 0.88
+      },
+      {
+        "id": "prec-ni-002",
+        "caseType": "cheque-bounce",
+        "title": "Rangappa vs. Sri Mohan (2010)",
+        "forum": "Supreme Court of India",
+        "year": 2010,
+        "factsSummary": "Landmark judgment establishing that the presumption under Section 139 is a rebuttable presumption and the accused must show a probable defence.",
+        "evidenceSignals": ["Cheque issuance evidence"],
+        "positiveFactors": ["Presumption applied"],
+        "negativeFactors": [],
+        "outcome": { "direction": "favorable", "summary": "Presumption under Section 139 is rebuttable but shifts burden to accused" },
+        "applicableLaws": [
+          { "lawName": "Negotiable Instruments Act", "section": "Section 138", "label": "Dishonour of cheque for insufficiency of funds", "whenApplicable": "When cheque is returned unpaid due to insufficient funds", "plainEnglishExplanation": "Issuing a cheque without sufficient funds is a criminal offence punishable with imprisonment or fine." }
+        ],
+        "tags": ["cheque-bounce", "landmark", "presumption"],
+        "relevanceScore": 0.92
+      }
     ],
-    "desiredOutcome": "Return of full security deposit amount (₹85,000) or court-ordered refund"
+    "simulationFeedback": {
+      "overallPerformance": "Strong case with clear legal framework supporting the plaintiff",
+      "strongestPoint": "Properly documented cheque, bank memo, and legal notice chain establishes prima facie case",
+      "weakestPoint": "Bank statement proving loan disbursement not yet on record",
+      "argumentScore": 78,
+      "judgeConcerns": ["Ensure original cheque is preserved for court production", "Confirm signature not disputed by defendant"],
+      "suggestedImprovements": ["Obtain certified bank statement for loan account", "Prepare timeline of events for court submission", "Gather SMS/email communication related to loan"]
+    }
   },
   {
-    "id": "demo-002",
-    "caseType": "unpaid-personal-loan",
-    "title": "Unsecured Personal Loan Not Repaid After 18 Months",
-    "description": "Friend loaned ₹2,50,000 with verbal agreement for repayment in 12 equal monthly installments. Only 3 payments received. Borrower stopped responding to repayment requests after 6 months. Follow-up attempts made via WhatsApp and calls ignored.",
-    "timeline": "Loan given March 2023. Monthly installments due. Last payment received August 2023. No response since.",
-    "amountInvolved": 250000,
-    "location": "Mumbai, Maharashtra",
-    "parties": {
-      "claimant": "Amit Patel (lender)",
-      "respondent": "Vikram Singh (borrower)"
+    "id": "demo-consumer-complaint",
+    "type": "consumer-fraud",
+    "title": "Priya Sharma vs. HomeGlad Appliances — Consumer Complaint",
+    "disputeType": "Consumer Fraud",
+    "jurisdiction": "District Consumer Disputes Redressal Forum, Mumbai",
+    "incidentDate": "2025-02-20",
+    "factsSummary": "The complainant purchased a washing machine from HomeGlad Appliances for INR 38,000 on 15 January 2025. The product developed a major defect within 15 days of purchase. Despite multiple complaints to the service centre, no resolution was provided for over 45 days. The complainant sent a legal notice on 20 February 2025 seeking replacement or refund, which was ignored.",
+    "applicableProvisions": ["Section 2(1)(g) of the Consumer Protection Act, 2019 — Defect in goods", "Section 49 of the Consumer Protection Act, 2019 — Right to replacement/refund"],
+    "assessment": {
+      "disputeType": "consumer-fraud",
+      "caseId": "demo-consumer-001",
+      "generatedAt": "2025-06-15T10:30:00.000Z",
+      "legalDirectionScore": 82,
+      "legalDirectionLabel": "Strongly Favorable",
+      "legalDirectionExplanation": "The Consumer Protection Act provides strong protections for goods that develop defects within the warranty period. The complaint has documented all interactions and the manufacturer's failure to address the issue.",
+      "practicalRiskScore": 20,
+      "practicalDifficulty": "Easy",
+      "practicalRiskFactors": [
+        { "title": "Manufacturer may offer settlement", "severity": "low", "impact": "practical", "explanation": "Company may settle before formal hearing" }
+      ],
+      "evidenceStrength": "Strong",
+      "availableEvidence": ["Original purchase invoice", "Service complaint records (4 visits)", "Photographs of defect", "Legal notice copy", "Email correspondence with customer care"],
+      "missingEvidence": ["Expert inspection report", "Service centre visit recordings"],
+      "evidenceGapImpact": "Minor",
+      "readinessScore": 85,
+      "readinessLevel": "Trial Ready",
+      "readinessBlockers": [],
+      "favorableFactors": ["Product still under warranty period", "Multiple service complaints documented", "Clear defect visible in photographs", "Manufacturer failed to respond to legal notice"],
+      "precedentBoost": 0.85,
+      "precedentConfidence": "Very High",
+      "riskFactors": [
+        { "title": "Valuation of defect", "severity": "low", "impact": "practical", "explanation": "Minor disagreement possible on whether defect is major" }
+      ],
+      "precedentHeadwind": 0.1,
+      "confidenceLevel": "Very High",
+      "recommendedActions": ["File consumer complaint before District Forum", "Obtain independent inspection report", "Claim compensation for mental harassment"],
+      "scoringVersion": "2.0",
+      "thresholdsUsed": ["consumer-protection"]
     },
-    "evidence": [
-      "WhatsApp chat with loan agreement details",
-      "Bank statements showing transfer of ₹2,50,000",
-      "UPI payment receipts of 3 installments received",
-      "Email confirming repayment terms",
-      "Screenshots of unanswered payment requests",
-      "No promissory note (weakness in case)"
+    "precedents": [
+      {
+        "id": "prec-cp-001",
+        "caseType": "consumer-fraud",
+        "title": "M/S Sonic Electrochem vs. Ravi Sharma (2023)",
+        "forum": "National Consumer Disputes Redressal Commission",
+        "year": 2023,
+        "factsSummary": "Consumer complaint where the commission held that repeated defects within warranty period entitle the consumer to full replacement or refund.",
+        "evidenceSignals": ["Service records", "Purchase invoice"],
+        "positiveFactors": ["Multiple service visits documented", "Defect within warranty"],
+        "negativeFactors": [],
+        "outcome": { "direction": "favorable", "summary": "Full refund ordered with compensation for harassment" },
+        "applicableLaws": [
+          { "lawName": "Consumer Protection Act", "section": "Section 49", "label": "Replacement or refund for defective goods", "whenApplicable": "When goods develop defect within warranty period", "plainEnglishExplanation": "The consumer can request replacement or refund if the product has a defect that cannot be repaired." }
+        ],
+        "tags": ["consumer", "defect", "replacement"],
+        "relevanceScore": 0.9
+      },
+      {
+        "id": "prec-cp-002",
+        "caseType": "consumer-fraud",
+        "title": "LG Electronics vs. Shashi Bala (2021)",
+        "forum": "National Consumer Disputes Redressal Commission",
+        "year": 2021,
+        "factsSummary": "Case establishing that manufacturers cannot limit their liability for manufacturing defects through warranty terms.",
+        "evidenceSignals": ["Warranty document", "Expert report"],
+        "positiveFactors": ["Manufacturing defect established"],
+        "negativeFactors": [],
+        "outcome": { "direction": "favorable", "summary": "Manufacturer liable for manufacturing defect despite warranty limitations" },
+        "applicableLaws": [
+          { "lawName": "Consumer Protection Act", "section": "Section 2(1)(g)", "label": "Definition of defect", "whenApplicable": "When assessing if a product has a fault or imperfection", "plainEnglishExplanation": "Any fault or imperfection in the product that makes it not reasonably fit for its intended use is a defect." }
+        ],
+        "tags": ["consumer", "manufacturing-defect", "warranty"],
+        "relevanceScore": 0.82
+      }
     ],
-    "desiredOutcome": "Court-ordered repayment of outstanding amount (₹2,12,500) with interest"
+    "simulationFeedback": {
+      "overallPerformance": "Excellent case with comprehensive documentation",
+      "strongestPoint": "Complete paper trail from purchase to legal notice strengthens credibility",
+      "weakestPoint": "No independent expert inspection report to corroborate defect",
+      "argumentScore": 85,
+      "judgeConcerns": ["Defect severity should be documented by independent expert"],
+      "suggestedImprovements": ["Obtain expert opinion from authorised service centre", "Document mental harassment with medical certificate if available"]
+    }
   },
   {
-    "id": "demo-003",
-    "caseType": "utility-billing-error",
-    "title": "Inflated Electricity Bill From Faulty Meter Reading",
-    "description": "Electricity bill doubled without any increase in usage. Previous average was ₹3,500 per month; received bill of ₹7,200 citing meter malfunction. Utility company acknowledged faulty meter in written response but delayed replacement for 60 days, billing customer at inflated rates.",
-    "timeline": "Abnormal bill received June 2024. Complaint filed June 15. Meter replaced August 10. Still awaiting credit adjustment.",
-    "amountInvolved": 8500,
-    "location": "Hyderabad, Telangana",
-    "parties": {
-      "claimant": "Neha Sharma (consumer)",
-      "respondent": "Telangana State Electricity Board (utility)"
+    "id": "demo-employment-dispute",
+    "type": "wrongful-termination",
+    "title": "Amit Verma vs. TechCore Solutions — Wrongful Termination",
+    "disputeType": "Wrongful Termination",
+    "jurisdiction": "Labour Court, Bengaluru",
+    "incidentDate": "2025-04-05",
+    "factsSummary": "The claimant was employed as a Senior Software Engineer at TechCore Solutions since January 2022. On 5 April 2025, the claimant was terminated without any prior notice or warning. The employer cited 'performance issues' but failed to provide any performance improvement plan (PIP) or documented evidence of poor performance. The claimant had a clean service record with consistently positive appraisals.",
+    "applicableProvisions": ["Section 25-F of the Industrial Disputes Act, 1947 — Conditions precedent to retrenchment", "Section 2(oo) of the Industrial Disputes Act, 1947 — Definition of retrenchment"],
+    "assessment": {
+      "disputeType": "wrongful-termination",
+      "caseId": "demo-employment-001",
+      "generatedAt": "2025-06-15T10:30:00.000Z",
+      "legalDirectionScore": 70,
+      "legalDirectionLabel": "Favorable",
+      "legalDirectionExplanation": "The termination without notice or severance pay violates Section 25-F of the Industrial Disputes Act. The employer's claim of 'performance issues' lacks documentary evidence.",
+      "practicalRiskScore": 40,
+      "practicalDifficulty": "Moderate",
+      "practicalRiskFactors": [
+        { "title": "Employment contract terms", "severity": "medium", "impact": "legal", "explanation": "Contract may have probation or termination clauses" },
+        { "title": "Jurisdiction", "severity": "medium", "impact": "procedural", "explanation": "Applicability of ID Act depends on establishment type" }
+      ],
+      "evidenceStrength": "Moderate",
+      "availableEvidence": ["Employment contract", "Appraisal letters (2022, 2023, 2024)", "Termination letter", "Salary slips", "Email communications with HR"],
+      "missingEvidence": ["Company HR policy document", "Witness statements from colleagues", "Evidence of no PIP being issued"],
+      "evidenceGapImpact": "Significant",
+      "readinessScore": 60,
+      "readinessLevel": "Mostly Ready",
+      "readinessBlockers": ["Employment contract needs detailed review", "HR policy document not yet obtained"],
+      "favorableFactors": ["Positive performance appraisals on record", "No prior warnings or PIP", "Service of over 3 years", "Termination letter lacks specific reasons"],
+      "precedentBoost": 0.65,
+      "precedentConfidence": "Moderate",
+      "riskFactors": [
+        { "title": "Employment contract ambiguity", "severity": "medium", "impact": "legal", "explanation": "Contract may contain termination-at-will clause" },
+        { "title": "Applicability of ID Act", "severity": "high", "impact": "procedural", "explanation": "Industrial Disputes Act applicability depends on number of employees" },
+        { "title": "Delay in filing", "severity": "low", "impact": "procedural", "explanation": "Claim filed within reasonable time" }
+      ],
+      "precedentHeadwind": 0.25,
+      "confidenceLevel": "Moderate",
+      "recommendedActions": ["Obtain company HR policy document", "Gather witness statements from team members", "Review employment contract for termination clauses", "File claim before appropriate labour court"],
+      "scoringVersion": "2.0",
+      "thresholdsUsed": ["industrial-disputes"]
     },
-    "evidence": [
-      "Previous 12 months of billing history",
-      "Utility company's written acknowledgment of faulty meter",
-      "Meter replacement invoice with date stamp",
-      "New meter readings showing normal consumption",
-      "Consumer complaint registration number",
-      "Delay in meter replacement (60 days documented)"
+    "precedents": [
+      {
+        "id": "prec-id-001",
+        "caseType": "wrongful-termination",
+        "title": "D.K. Yadav vs. J.M.A. Industries (1993)",
+        "forum": "Supreme Court of India",
+        "year": 1993,
+        "factsSummary": "Landmark case establishing that termination without notice and opportunity of hearing violates principles of natural justice and Section 25-F of the Industrial Disputes Act.",
+        "evidenceSignals": ["No notice of termination", "No hearing given"],
+        "positiveFactors": ["Long service record", "No misconduct"],
+        "negativeFactors": [],
+        "outcome": { "direction": "favorable", "summary": "Reinstatement with full back wages ordered" },
+        "applicableLaws": [
+          { "lawName": "Industrial Disputes Act", "section": "Section 25-F", "label": "Notice and compensation before retrenchment", "whenApplicable": "When terminating an employee who has worked for at least 240 days", "plainEnglishExplanation": "The employer must give one month notice or pay salary in lieu, plus severance compensation before retrenchment." }
+        ],
+        "tags": ["wrongful-termination", "natural-justice", "reinstatement"],
+        "relevanceScore": 0.85
+      },
+      {
+        "id": "prec-id-002",
+        "caseType": "wrongful-termination",
+        "title": "Rajasthan State Road Transport Corp. vs. Shyam Bihari (2022)",
+        "forum": "Supreme Court of India",
+        "year": 2022,
+        "factsSummary": "Recent judgment reiterating that termination without complying with Section 25-F is void ab initio, even if the employee was a probationer.",
+        "evidenceSignals": ["No compliance with Section 25-F"],
+        "positiveFactors": ["Statutory violation clear"],
+        "negativeFactors": ["Probationary status"],
+        "outcome": { "direction": "favorable", "summary": "Termination set aside; compensation awarded in lieu of reinstatement" },
+        "applicableLaws": [
+          { "lawName": "Industrial Disputes Act", "section": "Section 2(oo)", "label": "Definition of retrenchment", "whenApplicable": "When determining if a termination constitutes retrenchment", "plainEnglishExplanation": "Retrenchment means termination by employer for any reason other than disciplinary action, and includes all terminations not falling under specific exceptions." }
+        ],
+        "tags": ["wrongful-termination", "section-25F", "compensation"],
+        "relevanceScore": 0.78
+      }
     ],
-    "desiredOutcome": "Refund of overcharged amount (₹8,500) with interest and adjustment for meter malfunction period"
-  },
-  {
-    "id": "demo-004",
-    "caseType": "breach-of-service-contract",
-    "title": "Website Development Not Completed as Contracted",
-    "description": "Hired web development company to build e-commerce site with agreed scope. After 4 months and 70% payment (₹1,50,000), developer ceased work citing scope changes. Final deliverables missing (payment gateway, inventory system). Developer now unresponsive.",
-    "timeline": "Contract signed March 2024. Progress updates until May 2024. Project abandoned June 2024. Final 30% payment withheld.",
-    "amountInvolved": 215000,
-    "location": "Pune, Maharashtra",
-    "parties": {
-      "claimant": "Deepika Enterprises (client)",
-      "respondent": "TechVision Solutions (developer)"
-    },
-    "evidence": [
-      "Signed software development contract with scope",
-      "Invoice for 70% payment received",
-      "Bank transfer proof of payment",
-      "Email chain with developer discussing timeline",
-      "Incomplete deliverables repository access",
-      "Email stating project abandonment without clear reason"
-    ],
-    "desiredOutcome": "Refund of 70% advance payment (₹1,50,000) or completion of project at no additional cost"
-  },
-  {
-    "id": "demo-005",
-    "caseType": "consumer-fraud",
-    "title": "Online Purchase of Counterfeit Electronics",
-    "description": "Purchased branded smartphone from e-commerce marketplace. Item appeared authentic with original packaging. After 1 week, phone malfunctioned and brand verification revealed it to be counterfeit. Seller profile now inactive. Refund request denied citing 'as sold' policy.",
-    "timeline": "Purchase December 2023. Malfunction detected December 2024 (1 year later). Discovered counterfeit. Refund denied January 2024.",
-    "amountInvolved": 32000,
-    "location": "Delhi, Delhi",
-    "parties": {
-      "claimant": "Arun Gupta (consumer)",
-      "respondent": "ElectroHub Store (seller)"
-    },
-    "evidence": [
-      "Original purchase receipt and order confirmation",
-      "Product photographs showing packaging",
-      "Brand authentication report confirming counterfeit",
-      "Malfunction documentation with service center",
-      "Email correspondence with seller (denial of refund)",
-      "Screenshots of now-inactive seller profile",
-      "Screenshot of e-commerce platform policy"
-    ],
-    "desiredOutcome": "Full refund of ₹32,000 or replacement with genuine product, plus compensation for fraud"
-  },
-  {
-    "id": "demo-006",
-    "caseType": "wrongful-termination",
-    "title": "Fired Without Notice or Severance After 8 Years Service",
-    "description": "Terminated employment after 8 years with company without notice, without final payment, and without severance. HR justified termination as 'performance issues' but provided no documentation or performance review warnings. Final 1.5 months salary (₹1,20,000) unpaid. No termination letter provided.",
-    "timeline": "Employed since March 2016. Terminated abruptly May 2024. No prior warnings documented. Salary for April-May 2024 unpaid.",
-    "amountInvolved": 120000,
-    "location": "Gurgaon, Haryana",
-    "parties": {
-      "claimant": "Sanjay Reddy (employee)",
-      "respondent": "GlobalTech India Ltd (employer)"
-    },
-    "evidence": [
-      "Employment contract showing 8-year tenure",
-      "Latest performance review (positive rating)",
-      "Email termination notice (sudden, no reasons)",
-      "Salary slips for 7.5 months of employment",
-      "No termination letter with official reason",
-      "WhatsApp chat with HR manager about 'performance issues'",
-      "Colleagues' statement about no prior warnings (optional)"
-    ],
-    "desiredOutcome": "Unpaid salary (₹1,20,000) + statutory severance (8 years × monthly salary) + compensation for wrongful termination"
-  },
-  {
-    "id": "demo-007",
-    "caseType": "faulty-secondary-market-sale",
-    "title": "Used Car Sold With Undisclosed Collision Damage",
-    "description": "Purchased used car from private seller. Vehicle documentation stated 'mint condition' and 'accident-free'. One week after purchase, brake failure incident revealed collision damage to frame (previously welded). Damage reported to car insurance; inspection shows historical accident damage.",
-    "timeline": "Car purchased March 2024. Brake failure May 2024. Insurance inspection revealed hidden collision damage.",
-    "amountInvolved": 450000,
-    "location": "Chennai, Tamil Nadu",
-    "parties": {
-      "claimant": "Ravi Krishnan (buyer)",
-      "respondent": "Ramesh Kumar (seller)"
-    },
-    "evidence": [
-      "Sale agreement stating 'accident-free condition'",
-      "Insurance inspection report showing collision damage",
-      "Repair invoice for brake system failure",
-      "Original seller's advertisement (condition claim)",
-      "WhatsApp chat with seller about condition (denial)",
-      "Police accident report (if applicable)",
-      "Pre-purchase inspection report (if available)"
-    ],
-    "desiredOutcome": "Full refund of purchase price (₹4,50,000) or repair cost reimbursement (₹1,80,000) + compensation"
-  },
-  {
-    "id": "demo-008",
-    "caseType": "small-scale-property-damage",
-    "title": "Water Damage to Flat From Neighbor's Faulty Plumbing",
-    "description": "Water damage to apartment interior (walls, flooring, electrical fixtures) caused by neighbor's burst pipe. Neighbor's homeowner insurance has refused claim. Repair estimate: ₹2,50,000. Neighbor denies liability citing 'natural wear-and-tear'.",
-    "timeline": "Pipe burst April 2024. Water damage to flat reported immediately. Repair estimate obtained. Neighbor's insurance claim denied.",
-    "amountInvolved": 250000,
-    "location": "Bangalore, Karnataka",
-    "parties": {
-      "claimant": "Pooja Nair (flat owner)",
-      "respondent": "Suresh Kulkarni (neighbor)"
-    },
-    "evidence": [
-      "Structural damage photographs (water marks, swelling)",
-      "Plumber's report confirming burst pipe origin",
-      "Repair contractor's detailed estimate",
-      "Building society inspection report",
-      "Insurance claim rejection letter from neighbor's insurer",
-      "Witness statement from building maintenance staff",
-      "Maintenance records showing pipe age and condition"
-    ],
-    "desiredOutcome": "Neighbor compensation for repair costs (₹2,50,000) via civil suit"
-  },
-  {
-    "id": "demo-009",
-    "caseType": "general-negligence",
-    "title": "Injury From Unattended Construction Site Hazard",
-    "description": "Pedestrian injured on public road due to uncovered manhole left unattended by construction company. Medical bills: ₹85,000. Lost income during 2-month recovery: ₹40,000. Construction company's site manager admitted negligence verbally but company now denies responsibility.",
-    "timeline": "Accident May 2024. Medical treatment May-June 2024. Recovery completed July 2024. No compensation offered.",
-    "amountInvolved": 125000,
-    "location": "Pune, Maharashtra",
-    "parties": {
-      "claimant": "Meera Iyer (injured pedestrian)",
-      "respondent": "BuildRight Construction Pvt Ltd"
-    },
-    "evidence": [
-      "FIR filed with police for negligence",
-      "Medical reports and hospital bills (₹85,000)",
-      "Photographs of uncovered manhole at accident site",
-      "Witness statements from pedestrians",
-      "Site manager's WhatsApp acknowledgment of negligence",
-      "Salary slips showing 2-month income loss",
-      "Construction company's insurance policy details"
-    ],
-    "desiredOutcome": "Compensation for medical bills (₹85,000), lost income (₹40,000), and pain & suffering (₹25,000) = ₹1,50,000"
-  },
-  {
-    "id": "demo-010",
-    "caseType": "workplace-harassment",
-    "title": "Workplace Harassment and Hostile Work Environment",
-    "description": "Employee experienced repeated harassment from supervisor including derogatory comments about gender, exclusion from meetings, and verbal abuse in front of team. Formal complaint filed with HR 3 times in 6 months. HR took no action. Work environment became unbearable; employee forced to resign.",
-    "timeline": "Harassment began January 2024. Complaints filed Feb, Mar, May 2024. No action taken. Resigned June 2024.",
-    "amountInvolved": 540000,
-    "location": "Mumbai, Maharashtra",
-    "parties": {
-      "claimant": "Anaya Singh (employee)",
-      "respondent": "FinServe Corp Ltd (employer) & Rajiv Sharma (supervisor)"
-    },
-    "evidence": [
-      "Formal written complaints to HR (3 instances)",
-      "Email chain with HR showing inaction",
-      "Witness statements from team members",
-      "Audio recordings of abusive comments (if legal)",
-      "WhatsApp chats showing harassment pattern",
-      "Resignation letter citing hostile environment",
-      "Salary slips and employment contract",
-      "Medical certificate for stress-related illness"
-    ],
-    "desiredOutcome": "Compensation for harassment (₹3,00,000), lost salary for remaining contract period (₹2,40,000), and reinstatement or liquidated damages"
+    "simulationFeedback": {
+      "overallPerformance": "Solid case with strong statutory protections",
+      "strongestPoint": "Positive appraisal record contradicts employer's performance claims",
+      "weakestPoint": "Employer may argue probation or contract-at-will clause",
+      "argumentScore": 68,
+      "judgeConcerns": ["Employment contract terms need closer examination", "Confirm ID Act applicability to this establishment"],
+      "suggestedImprovements": ["Request company HR policy under RTI or discovery", "Prepare detailed employment timeline", "Collect testimonial from immediate supervisor"]
+    }
   }
 ]

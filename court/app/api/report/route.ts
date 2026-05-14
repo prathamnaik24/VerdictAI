@@ -1,21 +1,25 @@
 import { NextResponse } from 'next/server';
 import { generateReport } from '@/backend/services/report.service';
+import type { ReportGenerationRequest } from '@/shared/types/report.types';
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { caseType, caseDetails } = body;
+    const body: ReportGenerationRequest = await request.json();
 
-    const report = await generateReport(caseType, caseDetails);
+    if (!body.matterOverview || !body.factsSummary || !body.assessment) {
+      return NextResponse.json(
+        { success: false, error: 'Missing required fields: matterOverview, factsSummary, assessment' },
+        { status: 400 }
+      );
+    }
 
-    return NextResponse.json({
-      success: true,
-      report,
-    });
+    const report = await generateReport(body);
+
+    return NextResponse.json({ success: true, data: report }, { status: 200 });
   } catch (error) {
-    console.error('[API] Report error:', error);
+    console.error('[API] Report generation error:', error);
     return NextResponse.json(
-      { success: false, error: 'Report failed' },
+      { success: false, error: 'Report generation failed' },
       { status: 500 }
     );
   }

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
+import '@/frontend/styles/animations.css';
+import '@/frontend/styles/responsive.css';
 import { Providers } from './providers';
 
 const inter = Inter({
