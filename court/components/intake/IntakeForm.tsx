@@ -10,6 +10,8 @@ import { InsufficientInfoCard } from '@/frontend/components/intake/InsufficientI
 import { ErrorState } from '@/frontend/components/common/ErrorState';
 import { validateIntakeInput } from '@/frontend/lib/intakeValidation';
 import { getDemoCases, getDemoCaseFormData } from '@/frontend/lib/demoHelpers';
+import { getDemoCaseById } from '@/frontend/lib/demoHelpers';
+import EvidenceChecklist from './EvidenceChecklist';
 import { ROUTES } from '@/lib/routes';
 import { DISPUTE_TYPES, DISPUTE_TYPE_LABELS } from '@/shared/constants/disputeTypes';
 import type { DisputeType } from '@/shared/constants/disputeTypes';
@@ -95,6 +97,8 @@ export const IntakeForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   };
 
+  const selectedDemo = selectedDemoId ? getDemoCaseById(selectedDemoId) : null;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -169,6 +173,10 @@ export const IntakeForm = () => {
             </option>
           ))}
         </select>
+      </div>
+
+      <div>
+        <EvidenceChecklist evidenceItems={selectedDemo?.evidence} />
       </div>
 
       <div>

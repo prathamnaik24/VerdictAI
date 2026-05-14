@@ -44,12 +44,13 @@ export default function DashboardPage() {
          riskFactors: report.unfavorableFactors,
          missingEvidence: report.missingEvidence,
          applicableLaws: report.applicableProvisions,
-         precedents: report.precedents.map((p) => ({
-           id: p.title,
-           title: p.title,
-           similarity: parseInt(p.relevance) || 0,
-           summary: p.summary,
-         })),
+          precedents: report.precedents.map((p) => ({
+            id: p.title,
+            title: p.title,
+            similarity: parseInt(p.relevance) || 0,
+            summary: p.summary,
+          })),
+          nextSteps: report.nextSteps,
        })
        setDemoLoaded(true)
      }
@@ -85,12 +86,13 @@ export default function DashboardPage() {
                      riskFactors: report.unfavorableFactors,
                      missingEvidence: report.missingEvidence,
                      applicableLaws: report.applicableProvisions,
-                     precedents: report.precedents.map((p) => ({
-                       id: p.title,
-                       title: p.title,
-                       similarity: parseInt(p.relevance) || 0,
-                       summary: p.summary,
-                     })),
+                    precedents: report.precedents.map((p) => ({
+                      id: p.title,
+                      title: p.title,
+                      similarity: parseInt(p.relevance) || 0,
+                      summary: p.summary,
+                    })),
+                    nextSteps: report.nextSteps,
                    })
                    setDemoLoaded(true)
                  }
@@ -241,7 +243,7 @@ export default function DashboardPage() {
               <motion.div variants={staggerItem}>
                 <MotionCard>
                   {displayLaws.length > 0 ? (
-                    <ApplicableLaws laws={displayLaws} />
+                    <ApplicableLaws laws={displayLaws} nextSteps={assessment.nextSteps || []} />
                   ) : (
                     <EmptyState {...getEmptyStatePreset('noApplicableLaws')} variant="section" />
                   )}

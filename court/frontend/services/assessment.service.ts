@@ -2,9 +2,34 @@ import { AssessmentResult } from '@/frontend/types/dashboard.types'
 import { fetchWithRetry } from '@/frontend/lib/retryHandler'
 
 export async function assessCase(data: any): Promise<AssessmentResult> {
+  // Ensure we send the server the expected ExtractionRequest shape.
+  // Accept either a pre-built payload with `rawFacts` or an intake form object
+  // (title, description, location, dateOfIncident, disputeType).
+  let payload: any
+
+  if (typeof data === 'string') {
+    payload = { rawFacts: data }
+  } else if (data && typeof data === 'object' && 'rawFacts' in data) {
+    payload = data
+  } else if (data && typeof data === 'object') {
+    const parts: string[] = []
+    if (data.title) parts.push(String(data.title))
+    if (data.description) parts.push(String(data.description))
+    if (data.location) parts.push(`Location: ${data.location}`)
+    if (data.dateOfIncident) parts.push(`Date: ${data.dateOfIncident}`)
+
+    payload = {
+      rawFacts: parts.join('\n\n'),
+      disputeHint: data.disputeType,
+      privacyMode: data.privacyMode ?? false,
+    }
+  } else {
+    payload = { rawFacts: '' }
+  }
+
   const result = await fetchWithRetry('/api/extract', {
     method: 'POST',
-    body: JSON.stringify(data),
+    body: JSON.stringify(payload),
   })
 
   if (!result.ok) {

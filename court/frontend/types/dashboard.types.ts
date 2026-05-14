@@ -20,4 +20,5 @@ export interface AssessmentResult {
   applicableLaws: string[]
 
   precedents: Precedent[]
+  nextSteps?: string[]
 }
