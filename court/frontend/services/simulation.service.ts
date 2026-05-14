@@ -1,12 +1,20 @@
-// Frontend simulation service
-import { apiCall } from '../lib/api';
-import { API_ENDPOINTS } from '../lib/constants';
+import type {
+  SimulationRequest,
+  SimulationResponse,
+} from "@/shared/types/simulation.types";
 
-export const simulationService = {
-  async runRound(caseDetails: any, userStatement: string) {
-    return apiCall(API_ENDPOINTS.SIMULATE, {
-      method: 'POST',
-      body: JSON.stringify({ caseDetails, userStatement }),
-    });
-  },
-};
+export async function runSimulation(
+  request: SimulationRequest
+): Promise<SimulationResponse> {
+  const response = await fetch("/api/simulate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request),
+  });
+
+  if (!response.ok) {
+    throw new Error("Simulation request failed");
+  }
+
+  return response.json();
+}

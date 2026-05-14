@@ -1,13 +1,27 @@
-// Phase 7 — Simulation API Route (Step 7 placeholder)
-// This file will be fully implemented in Step 7.
-// Stubbed here to keep the TypeScript compiler clean while Steps 3–6 are built.
+import { NextRequest, NextResponse } from "next/server";
+import { simulateCourtroom } from "@/backend/services/simulate.service";
+import type { SimulationRequest } from "@/shared/types/simulation.types";
 
-import { NextResponse } from "next/server";
+export async function POST(request: NextRequest) {
+  try {
+    const body: SimulationRequest = await request.json();
 
-// TODO (Step 7): wire up runSimulation() from the Step 6 orchestrator.
-export async function POST(_request: Request) {
-  return NextResponse.json(
-    { success: false, error: "Simulation API not yet implemented — coming in Step 7." },
-    { status: 501 }
-  );
+    if (!body.openingStatement || !body.caseDescription) {
+      return NextResponse.json(
+        { error: "Missing required fields: openingStatement and caseDescription" },
+        { status: 400 }
+      );
+    }
+
+    const result = await simulateCourtroom(body);
+
+    return NextResponse.json(result, { status: 200 });
+  } catch (error) {
+    console.error("[API] Simulation route error:", error);
+
+    return NextResponse.json(
+      { error: "Failed to run simulation" },
+      { status: 500 }
+    );
+  }
 }

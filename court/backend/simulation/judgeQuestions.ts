@@ -1,6 +1,6 @@
 // Phase 7 — Judge Question Generator
-// Single responsibility: take case details + opening statement → return ONE judicial question.
-// Lower temperature than opposing counsel — judges sound stable and precise, not creative.
+// Single responsibility: take case details + opening statement → return one judicial question.
+// Mirrors opposingCounsel.ts but with lower creativity and shorter output.
 
 import { getOpenAI } from "@/backend/ai/openai";
 import {
@@ -36,11 +36,10 @@ export async function generateJudgeQuestion(
         },
       ],
 
-      // temperature 0.4 — lower than opposing counsel.
-      // A judge should sound logical and precise, not creative.
+      // temperature 0.4 — stable, logical, precise (judge, not creative writer)
       temperature: 0.4,
 
-      // 80 tokens = ~60 words — one sharp, focused question, nothing more.
+      // 80 tokens = ~60 words — keeps questions sharp and concise
       max_tokens: 80,
     });
 
