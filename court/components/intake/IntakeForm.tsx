@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Sparkles } from 'lucide-react';
 import { useCaseStore } from '@/store/useCaseStore';
+import { useCaseStore as useFrontendCaseStore } from '@/frontend/store/useCaseStore';
 import { useAssessment } from '@/frontend/hooks/useAssessment';
 import { DemoCaseSelector } from '@/frontend/components/intake/DemoCaseSelector';
 import { InsufficientInfoCard } from '@/frontend/components/intake/InsufficientInfoCard';
@@ -11,7 +12,7 @@ import { ErrorState } from '@/frontend/components/common/ErrorState';
 import { validateIntakeInput } from '@/frontend/lib/intakeValidation';
 import { getDemoCases, getDemoCaseFormData } from '@/frontend/lib/demoHelpers';
 import { getDemoCaseById } from '@/frontend/lib/demoHelpers';
-import EvidenceChecklist from './EvidenceChecklist';
+import { EvidenceChecklist } from './EvidenceChecklist';
 import { ROUTES } from '@/lib/routes';
 import { DISPUTE_TYPES, DISPUTE_TYPE_LABELS } from '@/shared/constants/disputeTypes';
 import type { DisputeType } from '@/shared/constants/disputeTypes';
@@ -30,6 +31,7 @@ const COMMON_DISPUTE_TYPES: DisputeType[] = [
 export const IntakeForm = () => {
   const router = useRouter();
   const setCurrentCase = useCaseStore((state) => state.setCurrentCase);
+  const setFrontendDemoId = useFrontendCaseStore((state) => state.setDemoId);
   const { runAssessment, loading, error } = useAssessment();
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -65,6 +67,7 @@ export const IntakeForm = () => {
     };
 
     setCurrentCase(caseData);
+    setFrontendDemoId(selectedDemoId); // Store the selected demo ID for the dashboard
     const result = await runAssessment(data);
 
     if (result) {
@@ -72,7 +75,7 @@ export const IntakeForm = () => {
       return true;
     }
     return false;
-  }, [setCurrentCase, runAssessment, router]);
+  }, [setCurrentCase, runAssessment, router, selectedDemoId, setFrontendDemoId]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

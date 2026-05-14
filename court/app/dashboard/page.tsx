@@ -23,15 +23,22 @@ import type { DemoCaseType } from '@/frontend/lib/demoHelpers'
 import { PageTransition, StaggerItem } from '@/frontend/components/animations/PageTransition'
 import { staggerItem } from '@/frontend/components/animations/StaggerContainer'
 import { MotionCard } from '@/frontend/components/common/MotionCard'
+import { HARDCODED_ASSESSMENTS } from '@/frontend/lib/hardcodedAssessments'
+import { Info, HelpCircle, Shield, AlertTriangle, ChevronDown, ChevronUp } from 'lucide-react'
 
 export default function DashboardPage() {
    const assessment = useCaseStore((state) => state.assessment)
    const setAssessment = useCaseStore((state) => state.setAssessment)
+   const storeDemoId = useCaseStore((state) => state.demoId)
    const { loading, loadDemo, error, clearError } = useDemoData()
    const [demoLoaded, setDemoLoaded] = useState(false)
+   const [localDemoId, setLocalDemoId] = useState<string | null>(null)
+
+   const activeDemoId = localDemoId || storeDemoId
 
    const handleDemoSelect = (caseType: DemoCaseType) => {
      clearError()
+     setLocalDemoId(caseType)
      const report = loadDemo(caseType)
      if (report) {
        setAssessment({
@@ -156,7 +163,9 @@ export default function DashboardPage() {
      )
    }
 
-  const displayFactors = assessment.favorableFactors || []
+  const hardcodedData = activeDemoId ? HARDCODED_ASSESSMENTS[activeDemoId as keyof typeof HARDCODED_ASSESSMENTS] : null;
+
+  const displayFactors = hardcodedData?.favorableFactors || assessment.favorableFactors || []
   const displayRisk = assessment.riskFactors || []
   const displayEvidence = assessment.missingEvidence || []
   const displayLaws = assessment.applicableLaws || []
@@ -182,33 +191,85 @@ export default function DashboardPage() {
 
             <motion.div variants={staggerItem}>
               <AssessmentNotice
-                confidenceLevel={assessment.confidenceLevel || 'Low'}
-                readinessScore={assessment.readinessScore || 0}
-                evidenceGaps={assessment.missingEvidence?.length || 0}
+                confidenceLevel={hardcodedData?.confidenceLevel || assessment.confidenceLevel || 'Low'}
+                readinessScore={hardcodedData ? 100 : (assessment.readinessScore || 0)}
+                evidenceGaps={hardcodedData?.missingEvidence.length || assessment.missingEvidence?.length || 0}
                 onAction={() => window.location.href = '/intake'}
               />
             </motion.div>
 
-<motion.div variants={staggerItem} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div variants={staggerItem} className="grid grid-cols-1 md:grid-cols-3 gap-6">
                <MotionCard>
                  <OutcomeCard
-                   label={assessment.legalDirection || 'Pending'}
-                   score={assessment.directionScore || 0}
+                   label={hardcodedData?.directionLabel || assessment.legalDirection || 'Pending'}
+                   score={hardcodedData?.directionScore || assessment.directionScore || 0}
                  />
                </MotionCard>
                <MotionCard delay={0.05}>
                  <ConfidenceMeter
-                   level={assessment.confidenceLevel || 'Low'}
+                   level={hardcodedData?.confidenceLevel || assessment.confidenceLevel || 'Low'}
                  />
+                 {hardcodedData && (
+                   <div className="mt-2 text-center text-xs text-gray-500 font-medium">
+                     {hardcodedData.confidenceScore}% confidence score
+                   </div>
+                 )}
                </MotionCard>
                <MotionCard delay={0.1}>
                  <ReadinessScore
-                   score={assessment.readinessScore || 0}
+                   score={hardcodedData?.directionScore || assessment.readinessScore || 0}
                  />
                </MotionCard>
              </motion.div>
 
-<motion.div variants={staggerItem} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             {hardcodedData && (
+              <motion.div variants={staggerItem} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <MotionCard>
+                  <div className="bg-white border border-green-200 rounded-xl p-6 shadow-sm">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Shield className="w-5 h-5 text-green-600" />
+                      <h3 className="text-lg font-semibold text-gray-900">Know Your Rights</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      {hardcodedData.knowYourRights.map((right, idx) => (
+                        <li key={idx} className="flex gap-2 text-sm text-gray-700">
+                          <span className="text-green-500 mt-0.5">•</span>
+                          <span>{right}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </MotionCard>
+                <MotionCard delay={0.05}>
+                  <div className="bg-white border border-blue-200 rounded-xl p-6 shadow-sm">
+                    <div className="flex items-center gap-2 mb-4">
+                      <HelpCircle className="w-5 h-5 text-blue-600" />
+                      <h3 className="text-lg font-semibold text-gray-900">Actual Next Steps</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      {hardcodedData.nextSteps.map((step, idx) => (
+                        <li key={idx} className="flex gap-2 text-sm text-gray-700">
+                          <span className="text-blue-500 mt-0.5">{idx + 1}.</span>
+                          <span>{step}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {hardcodedData.helplines.length > 0 && (
+                      <div className="mt-4 pt-4 border-t border-blue-100">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Helplines</p>
+                        {hardcodedData.helplines.map((hl, idx) => (
+                          <div key={idx} className="text-sm font-medium text-blue-800">
+                            {hl.name}: {hl.number}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </MotionCard>
+              </motion.div>
+             )}
+
+            <motion.div variants={staggerItem} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {displayFactors.length > 0 ? (
                   <MotionCard>
                     <FavorableFactors factors={displayFactors} />
@@ -219,7 +280,30 @@ export default function DashboardPage() {
                   </MotionCard>
                 )}
 
-                {displayRisk.length > 0 ? (
+                {hardcodedData ? (
+                  <MotionCard delay={0.05}>
+                    <div className="bg-white border border-red-200 rounded-xl p-6 shadow-sm h-full">
+                      <div className="flex items-center gap-2 mb-4">
+                        <AlertTriangle className="w-5 h-5 text-red-600" />
+                        <h3 className="text-lg font-semibold text-gray-900">Why the case is weak</h3>
+                      </div>
+                      <ul className="space-y-4 mb-6">
+                        {hardcodedData.unfavorableFactors.map((uf, idx) => (
+                          <li key={idx} className="flex flex-col gap-1 text-sm">
+                            <div className="flex gap-2 text-gray-700 font-medium">
+                              <span className="text-red-500">•</span>
+                              <span>{uf.factor}</span>
+                            </div>
+                            <div className="flex gap-2 text-gray-600 pl-4">
+                              <span className="text-green-500">↳ Fix:</span>
+                              <span>{uf.howToFix}</span>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </MotionCard>
+                ) : displayRisk.length > 0 ? (
                   <MotionCard delay={0.05}>
                     <RiskFactors factors={displayRisk} />
                   </MotionCard>
@@ -230,9 +314,29 @@ export default function DashboardPage() {
                 )}
               </motion.div>
 
-<motion.div variants={staggerItem}>
+              <motion.div variants={staggerItem}>
                 <MotionCard>
-                  {displayEvidence.length > 0 ? (
+                  {hardcodedData ? (
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Evidence Assessment</p>
+                      {hardcodedData.missingEvidence.length === 0 ? (
+                        <div className="bg-green-50 border border-green-100 rounded-lg p-4">
+                          <h4 className="text-green-800 font-medium">No Evidence Gaps Recorded</h4>
+                          <p className="text-green-600 text-sm mt-1">Your evidence appears complete based on the information provided. No missing items were identified.</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <h4 className="text-amber-800 font-medium mb-3">Recommended Evidence to Collect:</h4>
+                          {hardcodedData.missingEvidence.map((ev, idx) => (
+                            <div key={idx} className="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                              <div className="text-sm font-semibold text-amber-900">{ev.item}</div>
+                              <div className="text-sm text-amber-700 mt-1">Why: {ev.whyNeeded}</div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : displayEvidence.length > 0 ? (
                     <MissingEvidence items={displayEvidence} />
                   ) : (
                     <EmptyState {...getEmptyStatePreset('noEvidenceGaps')} variant="section" />
@@ -242,7 +346,27 @@ export default function DashboardPage() {
 
               <motion.div variants={staggerItem}>
                 <MotionCard>
-                  {displayLaws.length > 0 ? (
+                  {hardcodedData ? (
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Applicable Laws</p>
+                      {hardcodedData.laws.length === 0 ? (
+                        <EmptyState {...getEmptyStatePreset('noApplicableLaws')} variant="section" />
+                      ) : (
+                        <div className="space-y-4">
+                          {hardcodedData.laws.map((law, idx) => (
+                            <div key={idx} className="border border-gray-100 rounded-lg p-4 bg-gray-50">
+                              <h4 className="text-sm font-semibold text-gray-900">{law.name}</h4>
+                              <p className="text-sm text-gray-600 mt-2">{law.explanation}</p>
+                              <div className="mt-3 text-sm">
+                                <span className="font-semibold text-gray-700">Does it help? </span>
+                                <span className={law.doesItHelp.startsWith('Yes') ? 'text-green-600' : 'text-red-600'}>{law.doesItHelp}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : displayLaws.length > 0 ? (
                     <ApplicableLaws laws={displayLaws} nextSteps={assessment.nextSteps || []} />
                   ) : (
                     <EmptyState {...getEmptyStatePreset('noApplicableLaws')} variant="section" />
@@ -250,9 +374,36 @@ export default function DashboardPage() {
                 </MotionCard>
               </motion.div>
 
+              {hardcodedData && (
+                <motion.div variants={staggerItem}>
+                  <MotionCard>
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Glossary of Legal Terms</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {hardcodedData.glossary.map((g, idx) => (
+                          <div key={idx} className="bg-indigo-50 border border-indigo-100 p-4 rounded-lg">
+                            <h4 className="text-sm font-bold text-indigo-900">{g.term}</h4>
+                            <p className="text-sm text-indigo-700 mt-1">{g.definition}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </MotionCard>
+                </motion.div>
+              )}
+
               <motion.div variants={staggerItem}>
                 <MotionCard>
-                  {displayPrecedents.length > 0 ? (
+                  {hardcodedData ? (
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Past Cases (How it ended)</p>
+                      <div className="space-y-4">
+                        {hardcodedData.pastCases.map((pc, idx) => (
+                          <AccordionCase key={idx} caseData={pc} />
+                        ))}
+                      </div>
+                    </div>
+                  ) : displayPrecedents.length > 0 ? (
                     <PrecedentList precedents={displayPrecedents} />
                   ) : (
                     <EmptyState {...getEmptyStatePreset('noPrecedents')} variant="section" />
@@ -263,5 +414,35 @@ export default function DashboardPage() {
         </DashboardLayout>
       </div>
     </PageTransition>
+  )
+}
+
+function AccordionCase({ caseData }: { caseData: any }) {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left"
+      >
+        <div>
+          <h4 className="text-sm font-semibold text-gray-900">{caseData.title}</h4>
+          <p className="text-xs text-gray-500 mt-1">{caseData.summary}</p>
+        </div>
+        {isOpen ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+      </button>
+      {isOpen && (
+        <div className="p-4 bg-white border-t border-gray-200 space-y-3">
+          <div>
+            <span className="text-xs font-bold text-gray-500 uppercase">How it ended:</span>
+            <p className="text-sm text-gray-800 mt-1">{caseData.howItEnded}</p>
+          </div>
+          <div>
+            <span className="text-xs font-bold text-gray-500 uppercase">Human Readable Reason:</span>
+            <p className="text-sm text-gray-700 mt-1 bg-blue-50 p-3 rounded-md">{caseData.humanReadableReason}</p>
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
