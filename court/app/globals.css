@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #1f2839;
+  --offwhite: #f5f5ef;
+  --gold: #b69d74;
+  --charcoal: #2a3447;
+  --lightgold: #d4c5a9;
+  --darkgold: #9d845f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: var(--navy);
+  --color-offwhite: var(--offwhite);
+  --color-gold: var(--gold);
+  --color-charcoal: var(--charcoal);
+  --color-lightgold: var(--lightgold);
+  --color-darkgold: var(--darkgold);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  @apply m-0 p-0 box-border;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--offwhite);
+  color: var(--navy);
+  font-family: var(--font-inter);
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cormorant);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  @apply text-5xl md:text-6xl lg:text-7xl;
+}
+
+h2 {
+  @apply text-4xl md:text-5xl lg:text-6xl;
+}
+
+h3 {
+  @apply text-3xl md:text-4xl;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--offwhite);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--darkgold);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--gold);
+  color: var(--navy);
 }

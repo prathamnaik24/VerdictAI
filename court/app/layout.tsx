@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
-import { Navbar } from '@/components/layout/Navbar';
 import { Providers } from './providers';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
   subsets: ['latin'],
+  variable: '--font-inter',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-cormorant',
 });
 
 export const metadata: Metadata = {
-  title: 'VerdictAI - Legal Case Assessment Platform',
-  description: 'AI-powered courtroom simulation and legal case assessment for Indian disputes',
+  title: 'VerdictAI - AI Legal Analysis Platform',
+  description: 'Know where your case stands before court begins. Semantic precedent retrieval, explainable legal scoring, and AI courtroom simulation.',
 };
 
 export default function RootLayout({
@@ -27,10 +27,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${cormorant.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white">
-        <Navbar />
+      <body className="min-h-full flex flex-col bg-offwhite">
         <Providers>
           <main className="flex-1">{children}</main>
         </Providers>
