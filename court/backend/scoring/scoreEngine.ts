@@ -66,7 +66,11 @@ function scoreCaseByType(
   switch (disputeType) {
     // ========= TIER A: Security Deposit (Detailed) =========
     case 'security-deposit-dispute':
-      return scoreChequeBounce(caseDetails); // Placeholder until Tier A scoreSecurityDeposit
+      return scoreConsumerComplaint(caseDetails); // Placeholder until Tier A scoreSecurityDeposit
+    
+    // ========= TIER A: Cheque Bounce (Detailed) =========
+    case 'cheque-bounce':
+      return scoreChequeBounce(caseDetails);
 
     // ========= TIER B: Consumer Complaints (Medium) =========
     case 'consumer-fraud':

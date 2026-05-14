@@ -24,7 +24,7 @@ export const fetchCombinedAssessment = async (
   extraction: any;
   scoring: ScoringOutput;
   precedents: any[];
-  combinedState: AssessmentOutput;
+  combined: AssessmentOutput;
 }> => {
   try {
     // Step 1: Extract case data
@@ -89,14 +89,14 @@ export const fetchCombinedAssessment = async (
       practicalRisks: scoring.practicalRiskFactors,
       precedents: precedents,
       favorableFactors: scoring.favorableFactors,
-      unfavorableFactors: scoring.riskFactors.map(r => r.title),
+      unfavorableFactors: scoring.riskFactors.map((r: any) => r.title),
     };
 
     return {
       extraction: extractData.data,
       scoring,
       precedents,
-      combinedState,
+      combined: combinedState,
     };
   } catch (error) {
     console.error('Assessment pipeline failed:', error);

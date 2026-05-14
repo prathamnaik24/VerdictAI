@@ -7,7 +7,7 @@ import { GoldDivider } from '../common/GoldDivider';
 import { ArrowRight } from 'lucide-react';
 
 export function FinalCTA() {
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,

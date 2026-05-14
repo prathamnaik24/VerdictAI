@@ -1,26 +1,38 @@
-// Frontend assessment hook
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { assessmentService } from '../services/assessment.service';
+import { useState } from 'react'
+import { assessCase } from '@/frontend/services/assessment.service'
+import { useCaseStore } from '@/frontend/store/useCaseStore'
 
-export const useAssessment = () => {
-  const [assessment, setAssessment] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+export function useAssessment() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const runAssessment = async (caseType: string, caseDetails: any) => {
-    setLoading(true);
-    setError(null);
+  const setAssessment = useCaseStore(
+    (state) => state.setAssessment
+  )
+
+  async function runAssessment(data: any) {
     try {
-      const result = await assessmentService.scoreCase(caseType, caseDetails);
-      setAssessment(result.assessment);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Assessment failed');
-    } finally {
-      setLoading(false);
-    }
-  };
+      setLoading(true)
+      setError('')
 
-  return { assessment, loading, error, runAssessment };
-};
+      const result = await assessCase(data)
+
+      setAssessment(result)
+
+      return result
+    } catch (err) {
+      setError('Assessment failed')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return {
+    runAssessment,
+    loading,
+    error,
+  }
+}

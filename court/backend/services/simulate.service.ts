@@ -1,20 +1,8 @@
-// Simulate service - runs courtroom simulation
-import { generateOpposingArgument } from '@/backend/simulation/opposingCounsel';
-import { generateJudgeQuestions } from '@/backend/simulation/judgeQuestions';
-import { SimulationOutput } from '@/shared/types/simulation.types';
+// Phase 7 — Simulation Service Orchestrator (Step 6 placeholder)
+// This file will be fully implemented in Step 6.
+// Stubbed here to keep the TypeScript compiler clean while Steps 3–5 are built.
 
-export const runSimulationRound = async (
-  caseDetails: any,
-  userStatement: string
-): Promise<SimulationOutput> => {
-  console.log('[Backend] Running simulation round');
-  
-  const opposingArgument = await generateOpposingArgument(caseDetails);
-  const questions = await generateJudgeQuestions(caseDetails);
-  
-  return {
-    opposingArgument,
-    judgeQuestion: questions[0] || 'Judge question placeholder',
-    feedback: 'Feedback placeholder',
-  };
-};
+// TODO (Step 6): import and wire generateOpposingCounselResponse,
+//                generateJudgeQuestion, generateEvaluation together.
+
+export {};

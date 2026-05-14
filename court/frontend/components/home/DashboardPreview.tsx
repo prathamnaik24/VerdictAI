@@ -8,7 +8,7 @@ import { GoldDivider } from '../common/GoldDivider';
 import { Zap, TrendingUp, Shield } from 'lucide-react';
 
 export function DashboardPreview() {
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,

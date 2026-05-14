@@ -19,6 +19,7 @@ export const DISPUTE_TYPES = {
   BREACH_OF_SERVICE_CONTRACT: 'breach-of-service-contract',
   CONSUMER_FRAUD: 'consumer-fraud',
   WRONGFUL_TERMINATION: 'wrongful-termination',
+  CHEQUE_BOUNCE: 'cheque-bounce',
   // Tier B
   FAULTY_SECONDARY_MARKET_SALE: 'faulty-secondary-market-sale',
   SMALL_SCALE_PROPERTY_DAMAGE: 'small-scale-property-damage',
@@ -39,6 +40,7 @@ export const DISPUTE_TYPE_LABELS = {
   'breach-of-service-contract': 'Breach of Service Contract',
   'consumer-fraud': 'Consumer Fraud',
   'wrongful-termination': 'Wrongful Termination',
+  'cheque-bounce': 'Cheque Bounce',
   'faulty-secondary-market-sale': 'Faulty Secondary Market Sale',
   'small-scale-property-damage': 'Small-Scale Property Damage',
   'general-negligence': 'General Negligence',
@@ -56,6 +58,7 @@ export const DISPUTE_TYPE_TIERS: Record<DisputeType, DisputeTier> = {
   'breach-of-service-contract': DISPUTE_TIERS.TIER_A,
   'consumer-fraud': DISPUTE_TIERS.TIER_A,
   'wrongful-termination': DISPUTE_TIERS.TIER_A,
+  'cheque-bounce': DISPUTE_TIERS.TIER_A,
   // Tier B
   'faulty-secondary-market-sale': DISPUTE_TIERS.TIER_B,
   'small-scale-property-damage': DISPUTE_TIERS.TIER_B,

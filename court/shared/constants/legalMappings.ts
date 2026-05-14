@@ -338,6 +338,27 @@ export const LEGAL_MAPPINGS: Record<DisputeType, ApplicableLaw[]> = {
         'Criminal law covers offenses against public order. Your specific charges determine which law applies.',
     },
   ],
+
+  'cheque-bounce': [
+    {
+      lawName: 'Negotiable Instruments Act, 1881',
+      section: 'Section 138',
+      label: 'Dishonour of Cheque',
+      whenApplicable:
+        'Applies when a cheque is returned unpaid due to insufficient funds or if it exceeds the arrangement made with the bank.',
+      plainEnglishExplanation:
+        'This is the primary law dealing with bounced cheques, making it a criminal offence to issue a cheque without sufficient funds.',
+    },
+    {
+      lawName: 'Negotiable Instruments Act, 1881',
+      section: 'Section 143A',
+      label: 'Interim Compensation',
+      whenApplicable:
+        'Allows the court to order the drawer of the cheque to pay interim compensation to the complainant during the trial.',
+      plainEnglishExplanation:
+        'You may be eligible to receive a portion of the cheque amount upfront while the court case is still ongoing.',
+    }
+  ],
 };
 
 /**

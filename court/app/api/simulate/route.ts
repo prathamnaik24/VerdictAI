@@ -1,22 +1,13 @@
-import { NextResponse } from 'next/server';
-import { runSimulationRound } from '@/backend/services/simulate.service';
+// Phase 7 — Simulation API Route (Step 7 placeholder)
+// This file will be fully implemented in Step 7.
+// Stubbed here to keep the TypeScript compiler clean while Steps 3–6 are built.
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { caseDetails, userStatement } = body;
+import { NextResponse } from "next/server";
 
-    const simulation = await runSimulationRound(caseDetails, userStatement);
-
-    return NextResponse.json({
-      success: true,
-      simulation,
-    });
-  } catch (error) {
-    console.error('[API] Simulate error:', error);
-    return NextResponse.json(
-      { success: false, error: 'Simulate failed' },
-      { status: 500 }
-    );
-  }
+// TODO (Step 7): wire up runSimulation() from the Step 6 orchestrator.
+export async function POST(_request: Request) {
+  return NextResponse.json(
+    { success: false, error: "Simulation API not yet implemented — coming in Step 7." },
+    { status: 501 }
+  );
 }

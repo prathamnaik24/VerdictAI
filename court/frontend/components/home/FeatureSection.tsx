@@ -53,7 +53,7 @@ const features = [
 ];
 
 export function FeatureSection() {
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,

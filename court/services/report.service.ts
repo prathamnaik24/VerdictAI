@@ -1,12 +1,12 @@
 // Report service
-import { assessCase } from './assessment.service';
+import { fetchCombinedAssessment } from './assessment.service';
 import { DisputeType } from '@/types/case.types';
 
 export const generateReport = async (
   caseType: DisputeType,
   caseDetails: any
 ): Promise<any> => {
-  const assessment = await assessCase(caseType, caseDetails);
+  const assessment = await fetchCombinedAssessment(caseType, caseDetails);
 
   return {
     id: Math.random().toString(36).substring(7),

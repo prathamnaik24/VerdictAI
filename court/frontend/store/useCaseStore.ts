@@ -1,22 +1,16 @@
-// Frontend case store using Zustand
-'use client';
-
-import { create } from 'zustand';
-import { CaseDetails } from '../types/case.types';
+import { create } from 'zustand'
+import { AssessmentResult } from '@/frontend/types/dashboard.types'
 
 interface CaseStore {
-  cases: CaseDetails[];
-  currentCase: CaseDetails | null;
-  addCase: (caseData: CaseDetails) => void;
-  setCurrentCase: (caseData: CaseDetails) => void;
-  clearCases: () => void;
+  assessment: AssessmentResult | null
+  setAssessment: (data: AssessmentResult) => void
 }
 
 export const useCaseStore = create<CaseStore>((set) => ({
-  cases: [],
-  currentCase: null,
-  addCase: (caseData) =>
-    set((state) => ({ cases: [...state.cases, caseData] })),
-  setCurrentCase: (caseData) => set({ currentCase: caseData }),
-  clearCases: () => set({ cases: [], currentCase: null }),
-}));
+  assessment: null,
+
+  setAssessment: (data) =>
+    set({
+      assessment: data,
+    }),
+}))

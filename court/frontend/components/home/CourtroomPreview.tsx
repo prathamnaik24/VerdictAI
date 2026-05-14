@@ -44,7 +44,7 @@ export function CourtroomPreview() {
     },
   };
 
-  const messageVariants = {
+  const messageVariants: any = {
     hidden: { opacity: 0, x: (index: number) => (index % 2 === 0 ? -20 : 20) },
     visible: {
       opacity: 1,

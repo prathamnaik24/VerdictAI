@@ -1,33 +1,17 @@
-// Frontend assessment service
-import { apiCall } from '../lib/api';
-import { API_ENDPOINTS } from '../lib/constants';
+import { AssessmentResult } from '@/frontend/types/dashboard.types'
 
-export const assessmentService = {
-  async extractCase(caseDescription: string) {
-    return apiCall(API_ENDPOINTS.EXTRACT, {
-      method: 'POST',
-      body: JSON.stringify({ caseDescription }),
-    });
-  },
+export async function assessCase(data: any): Promise<AssessmentResult> {
+  const response = await fetch('/api/extract', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
 
-  async retrieveCases(caseDescription: string, caseType: string) {
-    return apiCall(API_ENDPOINTS.RETRIEVE, {
-      method: 'POST',
-      body: JSON.stringify({ caseDescription, caseType }),
-    });
-  },
+  if (!response.ok) {
+    throw new Error('Failed to assess case')
+  }
 
-  async scoreCase(caseType: string, caseDetails: any) {
-    return apiCall(API_ENDPOINTS.SCORE, {
-      method: 'POST',
-      body: JSON.stringify({ caseType, caseDetails }),
-    });
-  },
-
-  async explainScore(score: number, factors: string[]) {
-    return apiCall(API_ENDPOINTS.EXPLAIN, {
-      method: 'POST',
-      body: JSON.stringify({ score, factors }),
-    });
-  },
-};
+  return response.json()
+}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCaseStore } from '@/store/useCaseStore';
+import { useAssessment } from '@/frontend/hooks/useAssessment';
 import { ROUTES } from '@/lib/routes';
 import { DISPUTE_TYPES, DISPUTE_TYPE_LABELS } from '@/shared/constants/disputeTypes';
 import type { DisputeType } from '@/shared/constants/disputeTypes';
@@ -13,13 +14,14 @@ const COMMON_DISPUTE_TYPES: DisputeType[] = [
   DISPUTE_TYPES.CONSUMER_FRAUD as DisputeType,
   DISPUTE_TYPES.WRONGFUL_TERMINATION as DisputeType,
   DISPUTE_TYPES.BREACH_OF_SERVICE_CONTRACT as DisputeType,
+  DISPUTE_TYPES.CHEQUE_BOUNCE as DisputeType,
 ];
 
 export const IntakeForm = () => {
   const router = useRouter();
   const setCurrentCase = useCaseStore((state) => state.setCurrentCase);
+  const { runAssessment, loading, error } = useAssessment();
 
-  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     disputeType: '' as DisputeType | '',
     title: '',
@@ -38,38 +40,29 @@ export const IntakeForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.disputeType || !formData.title || !formData.description) {
-      alert('Please fill in all required fields');
       return;
     }
 
-    setLoading(true);
+    const caseData = {
+      id: `case-${Date.now()}`,
+      disputeType: formData.disputeType as DisputeType,
+      title: formData.title,
+      description: formData.description,
+      location: formData.location,
+      dateOfIncident: formData.dateOfIncident,
+      amount: 0,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-    try {
-      // Create case object
-      const caseData = {
-        id: `case-${Date.now()}`,
-        disputeType: formData.disputeType as DisputeType,
-        title: formData.title,
-        description: formData.description,
-        location: formData.location,
-        dateOfIncident: formData.dateOfIncident,
-        amount: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      };
+    setCurrentCase(caseData);
 
-      // Save to Zustand store
-      setCurrentCase(caseData);
+    const result = await runAssessment(formData);
 
-      // Navigate to dashboard
+    if (result) {
       router.push(ROUTES.DASHBOARD);
-    } catch (error) {
-      console.error('Error submitting intake form:', error);
-      alert('Failed to submit form. Please try again.');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -157,12 +150,18 @@ export const IntakeForm = () => {
         />
       </div>
 
+      {error && (
+        <div className="bg-red-100 text-red-700 p-3 rounded-lg text-sm">
+          {error}
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={loading}
         className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? 'Processing...' : 'Analyze My Case'}
+        {loading ? 'Analyzing case...' : 'Analyze My Case'}
       </button>
     </form>
   );
