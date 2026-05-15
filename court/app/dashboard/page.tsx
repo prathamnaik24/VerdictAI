@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { Download } from 'lucide-react'
 import DashboardLayout from '@/frontend/components/dashboard/DashboardLayout'
 import { DashboardSkeleton } from '@/frontend/components/dashboard/DashboardSkeleton'
 import { OutcomeCard } from '@/frontend/components/dashboard/OutcomeCard'
@@ -50,6 +51,69 @@ export default function DashboardPage() {
   const { loading, loadDemo, error, clearError } = useDemoData()
   const [demoLoaded, setDemoLoaded] = useState(false)
   const [localDemoId, setLocalDemoId] = useState<string | null>(null)
+  const [downloading, setDownloading] = useState(false)
+  const reportRef = useRef<HTMLDivElement>(null)
+
+  const handleDownloadPDF = async () => {
+    const el = reportRef.current
+    if (!el) { alert('Report not ready yet, please wait.'); return }
+    setDownloading(true)
+    try {
+      const html2canvas = (await import('html2canvas')).default
+      const { jsPDF } = await import('jspdf')
+
+      // Snapshot the full scrollable content
+      const canvas = await html2canvas(el, {
+        scale: 1.5,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#F5F5EF',
+        logging: false,
+        scrollY: 0,
+        width: el.scrollWidth,
+        height: el.scrollHeight,
+        windowWidth: el.scrollWidth,
+        windowHeight: el.scrollHeight,
+        // Tailwind v4 uses oklch/lab colors — html2canvas can't parse them.
+        // Strip them from the cloned document before rendering.
+        onclone: (clonedDoc) => {
+          const unsupported = /\b(oklch|oklab|lab|lch|color)\s*\([^)]*\)/g
+          clonedDoc.querySelectorAll('style').forEach((el) => {
+            if (el.textContent) {
+              el.textContent = el.textContent.replace(unsupported, 'inherit')
+            }
+          })
+        },
+      })
+
+      const imgData = canvas.toDataURL('image/png')
+
+      // A4 in mm
+      const A4_W = 210
+      const A4_H = 297
+      const margin = 10
+      const usableW = A4_W - margin * 2
+      const imgH = (canvas.height / canvas.width) * usableW   // scaled height in mm
+
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
+      const usableH = A4_H - margin * 2
+      const totalPages = Math.ceil(imgH / usableH)
+
+      for (let page = 0; page < totalPages; page++) {
+        if (page > 0) pdf.addPage()
+        // Shift the image up by one page worth each iteration
+        const yOffset = margin - page * usableH
+        pdf.addImage(imgData, 'PNG', margin, yOffset, usableW, imgH)
+      }
+
+      pdf.save('VerdictAI-Assessment-Report.pdf')
+    } catch (err) {
+      console.error('PDF export failed:', err)
+      alert('PDF export failed. Please try again.')
+    } finally {
+      setDownloading(false)
+    }
+  }
 
   const activeDemoId = localDemoId || storeDemoId
 
@@ -178,7 +242,8 @@ export default function DashboardPage() {
   return (
     <PageTransition>
       <DashboardLayout>
-        {/* Use gap instead of space-y — global * { m-0 p-0 } kills space-y in Tailwind v4 */}
+        {/* Plain div holds the ref — motion.div doesn't reliably forward refs */}
+        <div ref={reportRef}>
         <motion.div
           initial="hidden"
           animate="visible"
@@ -234,6 +299,31 @@ export default function DashboardPage() {
                 Simulate this case
               </button>
               <DemoCaseButton onSelect={handleDemoSelect} label="Switch Demo Case" />
+
+              {/* Download PDF */}
+              <button
+                onClick={handleDownloadPDF}
+                disabled={downloading}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '7px',
+                  padding: '11px 18px',
+                  background: downloading ? 'rgba(182,157,116,0.5)' : '#B69D74',
+                  color: '#1F2839',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  borderRadius: '11px',
+                  border: 'none',
+                  cursor: downloading ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 2px 8px rgba(182,157,116,0.3)',
+                  transition: 'all 0.18s ease',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Download style={{ width: 15, height: 15 }} />
+                {downloading ? 'Generating…' : 'Download PDF'}
+              </button>
             </div>
           </motion.div>
 
@@ -514,6 +604,7 @@ export default function DashboardPage() {
           </motion.div>
 
         </motion.div>
+        </div>
       </DashboardLayout>
     </PageTransition>
   )
