@@ -3,19 +3,41 @@
 export const ReadinessScore = ({ score }: { score: number }) => {
   const pct = Math.min(100, Math.max(0, score));
   const label = pct >= 75 ? 'Ready' : pct >= 50 ? 'Partially Ready' : 'Needs Preparation';
-  const labelColor = pct >= 75 ? 'text-emerald-700' : pct >= 50 ? 'text-amber-700' : 'text-red-700';
+  const labelColor = pct >= 75 ? '#166534' : pct >= 50 ? '#B69D74' : '#991b1b';
+  const barColor  = pct >= 75 ? '#16a34a' : pct >= 50 ? '#B69D74' : '#dc2626';
+
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Litigation Readiness</p>
-      <div className="flex items-end gap-1 mb-1">
-        <span className="text-5xl font-bold tabular-nums text-gray-900">{Math.round(pct)}</span>
-        <span className="text-xl text-gray-400 mb-1">/100</span>
+    <div
+      style={{
+        background: '#fff',
+        border: '1px solid rgba(182,157,116,0.22)',
+        borderRadius: '16px',
+        padding: '24px',
+        boxShadow: '0 1px 8px rgba(31,40,57,0.06)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+      }}
+    >
+      <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(31,40,57,0.4)' }}>
+        Litigation Readiness
+      </p>
+      <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px' }}>
+        <span style={{ fontSize: '52px', fontWeight: 800, color: '#1F2839', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+          {Math.round(pct)}
+        </span>
+        <span style={{ fontSize: '18px', color: 'rgba(31,40,57,0.35)', marginBottom: '6px' }}>/100</span>
       </div>
-      <p className={`text-sm font-semibold mb-4 ${labelColor}`}>{label}</p>
-      <div className="w-full bg-gray-100 rounded-full h-2">
+      <p style={{ fontSize: '12px', fontWeight: 700, color: labelColor }}>{label}</p>
+      <div style={{ width: '100%', height: '5px', background: 'rgba(31,40,57,0.08)', borderRadius: '99px', overflow: 'hidden', marginTop: '4px' }}>
         <div
-          className="bg-gray-800 h-2 rounded-full transition-all duration-700"
-          style={{ width: `${pct}%` }}
+          style={{
+            height: '100%',
+            width: `${pct}%`,
+            background: barColor,
+            borderRadius: '99px',
+            transition: 'width 0.7s ease-out',
+          }}
         />
       </div>
     </div>

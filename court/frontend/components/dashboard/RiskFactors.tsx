@@ -2,22 +2,53 @@
 
 export const RiskFactors = ({ factors }: { factors: string[] }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <div className="flex items-center gap-2 mb-4">
-        <div className="w-2 h-2 rounded-full bg-red-400" />
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Risk Factors</p>
+    <div
+      style={{
+        background: '#fff',
+        border: '1px solid rgba(182,157,116,0.22)',
+        borderRadius: '16px',
+        padding: '24px',
+        boxShadow: '0 1px 8px rgba(31,40,57,0.06)',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#dc2626', flexShrink: 0 }} />
+        <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(31,40,57,0.4)' }}>
+          Risk Factors
+        </p>
       </div>
+
       {factors.length === 0 ? (
-        <p className="text-sm text-gray-400 italic">No significant risk factors identified.</p>
+        <p style={{ fontSize: '13px', color: 'rgba(31,40,57,0.4)', fontStyle: 'italic' }}>
+          No significant risk factors identified.
+        </p>
       ) : (
-        <ul className="space-y-2.5">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {factors.map((factor, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-sm text-gray-700">
-              <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">!</span>
-              <span>{factor}</span>
-            </li>
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <div
+                style={{
+                  flexShrink: 0,
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  background: 'rgba(220,38,38,0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginTop: '1px',
+                }}
+              >
+                <span style={{ fontSize: '10px', fontWeight: 800, color: '#dc2626' }}>!</span>
+              </div>
+              <span style={{ fontSize: '13px', color: 'rgba(31,40,57,0.75)', lineHeight: '1.5' }}>{factor}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
