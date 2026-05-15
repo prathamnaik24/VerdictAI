@@ -63,11 +63,11 @@ export function HeroSection() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="relative z-10 px-6 lg:px-8 pt-8 pb-6"
+        style={{ padding: '28px 40px 20px', position: 'relative', zIndex: 10 }}
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-4">
-            <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ position: 'relative', width: '52px', height: '52px', flexShrink: 0 }}>
               <Image
                 src="/images/hero/lady_justice.png"
                 alt="VerdictAI"
@@ -76,9 +76,10 @@ export function HeroSection() {
                 priority
               />
             </div>
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-gold">
+            {/* p not h3 — avoids global h3 { text-3xl md:text-4xl } override */}
+            <p style={{ fontSize: '24px', fontFamily: 'var(--font-cormorant), Georgia, serif', fontWeight: 600, color: '#B69D74', letterSpacing: '-0.01em' }}>
               VerdictAI
-            </h3>
+            </p>
           </div>
         </div>
       </motion.div>
@@ -145,21 +146,46 @@ export function HeroSection() {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="relative z-10 pb-8 pt-6 flex flex-col items-center gap-6"
       >
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
           <Link href="/intake">
             <Button
               size="lg"
-              className="bg-gold hover:bg-darkgold text-navy font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg group text-base w-full sm:w-auto"
+              className="group"
+              style={{
+                background: '#B69D74',
+                color: '#1F2839',
+                fontWeight: 700,
+                fontSize: '16px',
+                padding: '16px 36px',
+                borderRadius: '12px',
+                border: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                boxShadow: '0 4px 18px rgba(182,157,116,0.35)',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
             >
               Analyze My Case
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight style={{ width: 18, height: 18 }} />
             </Button>
           </Link>
           <Link href="/dashboard#demo">
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-gold/40 text-gold hover:bg-gold/10 font-semibold px-8 py-3 rounded-lg transition-all duration-300 text-base w-full sm:w-auto"
+              style={{
+                border: '2px solid rgba(182,157,116,0.5)',
+                color: '#B69D74',
+                background: 'transparent',
+                fontWeight: 700,
+                fontSize: '16px',
+                padding: '16px 36px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
             >
               Try Demo Case
             </Button>
