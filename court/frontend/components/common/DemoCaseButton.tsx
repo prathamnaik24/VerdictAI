@@ -15,35 +15,81 @@ export function DemoCaseButton({ onSelect, label = 'Load Demo Case' }: DemoCaseB
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="relative inline-block">
+    <div style={{ position: 'relative', display: 'inline-block' }}>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="px-5 py-2.5 bg-white text-navy border border-navy/20 rounded-lg hover:bg-offwhite transition-colors text-sm font-medium"
+        style={{
+          padding: '11px 20px',
+          background: '#fff',
+          color: '#1F2839',
+          border: '1px solid rgba(31,40,57,0.2)',
+          borderRadius: '11px',
+          fontSize: '14px',
+          fontWeight: 600,
+          cursor: 'pointer',
+          transition: 'all 0.18s ease',
+          boxShadow: '0 1px 6px rgba(31,40,57,0.08)',
+        }}
+        onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F5F5EF'; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#fff'; }}
       >
         {label}
       </button>
       {expanded && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setExpanded(false)} />
-          <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-20 overflow-hidden">
-            <p className="text-xs font-medium text-gray-500 uppercase tracking-wider px-4 pt-3 pb-1">
+          <div
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: 'calc(100% + 8px)',
+              width: '260px',
+              background: '#fff',
+              border: '1px solid rgba(182,157,116,0.25)',
+              borderRadius: '12px',
+              boxShadow: '0 8px 28px rgba(31,40,57,0.12)',
+              zIndex: 20,
+              overflow: 'hidden',
+            }}
+          >
+            <p
+              style={{
+                fontSize: '10px',
+                fontWeight: 800,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'rgba(31,40,57,0.4)',
+                padding: '12px 16px 8px',
+              }}
+            >
               Select a demo case
             </p>
-            {CASE_TYPES.map((type) => (
+            {CASE_TYPES.map((type, i) => (
               <button
                 key={type}
-                onClick={() => {
-                  onSelect(type);
-                  setExpanded(false);
+                onClick={() => { onSelect(type); setExpanded(false); }}
+                style={{
+                  width: '100%',
+                  textAlign: 'left',
+                  padding: '11px 16px',
+                  background: 'transparent',
+                  border: 'none',
+                  borderTop: i === 0 ? 'none' : '1px solid rgba(182,157,116,0.12)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '2px',
+                  transition: 'background 0.15s',
                 }}
-                className="w-full text-left px-4 py-3 hover:bg-offwhite transition-colors border-t border-gray-100 first:border-t-0"
+                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F5F5EF'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
               >
-                <p className="text-sm font-medium text-navy">
+                <span style={{ fontSize: '13px', fontWeight: 600, color: '#1F2839' }}>
                   {DEMO_LABELS[type].title}
-                </p>
-                <p className="text-xs text-gray-500 mt-0.5">
+                </span>
+                <span style={{ fontSize: '11px', color: 'rgba(31,40,57,0.45)' }}>
                   {DEMO_LABELS[type].subtitle}
-                </p>
+                </span>
               </button>
             ))}
           </div>
