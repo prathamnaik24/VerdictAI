@@ -4,6 +4,8 @@ export const HARDCODED_ASSESSMENTS = {
     directionScore: 86,
     confidenceLevel: 'High',
     confidenceScore: 85,
+    estimatedCost: { low: '₹8,000', high: '₹25,000', note: 'Small Causes Court filing + basic advocate fees' },
+    estimatedTime: { range: '3 – 6 months', note: 'If the landlord does not contest; may extend to 12 months' },
     laws: [
       {
         name: 'Section 43 of the Maharashtra Rent Control Act, 1999',
@@ -75,6 +77,8 @@ export const HARDCODED_ASSESSMENTS = {
     directionScore: 52,
     confidenceLevel: 'Moderate',
     confidenceScore: 50,
+    estimatedCost: { low: '₹15,000', high: '₹45,000', note: 'Summary suit filing under Order 37 CPC + advocate fees' },
+    estimatedTime: { range: '6 – 18 months', note: 'Faster if defendant does not appear; can extend to 2 years if contested' },
     laws: [
       {
         name: 'Section 4 of the Negotiable Instruments Act, 1881',
@@ -153,6 +157,8 @@ export const HARDCODED_ASSESSMENTS = {
     directionScore: 26,
     confidenceLevel: 'Low',
     confidenceScore: 35,
+    estimatedCost: { low: '₹25,000', high: '₹80,000', note: 'Civil suit filing + expert witness + advocate retainer' },
+    estimatedTime: { range: '1 – 3 years', note: 'Verbal contracts are harder to prove; expect multiple hearings' },
     laws: [
       {
         name: 'Section 10 of the Indian Contract Act, 1872',

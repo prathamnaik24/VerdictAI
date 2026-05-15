@@ -360,6 +360,55 @@ export default function DashboardPage() {
             </MotionCard>
           </motion.div>
 
+          {/* Estimated Cost + Time */}
+          {hardcodedData && (
+            <motion.div variants={staggerItem} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              {/* Cost */}
+              <MotionCard>
+                <div style={{ ...card, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(182,157,116,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <span style={{ fontSize: '14px' }}>💰</span>
+                    </div>
+                    <p style={{ ...sectionLabel }}>Estimated Legal Cost</p>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+                    <span style={{ fontSize: '22px', fontWeight: 800, color: '#1F2839', fontFamily: 'var(--font-cormorant), Georgia, serif' }}>
+                      {hardcodedData.estimatedCost.low}
+                    </span>
+                    <span style={{ fontSize: '14px', color: 'rgba(31,40,57,0.4)', fontWeight: 600 }}>–</span>
+                    <span style={{ fontSize: '22px', fontWeight: 800, color: '#B69D74', fontFamily: 'var(--font-cormorant), Georgia, serif' }}>
+                      {hardcodedData.estimatedCost.high}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '12px', color: 'rgba(31,40,57,0.5)', lineHeight: '1.5', background: 'rgba(182,157,116,0.07)', border: '1px solid rgba(182,157,116,0.15)', borderRadius: '8px', padding: '8px 10px' }}>
+                    {hardcodedData.estimatedCost.note}
+                  </p>
+                </div>
+              </MotionCard>
+
+              {/* Time */}
+              <MotionCard delay={0.05}>
+                <div style={{ ...card, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(31,40,57,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <span style={{ fontSize: '14px' }}>⏱️</span>
+                    </div>
+                    <p style={{ ...sectionLabel }}>Estimated Time to Resolution</p>
+                  </div>
+                  <div>
+                    <span style={{ fontSize: '22px', fontWeight: 800, color: '#1F2839', fontFamily: 'var(--font-cormorant), Georgia, serif' }}>
+                      {hardcodedData.estimatedTime.range}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '12px', color: 'rgba(31,40,57,0.5)', lineHeight: '1.5', background: 'rgba(31,40,57,0.04)', border: '1px solid rgba(31,40,57,0.08)', borderRadius: '8px', padding: '8px 10px' }}>
+                    {hardcodedData.estimatedTime.note}
+                  </p>
+                </div>
+              </MotionCard>
+            </motion.div>
+          )}
+
           {/* Know Your Rights + Next Steps (hardcoded data only) */}
           {hardcodedData && (
             <motion.div variants={staggerItem} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
